@@ -349,6 +349,8 @@ const Hero = () => {
                   <img 
                     src={photo} 
                     alt="Lokanath" 
+                    loading="eager"
+                    decoding="async"
                     style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%', position: 'relative', zIndex: 0 }} 
                   />
                   <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '60%', background: 'linear-gradient(to top, rgba(2, 6, 23, 1) 0%, rgba(2, 6, 23, 0.4) 50%, transparent 100%)', zIndex: 2 }}></div>
@@ -448,6 +450,8 @@ const Hero = () => {
                   <img 
                     src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.linkedin.com/in/lokanath-meher-a79506353/`} 
                     alt="LinkedIn QR" 
+                    loading="lazy"
+                    decoding="async"
                     style={{ width: '180px', height: '180px', display: 'block' }}
                   />
                 </div>
@@ -546,6 +550,8 @@ const ProjectCard = ({ p }) => {
               <motion.img 
                 src={p.img} 
                 alt={p.title} 
+                loading="lazy"
+                decoding="async"
                 animate={{ scale: isHovering ? 1.05 : 1 }}
                 transition={{ duration: 0.6 }}
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
@@ -1681,7 +1687,7 @@ const About = () => (
         </h2>
         
         <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '24px' }}>
-          I am a <strong style={{ color: 'var(--accent-cyan)', fontWeight: 800 }}>Computer Science Engineering</strong> student currently in my <strong style={{ color: 'var(--accent-cyan)', fontWeight: 800 }}>2nd year</strong> at GIET Bhubaneswar. I enjoy building web applications with the MERN stack and writing Python code to solve real-world problems. I'm focused on learning how to create secure, efficient, and user-friendly software.
+          I am a <strong style={{ color: 'var(--accent-cyan)', fontWeight: 800 }}>Computer Science Engineer</strong> currently pursuing specialization in <strong style={{ color: 'var(--accent-cyan)', fontWeight: 800 }}>Advanced Software Systems</strong> at GIET Bhubaneswar. My expertise lies in architecting full-stack solutions with the MERN stack and developing high-performance Python modules. I am committed to engineering secure, scalable, and impact-driven digital experiences.
         </p>
 
         {/* Feature Checkpoints */}
@@ -1836,16 +1842,16 @@ const Contact = () => {
 const ResumeSection = () => {
   const experience = [
     {
-      role: "Python Programming Intern",
+      role: "Backend Developer Intern (Python)",
       company: "Codec Networks",
       period: "June 2023 — Aug 2023",
       location: "Remote (India)",
-      desc: "Architected automated Python scripts for high-volume data processing and engineered backend modules using the Flask framework.",
+      desc: "Architected scalable backend microservices and automated data processing pipelines using Python and the Flask framework.",
       tech: ["Python", "Flask", "SQL", "Automation", "Security"],
       points: [
-        "Reduced manual processing time by 30% through automation.",
-        "Integrated complex SQL database schemas for backend modules.",
-        "Optimized API response times for internal tools."
+        "Automated large-scale data processing pipelines, reducing operational latency by 30% and significantly enhancing throughput.",
+        "Architected scalable backend microservices using the Flask framework, implementing complex relational schemas and ensuring data integrity.",
+        "Enforced zero-trust authentication protocols and optimized internal API response times, improving overall system security and user experience."
       ],
       color: "var(--accent-cyan)",
       icon: <Terminal size={24} />
@@ -1990,8 +1996,8 @@ const ResumeSection = () => {
             </div>
             
             <h3 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#fff', marginBottom: '16px', letterSpacing: '-0.02em' }}>Download My CV</h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '40px', maxWidth: '320px' }}>
-              For a detailed overview of my technical expertise and academic background, download the full PDF.
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '40px', opacity: 0.8 }}>
+              For a comprehensive overview of my technical architecture, industry experience, and academic background, download the complete professional profile.
             </p>
             
             <div style={{ display: 'flex', gap: '16px', width: '100%', flexWrap: 'wrap' }}>

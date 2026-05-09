@@ -44,15 +44,15 @@ export default function Resume() {
 
   const experience = [
     {
-      role: "Python Programming Intern",
+      role: "Backend Developer Intern (Python)",
       company: "Codec Networks",
       period: "June 2023 — August 2023",
       location: "New Delhi, India (Remote)",
       desc: [
-        "Architected and optimized Python-driven automation scripts, reducing manual processing time by approximately 30%.",
-        "Developed robust backend modules using Flask framework and integrated complex SQL database schemas.",
-        "Collaborated in an Agile environment to debug production issues and enhance system reliability.",
-        "Implemented secure authentication protocols and optimized API response times for internal tools."
+        "Automated large-scale data processing pipelines, reducing operational latency by 30% and significantly enhancing throughput.",
+        "Architected scalable backend microservices using the Flask framework, implementing complex relational schemas and ensuring data integrity.",
+        "Partnered with cross-functional teams in an Agile environment to resolve critical production bottlenecks and stabilize system architecture.",
+        "Enforced zero-trust authentication protocols and optimized internal API response times, improving overall system security and user experience."
       ]
     }
   ];
@@ -173,7 +173,7 @@ export default function Resume() {
              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#fff', letterSpacing: '-0.01em' }}>Professional Summary</h2>
           </div>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.15rem', lineHeight: 1.8, fontWeight: 400 }}>
-            I am a <span style={{ color: '#fff', fontWeight: 600 }}>Computer Science Engineering student</span> with a strong focus on full-stack web development. I have experience building scalable applications using the <span style={{ color: 'var(--accent-cyan)', fontWeight: 600 }}>MERN stack</span> and writing Python automation scripts. I am a quick learner, a collaborative team player, and I strive to write clean, secure, and maintainable code.
+            I am a <span style={{ color: '#fff', fontWeight: 600 }}>Software Engineer</span> specializing in full-stack architecture and high-performance backend systems. With deep expertise in the <span style={{ color: 'var(--accent-cyan)', fontWeight: 600 }}>MERN stack</span> and Python automation, I focus on building scalable, secure digital solutions. I am driven by engineering excellence, clean-code principles, and solving complex architectural challenges in collaborative environments.
           </p>
         </motion.div>
 

@@ -241,12 +241,12 @@ const GalleryPost = ({ post, openZoom }) => {
           )}
           {post.logo === 'giet' && (
             <div style={{ background: 'white', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 44, height: 44, overflow: 'hidden' }}>
-              <img src={giet_logo} alt="GIET Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={giet_logo} alt="GIET Logo" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
           )}
           {post.logo === 'holidays' && (
             <div style={{ background: 'white', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 44, height: 44, overflow: 'hidden', border: '2px solid rgba(255,255,255,0.2)' }}>
-              <img src={holidays_logo} alt="Holidays Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={holidays_logo} alt="Holidays Logo" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
           )}
           {post.logo === 'blood_donation' && (
@@ -260,7 +260,7 @@ const GalleryPost = ({ post, openZoom }) => {
           )}
           {post.logo === 'nxtwave' && (
             <div style={{ background: 'white', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 44, height: 44, overflow: 'hidden' }}>
-              <img src={nxtwave_logo} alt="NxtWave Logo" style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 4 }} />
+              <img src={nxtwave_logo} alt="NxtWave Logo" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 4 }} />
             </div>
           )}
           {post.logo === 'ai' && (
@@ -281,17 +281,19 @@ const GalleryPost = ({ post, openZoom }) => {
       {/* 📸 Image Slider */}
       <div className="slider-container" style={{ position: 'relative', overflow: 'hidden', borderRadius: 12, aspectRatio: '16/9', background: '#000' }}>
         <AnimatePresence mode="wait">
-          <motion.img
-            key={post.photos[currentIndex]}
-            src={post.photos[currentIndex]}
-            alt="gallery"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            style={{ width: '100%', height: '100%', objectFit: 'contain', cursor: 'pointer' }}
-            onClick={() => openZoom(post, currentIndex)}
-          />
+            <motion.img
+              key={post.photos[currentIndex]}
+              src={post.photos[currentIndex]}
+              alt="gallery"
+              loading="lazy"
+              decoding="async"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              style={{ width: '100%', height: '100%', objectFit: 'contain', cursor: 'pointer' }}
+              onClick={() => openZoom(post, currentIndex)}
+            />
         </AnimatePresence>
 
         {/* Location Logo Overlay for Holidays Post */}
@@ -313,6 +315,8 @@ const GalleryPost = ({ post, openZoom }) => {
             <img
               src={getLocationInfo(currentIndex).icon}
               alt="Location Logo"
+              loading="lazy"
+              decoding="async"
               style={{ width: 24, height: 24, objectFit: 'contain' }}
             />
             <span style={{ color: 'white', fontSize: 12, fontWeight: 600, letterSpacing: 0.5 }}>

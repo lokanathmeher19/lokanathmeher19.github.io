@@ -72,6 +72,8 @@ export default function About() {
                   <img 
                     src="/my photo.png" 
                     alt="Lokanath Meher" 
+                    loading="lazy"
+                    decoding="async"
                     style={{ 
                       width: '80%', 
                       objectFit: 'cover',
@@ -100,7 +102,7 @@ export default function About() {
               </motion.h3>
               
               <motion.p variants={itemVariants} style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: '40px' }}>
-                I am a dedicated <span style={{ color: '#22d3ee', fontWeight: 600 }}>Computer Science Engineering student</span> at GIET University. My engineering philosophy revolves around writing clean, well-architected code that prioritizes execution speed and strict defensive integrations.
+                I am an <span style={{ color: '#22d3ee', fontWeight: 600 }}>Engineer & Technologist</span> specializing in Computer Science at GIET University. My engineering philosophy revolves around writing high-performance, well-architected code that prioritizes scalability, security, and strict defensive integrations.
               </motion.p>
 
               {/* Grid of 3 Cards */}

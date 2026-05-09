@@ -97,7 +97,7 @@ export default function Skills() {
                     }}
                   >
                     {skill.logo ? (
-                      <img src={skill.logo} alt={skill.name} style={{ width: '22px', height: '22px', filter: 'grayscale(0.5)' }} />
+                      <img src={skill.logo} alt={skill.name} loading="lazy" decoding="async" style={{ width: '22px', height: '22px', filter: 'grayscale(0.5)' }} />
                     ) : <div style={{ color: 'var(--accent-secondary)' }}>{skill.icon}</div>}
                     <span style={{ fontWeight: 500, color: 'var(--text-secondary)' }}>{skill.name}</span>
                   </motion.div>

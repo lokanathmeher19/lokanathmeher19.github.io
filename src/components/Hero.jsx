@@ -81,7 +81,7 @@ export default function Hero() {
             
             <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-gradient-to-b from-[#22d3ee] to-[#0f172a]">
               {/* Note: I'll handle the image loading dynamically. If profileImg fails, fallback to a div */}
-              <img src={profileImg} alt="Lokanath Meher" className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity mix-blend-luminosity hover:mix-blend-normal duration-500" onError={(e) => {e.target.style.display = 'none'}} />
+              <img src={profileImg} alt="Lokanath Meher" loading="eager" decoding="async" className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity mix-blend-luminosity hover:mix-blend-normal duration-500" onError={(e) => {e.target.style.display = 'none'}} />
               
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-[rgba(0,0,0,0.6)] backdrop-blur-md border border-[rgba(255,255,255,0.1)] rounded-full px-4 py-2 flex items-center gap-2">
                 <span className="text-[#22d3ee]">›_</span>

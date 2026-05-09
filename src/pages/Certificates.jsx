@@ -63,11 +63,11 @@ export default function Certificates() {
   const getTabIcon = (t) => {
     switch (t) {
       case "nxtwave":
-        return <img src="/gallery/nxtwave_logo.png" alt="NxtWave" style={{ width: 16, height: 16, objectFit: "contain" }} />;
+        return <img src="/gallery/nxtwave_logo.png" alt="NxtWave" loading="lazy" decoding="async" style={{ width: 16, height: 16, objectFit: "contain" }} />;
       case "giet":
-        return <img src="/gallery/giet_logo.jpg" alt="GIET" style={{ width: 16, height: 16, objectFit: "cover", borderRadius: "50%" }} />;
+        return <img src="/gallery/giet_logo.jpg" alt="GIET" loading="lazy" decoding="async" style={{ width: 16, height: 16, objectFit: "cover", borderRadius: "50%" }} />;
       case "coursera":
-        return <img src="/gallery/coursera_logo.png" alt="Coursera" style={{ width: 16, height: 16, objectFit: "contain", borderRadius: "50%" }} />;
+        return <img src="/gallery/coursera_logo.png" alt="Coursera" loading="lazy" decoding="async" style={{ width: 16, height: 16, objectFit: "contain", borderRadius: "50%" }} />;
       case "other":
         return <Award size={14} />;
       default:
@@ -163,6 +163,8 @@ export default function Certificates() {
                 <img
                   src={c.img}
                   alt={c.title}
+                  loading="lazy"
+                  decoding="async"
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(2,6,23,0.8), transparent)' }}></div>
@@ -271,6 +273,8 @@ export default function Certificates() {
               <img
                 src={selectedCert.img}
                 alt={selectedCert.title}
+                loading="lazy"
+                decoding="async"
                 style={{
                   width: "auto",
                   maxWidth: "100%",
