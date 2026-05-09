@@ -19,7 +19,7 @@ export default defineConfig({
       'react-dom': path.resolve(__dirname, 'node_modules/react-dom'),
     },
   },
-  base: '/ML-Course/',
+  base: '/',
   build: {
     outDir: 'dist',
     emptyOutDir: true,

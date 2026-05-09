@@ -2,7 +2,7 @@
   "name": "ashthetic-portfolio-final",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://lokanathmeher19.github.io/ML-Course/",
+  "homepage": "https://lokanathmeher19.github.io/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
