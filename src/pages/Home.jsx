@@ -293,10 +293,10 @@ const Hero = () => {
               transition={{ delay: 0.3 }}
               style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '64px' }}
             >
-              <a href="#projects" className="btn-premium btn-primary" style={{ padding: '10px 20px', borderRadius: '10px', fontSize: '0.85rem' }}>
+              <a href="/#projects" className="btn-premium btn-primary" style={{ padding: '10px 20px', borderRadius: '10px', fontSize: '0.85rem' }}>
                 View Projects <ArrowUpRight size={16} />
               </a>
-              <a href="#contact" className="btn-premium btn-secondary" style={{ padding: '10px 20px', borderRadius: '10px', fontSize: '0.85rem' }}>
+              <a href="/#contact" className="btn-premium btn-secondary" style={{ padding: '10px 20px', borderRadius: '10px', fontSize: '0.85rem' }}>
                 Let's Collaborate
               </a>
             </motion.div>
