@@ -72,7 +72,7 @@ const XIcon = ({ size = 18 }) => (
   </svg>
 );
 import photo from '../assets/my photo.png';
-import { PROJECTS, INFO_CARDS } from '../data/portfolioData';
+import { PROJECTS } from '../data/portfolioData';
 
 // 🎓 Certificate Imports
 import cert_google from '../assets/certs/coursera_genai.jpg';
@@ -302,45 +302,6 @@ const Hero = () => {
             </motion.div>
 
 
-          {/* 📊 High-Density Meta-Bar (Centered Style) */}
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(3, 1fr)', 
-            gap: '20px', 
-            paddingTop: '24px', 
-            width: '100%',
-            maxWidth: '950px'
-          }}>
-            {INFO_CARDS.map((info, index) => (
-              <motion.div
-                key={info.label}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 + (index * 0.1) }}
-                whileHover={{ y: -3, background: 'rgba(255,255,255,0.04)', borderColor: 'rgba(255,255,255,0.1)' }}
-                style={{
-                  padding: '16px 20px',
-                  background: 'rgba(255, 255, 255, 0.015)',
-                  backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(255, 255, 255, 0.05)',
-                  borderRadius: '16px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  textAlign: 'center',
-                  transition: 'all 0.4s ease'
-                }}
-              >
-                <div style={{ color: 'var(--accent-cyan)', marginBottom: '6px', opacity: 0.8 }}>
-                  {info.icon}
-                </div>
-                <div style={{ color: 'var(--text-muted)', fontSize: '0.55rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '4px' }}>{info.label}</div>
-                <div style={{ color: '#fff', fontSize: '0.75rem', fontWeight: 700 }}>
-                  {info.value}
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </div>
 
         <div style={{ perspective: '1200px', marginTop: '-200px' }}>

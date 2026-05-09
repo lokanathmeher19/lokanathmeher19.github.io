@@ -116,8 +116,4 @@ export const QUICK_LINKS = [
     { img: telegramLogo, title: 'Telegram', link: 'http://t.me/ScorpioX99' },
 ];
 
-export const INFO_CARDS = [
-    { label: 'Expertise', value: 'Python, Problem Solving', icon: '💼' },
-    { label: 'Contact', value: 'meherlokanath314@gmail.com', icon: '📧' },
-    { label: 'Location', value: 'Bargarh, Odisha, 768028', icon: '📍' },
-];
+
