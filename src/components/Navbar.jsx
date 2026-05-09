@@ -3,14 +3,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 
 const links = [
-  { label: "Home", href: "#home" },
-  { label: "Skills", href: "#skills" },
-  { label: "Certificates", href: "#certificates" },
-  { label: "Education", href: "#education" },
-  { label: "Projects", href: "#projects" },
-  { label: "Resume", href: "#resume" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Certificates", href: "/certificates" },
+  { label: "Education", href: "/#education" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Resume", href: "/resume" },
+  { label: "About", href: "/#about" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -25,10 +25,10 @@ export default function Navbar() {
 
     const handleScroll = () => {
       const scrollPos = window.scrollY + 150;
-      const anchorLinks = links.filter(l => l.href.startsWith("#"));
+      const anchorLinks = links.filter(l => l.href.includes("#"));
       
       for (const link of anchorLinks) {
-        const id = link.href.substring(1);
+        const id = link.href.split("#")[1];
         const element = document.getElementById(id);
         if (
           element &&
@@ -49,7 +49,7 @@ export default function Navbar() {
     <div className="nav-container">
       <nav className="navbar">
         {links.map((link) => {
-          const isAnchor = link.href.startsWith("#");
+          const isAnchor = link.href.includes("#");
           const Tag = isAnchor ? "a" : Link;
           const toProps = isAnchor ? { href: link.href } : { to: link.href };
 
