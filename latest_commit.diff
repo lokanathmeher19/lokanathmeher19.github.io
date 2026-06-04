@@ -1,0 +1,151 @@
+commit 0c88a9b85a5b2f6a1afae90cffd3c0629253ac37
+Author: lokanathmeher19 <meherlokanath314@gmail.com>
+Date:   Fri Mar 6 23:51:04 2026 +0530
+
+    My-portfolio
+
+diff --git a/src/App.jsx b/src/App.jsx
+index aed0e18..a14d443 100644
+--- a/src/App.jsx
++++ b/src/App.jsx
+@@ -30,10 +30,10 @@ export default function App() {
+   });
+ 
+   useEffect(() => {
+-    // Fast preloader for HR convenience
++    // Show preloader for 2.8 seconds to allow the awesome cyber animation to play
+     const timer = setTimeout(() => {
+       setLoading(false);
+-    }, 500);
++    }, 2800);
+     return () => clearTimeout(timer);
+   }, []);
+ 
+diff --git a/src/pages/Home.jsx b/src/pages/Home.jsx
+index 56a8af1..ec6da38 100644
+--- a/src/pages/Home.jsx
++++ b/src/pages/Home.jsx
+@@ -27,45 +27,30 @@ export default function Home() {
+ 
+       {/* Top Section: Photo + Info */}
+       <div className="home-top">
+-        {/* Left: Professional Photo Presentation */}
++        {/* Left: Glowing Photo */}
+         <motion.div
+-          initial={{ opacity: 0, x: -40, scale: 0.95 }}
++          initial={{ opacity: 0, x: -60, scale: 0.9 }}
+           animate={{ opacity: 1, x: 0, scale: 1 }}
+-          transition={{ duration: 0.8, ease: "easeOut" }}
++          transition={{ duration: 1, type: "spring", stiffness: 100 }}
++          whileHover={{ scale: 1.05, rotateZ: [0, -2, 2, -2, 0], transition: { duration: 0.5 } }}
+           className="photo-container"
+-          style={{ position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+         >
+-          {/* Subtle static background ring instead of rotating neon */}
+-          <div style={{
+-            position: 'absolute',
+-            width: '105%',
+-            height: '105%',
+-            borderRadius: '50%',
+-            background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%)',
+-            border: '1px solid rgba(255,255,255,0.1)',
+-            zIndex: 0
+-          }} />
+-
+           <motion.div
+-            whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.4)" }}
+-            transition={{ duration: 0.3 }}
+-            style={{
+-              zIndex: 1,
+-              borderRadius: '50%',
+-              overflow: 'hidden',
+-              background: '#111',
+-              border: '2px solid rgba(255,255,255,0.1)'
+-            }}
++            animate={{ rotate: [0, 360] }}
++            transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
++            className="photo-ring"
++          />
++          <motion.div
++            animate={{ y: [0, -12, 0] }}
++            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
++            className="photo-frame"
+           >
+-            <img
++            <motion.img
+               src={photo}
+               alt="Lokanath Meher"
+-              style={{
+-                width: '100%',
+-                height: '100%',
+-                objectFit: 'cover',
+-                display: 'block'
+-              }}
++              initial={{ scale: 0.8, opacity: 0 }}
++              animate={{ scale: 1, opacity: 1 }}
++              transition={{ duration: 1 }}
+               className="profile-photo"
+             />
+           </motion.div>
+@@ -99,20 +84,9 @@ export default function Home() {
+             {PROFESSIONS.map((role, i) => (
+               <motion.div
+                 key={i}
+-                whileHover={{ y: -2, background: 'rgba(255,255,255,0.1)' }}
+-                transition={{ duration: 0.2 }}
+-                style={{
+-                  padding: '6px 14px',
+-                  borderRadius: '20px',
+-                  background: 'rgba(255,255,255,0.05)',
+-                  border: '1px solid rgba(255,255,255,0.1)',
+-                  fontSize: '13px',
+-                  color: '#ccc',
+-                  cursor: 'default',
+-                  display: 'inline-block',
+-                  marginRight: '8px',
+-                  marginBottom: '8px'
+-                }}
++                whileHover={{ scale: 1.1, background: 'linear-gradient(90deg,var(--accent),var(--accent-2))', color: '#000', boxShadow: "0 10px 20px rgba(0, 255, 157, 0.4)" }}
++                transition={{ type: 'spring', stiffness: 300 }}
++                className="profession-tag"
+               >
+                 {role}
+               </motion.div>
+@@ -124,20 +98,12 @@ export default function Home() {
+             {INFO_CARDS.map((info, i) => (
+               <motion.div
+                 key={i}
+-                whileHover={{ y: -4, boxShadow: "0 10px 20px rgba(0,0,0,0.2)" }}
+-                transition={{ duration: 0.2 }}
++                whileHover={{ y: -8, scale: 1.05, boxShadow: "0 15px 30px rgba(0, 255, 157, 0.2)" }}
++                transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                 className="info-card"
+-                style={{
+-                  background: 'rgba(20,20,20,0.6)',
+-                  border: '1px solid rgba(255,255,255,0.05)',
+-                  borderRadius: '12px',
+-                  padding: '16px',
+-                  flex: '1',
+-                  minWidth: '140px'
+-                }}
+               >
+-                <strong style={{ display: 'block', color: '#888', fontSize: '12px', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '4px' }}>{info.label}</strong>
+-                <p style={{ margin: 0, color: '#eee', fontSize: '14px', fontWeight: '500' }}>{info.value}</p>
++                <strong>{info.label}</strong>
++                <p>{info.value}</p>
+               </motion.div>
+             ))}
+           </motion.div>
+diff --git a/src/pages/Skills.jsx b/src/pages/Skills.jsx
+index f2a4613..6b1c92c 100644
+--- a/src/pages/Skills.jsx
++++ b/src/pages/Skills.jsx
+@@ -116,7 +116,7 @@ export default function Skills() {
+ 
+   return (
+     <section className="skills-container" id="skills" style={{ position: "relative", overflow: "hidden" }}>
+-      
++
+       {/* Header */}
+       <motion.div
+         className="skills-header"
