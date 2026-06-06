@@ -30,18 +30,6 @@ Thumbs.db
 *.pem
 *.key
 
-# Ignore images and large assets (don't push photos)
-/public/gallery/
-/public/logos/
-/public/certs/
-/src/assets/
-
-# Ignore any generated image files
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.webp
 
 # Databases and local data
 *.db
