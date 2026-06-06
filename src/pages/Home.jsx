@@ -362,7 +362,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div style={{ perspective: '1200px', marginTop: '-200px' }}>
+        <div style={{ perspective: '1200px', marginTop: '-80px' }}>
           <motion.div 
             initial={false}
             animate={{ rotateY: isFlipped ? 180 : 0 }}
@@ -1255,7 +1255,7 @@ const Education = () => {
     {
       label: "JUNIOR_COLLEGE",
       degree: "Higher Secondary",
-      institution: "Dadhi Baman Higher Secondary School, Bhatli",
+      institution: "Dadhi Baman Higher Secondary School",
       board: "CHSE Odisha",
       period: "2022 — 2024",
       score: 68,
@@ -1269,12 +1269,12 @@ const Education = () => {
     {
       label: "SECONDARY_SCHOOL",
       degree: "Secondary Education",
-      institution: "Sri Aurobindo Institute of Integral Education & Research, Bargarh",
+      institution: "Sri Aurobindo Institute of Integral Education",
       board: "BSE Odisha",
       period: "2019 — 2022",
       score: 78,
       unit: "%",
-      features: ["Odia", "English", "Sanskrit", "Mathematics", "General Science", "Social Science"],
+      features: ["Odia", "English", "Sanskrit", "Mathematics", "Science"],
       color: "#60a5fa",
       icon: <Terminal size={22} />,
       logo: logo_secondary,
@@ -1282,10 +1282,16 @@ const Education = () => {
     }
   ];
 
-  const displayEducation = [...education].reverse();
-
   return (
-    <section id="education" className="section" style={{ padding: '120px 24px', position: 'relative', overflow: 'hidden' }}>
+    <section id="education" className="section" style={{ padding: '140px 24px', position: 'relative', overflow: 'hidden' }}>
+      {/* 🌌 Atmospheric Glow Backdrops */}
+      <div style={{ 
+        position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)',
+        width: '600px', height: '600px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(34, 211, 238, 0.03) 0%, transparent 70%)',
+        pointerEvents: 'none', zIndex: 0
+      }}></div>
+
       <SectionHeader 
         badge="EDUCATION" 
         color="#22d3ee"
@@ -1293,150 +1299,300 @@ const Education = () => {
         desc="A chronological log of educational excellence and fundamental knowledge development." 
       />
 
-      <div style={{ maxWidth: '1000px', margin: '100px auto 0', position: 'relative' }}>
-          {/* 🌑 Subtle Trail */}
-          <div style={{ 
-            position: 'absolute', left: '32px', top: '10px', bottom: '10px', 
-            width: '1px', background: 'linear-gradient(to bottom, transparent, rgba(34, 211, 238, 0.2), transparent)',
-            zIndex: 0
-          }}></div>
+      <div style={{ 
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '48px',
+        maxWidth: '800px', 
+        margin: '80px auto 0', 
+        position: 'relative',
+        zIndex: 1
+      }}>
+        {education.map((edu, i) => {
+          const radius = 30;
+          const circumference = 2 * Math.PI * radius;
+          const percentage = edu.unit === 'CGPA' ? edu.score * 10 : edu.score;
+          const strokeDashoffset = circumference - (percentage / 100) * circumference;
 
-          <div style={{ display: 'grid', gap: '60px' }}>
-             {education.map((edu, i) => (
-                <motion.div 
-                   key={edu.id}
-                   initial={{ opacity: 0, x: -30 }}
-                   whileInView={{ opacity: 1, x: 0 }}
-                   viewport={{ once: true, margin: "-100px" }}
-                   transition={{ duration: 0.8, delay: i * 0.2 }}
-                   style={{ 
-                     display: 'flex', gap: '48px', position: 'relative'
-                   }}
-                >
-                   {/* 🔘 Milestone Node */}
-                   <div style={{ position: 'relative', zIndex: 1, paddingTop: '12px' }}>
-                      <div style={{ 
-                        width: '64px', height: '64px', borderRadius: '50%',
-                        background: 'rgba(5, 8, 22, 0.8)', border: `1px solid ${edu.color}44`,
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        boxShadow: `0 0 20px ${edu.color}15`,
-                        position: 'relative'
+          return (
+            <div
+              key={edu.label}
+              style={{
+                position: 'sticky',
+                top: `${140 + i * 35}px`, // Staggered top offset so headers of lower cards stack beautifully
+                zIndex: i + 1,
+                paddingBottom: '60px' // Create track length for sticky feel
+              }}
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+                whileHover={{ 
+                  y: -5,
+                  borderColor: `${edu.color}88`,
+                  boxShadow: `0 35px 70px -15px rgba(0, 0, 0, 0.95), 0 0 40px -5px ${edu.color}20`,
+                }}
+                style={{
+                  background: 'rgba(5, 8, 22, 0.95)', // Slightly darker backplate so it masks cards below it
+                  backdropFilter: 'blur(28px)',
+                  WebkitBackdropFilter: 'blur(28px)',
+                  borderRadius: '28px',
+                  border: '1px solid rgba(255, 255, 255, 0.05)',
+                  padding: '36px',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  transition: 'border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                  minHeight: '400px',
+                  boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.8)'
+                }}
+              >
+                {/* Glowing Corner Accent */}
+                <div style={{
+                  position: 'absolute',
+                  top: '-30px',
+                  right: '-30px',
+                  width: '140px',
+                  height: '140px',
+                  background: `radial-gradient(circle, ${edu.color}10 0%, transparent 70%)`,
+                  pointerEvents: 'none'
+                }}></div>
+
+                {/* Grid Overlay */}
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  opacity: 0.02,
+                  backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px)',
+                  backgroundSize: '16px 16px',
+                  pointerEvents: 'none'
+                }}></div>
+
+                {/* Graduation Cap Backdrop Watermark */}
+                <div style={{ 
+                  position: 'absolute', bottom: '10%', right: '5%', opacity: 0.02, 
+                  color: edu.color, pointerEvents: 'none'
+                }}>
+                  <GraduationCap size={150} strokeWidth={1} />
+                </div>
+
+                <div>
+                  {/* Header Row */}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+                    <div style={{ 
+                      width: '52px', height: '52px', borderRadius: '16px',
+                      background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.08)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px',
+                      boxShadow: `0 8px 24px -10px ${edu.color}33`
+                    }}>
+                      {edu.logo ? (
+                        <img 
+                          src={edu.logo} 
+                          alt="Logo" 
+                          style={{ 
+                            width: '100%', height: '100%', objectFit: 'contain',
+                            transform: `scale(${edu.logoScale || 1})`,
+                            filter: (typeof edu.logo === 'string' && edu.logo.includes('.jpg')) ? 'invert(1) brightness(1.2)' : 'none',
+                            mixBlendMode: (typeof edu.logo === 'string' && edu.logo.includes('.jpg')) ? 'screen' : 'normal'
+                          }} 
+                        />
+                      ) : (
+                        <span style={{ color: edu.color }}>{edu.icon}</span>
+                      )}
+                    </div>
+                    
+                    <span style={{ 
+                      fontSize: '0.75rem', fontWeight: 800, color: edu.color,
+                      background: `${edu.color}12`, border: `1px solid ${edu.color}22`,
+                      padding: '6px 14px', borderRadius: '100px', letterSpacing: '0.05em'
+                    }}>
+                      {edu.period}
+                    </span>
+                  </div>
+
+                  {/* Sub-label & Title */}
+                  <div style={{ fontSize: '0.65rem', fontWeight: 900, color: edu.color, letterSpacing: '0.25em', marginBottom: '8px' }}>
+                    {edu.label}
+                  </div>
+                  <h3 style={{ fontSize: '1.45rem', fontWeight: 900, color: '#fff', marginBottom: '8px', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+                    {edu.degree}
+                  </h3>
+                  <div style={{ fontSize: '0.85rem', color: 'rgba(255, 255, 255, 0.7)', fontWeight: 600, marginBottom: '6px', lineHeight: 1.4 }}>
+                    {edu.institution}
+                  </div>
+                  <div style={{ fontSize: '0.65rem', fontWeight: 800, color: 'rgba(255, 255, 255, 0.35)', letterSpacing: '0.1em', marginBottom: '24px' }}>
+                    {edu.university ? `UNIVERSITY: ${edu.university.toUpperCase()}` : `BOARD: ${edu.board.toUpperCase()}`}
+                  </div>
+                </div>
+
+                <div>
+                  {/* Score Section with SVG Gauge */}
+                  <div style={{ 
+                    display: 'flex', alignItems: 'center', gap: '20px', 
+                    padding: '16px 20px', background: 'rgba(255, 255, 255, 0.01)',
+                    border: '1px solid rgba(255, 255, 255, 0.03)', borderRadius: '20px',
+                    marginBottom: '24px'
+                  }}>
+                    <div style={{ position: 'relative', width: '68px', height: '68px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <svg width="68" height="68" viewBox="0 0 80 80">
+                        <circle cx="40" cy="40" r="30" stroke="rgba(255, 255, 255, 0.03)" strokeWidth="5" fill="transparent" />
+                        <motion.circle 
+                          cx="40" cy="40" r="30" 
+                          stroke={edu.color} strokeWidth="5" fill="transparent"
+                          strokeDasharray={circumference}
+                          initial={{ strokeDashoffset: circumference }}
+                          whileInView={{ strokeDashoffset: strokeDashoffset }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1.5, ease: "easeOut" }}
+                          strokeLinecap="round"
+                          transform="rotate(-90 40 40)"
+                        />
+                      </svg>
+                      <div style={{ position: 'absolute', fontSize: '1rem', fontWeight: 950, color: '#fff' }}>
+                        {edu.score}
+                      </div>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: '0.6rem', color: 'rgba(255, 255, 255, 0.4)', fontWeight: 800, letterSpacing: '0.1em', marginBottom: '2px' }}>ACADEMIC_YIELD</div>
+                      <div style={{ fontSize: '0.85rem', fontWeight: 900, color: edu.color }}>
+                        {edu.unit === 'CGPA' ? `${edu.score} / 10.0 CGPA` : `${edu.score}% Overall`}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Subject tags */}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                    {edu.features.map(feat => (
+                      <span key={feat} style={{ 
+                        fontSize: '0.58rem', fontWeight: 800, color: 'rgba(255, 255, 255, 0.5)',
+                        background: 'rgba(255, 255, 255, 0.03)', border: '1px solid rgba(255, 255, 255, 0.05)',
+                        padding: '4px 10px', borderRadius: '8px', letterSpacing: '0.02em'
                       }}>
-                         <div style={{ color: edu.color, width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: edu.logo ? '10px' : '0' }}>
-                            {edu.logo ? (
-                               <img src={edu.logo} alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'contain', transform: `scale(${edu.logoScale || 1})`, filter: (typeof edu.logo === 'string' && edu.logo.includes('.jpg')) ? 'invert(1) brightness(1.2)' : 'none', mixBlendMode: (typeof edu.logo === 'string' && edu.logo.includes('.jpg')) ? 'screen' : 'normal' }} />
-                            ) : (
-                               edu.icon
-                            )}
-                         </div>
-                         
-                         {/* Pulsing Outer Node */}
-                         <motion.div 
-                           animate={{ scale: [1, 1.4, 1], opacity: [0.3, 0.1, 0.3] }}
-                           transition={{ duration: 3, repeat: Infinity }}
-                           style={{ 
-                             position: 'absolute', inset: -8, borderRadius: '50%',
-                             border: `1px solid ${edu.color}22`, zIndex: -1
-                           }}
-                         />
-                      </div>
-                   </div>
-
-                   {/* 📑 Dossier Card */}
-                   <motion.div 
-                      whileHover={{ y: -5, background: 'rgba(255,255,255,0.03)' }}
-                      style={{ 
-                        flex: 1, padding: '40px', borderRadius: '32px',
-                        background: 'rgba(255, 255, 255, 0.015)', border: '1px solid rgba(255, 255, 255, 0.05)',
-                        position: 'relative', overflow: 'hidden', backdropFilter: 'blur(10px)',
-                        transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
-                      }}
-                   >
-                      {/* Academic Backdrop Seal */}
-                      <div style={{ 
-                        position: 'absolute', top: '5%', right: '2%', opacity: 0.05, 
-                        color: edu.color, pointerEvents: 'none'
-                      }}>
-                         <GraduationCap size={180} strokeWidth={1} />
-                      </div>
-
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '20px', marginBottom: '32px' }}>
-                         <div>
-                              <div style={{ 
-                                fontSize: '0.65rem', fontWeight: 950, color: edu.color, 
-                                letterSpacing: '0.25em', marginBottom: '12px', opacity: 0.8 
-                              }}>
-                                {edu.label}
-                              </div>
-                            <h3 style={{ fontSize: '1.85rem', fontWeight: 900, color: '#fff', marginBottom: '8px', letterSpacing: '-0.02em' }}>
-                               {edu.degree}
-                            </h3>
-                            {edu.board && (
-                               <div style={{ fontSize: '0.65rem', fontWeight: 900, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.15em', marginBottom: '8px' }}>
-                                  {edu.university ? 'UNIVERSITY' : 'BOARD'}: {edu.board.toUpperCase()}
-                               </div>
-                            )}
-                            <div style={{ 
-                               display: 'inline-flex', alignItems: 'center', gap: '8px', 
-                               color: edu.color, fontWeight: 800, fontSize: '0.9rem',
-                               background: `${edu.color}10`, padding: '6px 14px', borderRadius: '100px',
-                               border: `1px solid ${edu.color}22`
-                            }}>
-                               <Globe size={14} />
-                               {edu.institution.toUpperCase()}
-                            </div>
-                         </div>
-                         
-                         <div style={{ 
-                           padding: '12px 20px', borderRadius: '16px', background: 'rgba(255,255,255,0.03)',
-                           border: '1px solid rgba(255,255,255,0.05)', textAlign: 'right'
-                         }}>
-                            <div style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.3)', fontWeight: 800, marginBottom: '4px' }}>ACADEMIC_SESSION</div>
-                            <div style={{ color: '#fff', fontSize: '0.85rem', fontWeight: 700 }}>{edu.period}</div>
-                         </div>
-                      </div>
-
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '32px' }}>
-                         <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                            {edu.features.map(feat => (
-                               <span key={feat} style={{ 
-                                 padding: '6px 14px', borderRadius: '100px', fontSize: '0.6rem',
-                                 fontWeight: 800, background: 'rgba(255,255,255,0.02)',
-                                 border: '1px solid rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.5)',
-                                 letterSpacing: '0.05em'
-                               }}>
-                                 {feat.toUpperCase()}
-                               </span>
-                            ))}
-                         </div>
-
-                         <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-                            <div style={{ textAlign: 'right' }}>
-                               <div style={{ fontSize: '0.6rem', color: edu.color, fontWeight: 950, letterSpacing: '0.1em', marginBottom: '2px' }}>{edu.unit}_YIELD</div>
-                               <div style={{ fontSize: '1.75rem', fontWeight: 950, color: '#fff' }}>{edu.score}</div>
-                            </div>
-                            <div style={{ 
-                              width: '50px', height: '50px', borderRadius: '14px',
-                              background: `${edu.color}10`, border: `1px solid ${edu.color}22`,
-                              display: 'flex', alignItems: 'center', justifyContent: 'center'
-                            }}>
-                               <Trophy size={20} style={{ color: edu.color, opacity: 0.7 }} />
-                            </div>
-                         </div>
-                      </div>
-                   </motion.div>
-                </motion.div>
-             ))}
-          </div>
+                        {feat.toUpperCase()}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
 };
 
 
+const PreviewCard = ({ cert }) => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  // Springs for smooth 3D tilt dynamics
+  const rotateX = useSpring(useTransform(y, [-150, 150], [10, -10]), { stiffness: 200, damping: 25 });
+  const rotateY = useSpring(useTransform(x, [-150, 150], [-10, 10]), { stiffness: 200, damping: 25 });
+
+  function handleMouseMove(event) {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = event.clientX - rect.left - width / 2;
+    const mouseY = event.clientY - rect.top - height / 2;
+    x.set(mouseX);
+    y.set(mouseY);
+  }
+
+  function handleMouseLeave() {
+    x.set(0);
+    y.set(0);
+  }
+
+  if (!cert) return null;
+
+  return (
+    <div style={{ perspective: 1000, width: '100%', position: 'relative', display: 'flex', justifyContent: 'center' }}>
+      {/* Dynamic Background Glow */}
+      <div 
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '90%',
+          height: '90%',
+          background: `radial-gradient(circle, ${cert.color || 'var(--accent-purple)'}25 0%, transparent 70%)`,
+          filter: 'blur(50px)',
+          pointerEvents: 'none',
+          zIndex: 0,
+          transition: 'background 0.5s ease'
+        }}
+      />
+
+      <motion.div
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          rotateX,
+          rotateY,
+          transformStyle: "preserve-3d",
+          width: '100%',
+          maxWidth: '400px',
+          background: 'rgba(255, 255, 255, 0.01)',
+          border: '1px solid rgba(255, 255, 255, 0.05)',
+          borderRadius: '24px',
+          padding: '16px',
+          backdropFilter: 'blur(15px)',
+          boxShadow: '0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05)',
+          zIndex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          transition: 'border-color 0.3s ease'
+        }}
+        whileHover={{
+          borderColor: `${cert.color}44`
+        }}
+      >
+        <div style={{ 
+          width: '100%', 
+          aspectRatio: '16/10', 
+          borderRadius: '16px', 
+          overflow: 'hidden', 
+          position: 'relative',
+          backgroundColor: '#000',
+          transform: 'translateZ(20px)'
+        }}>
+          <img 
+            src={cert.img} 
+            alt={cert.title} 
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+          />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 80%)' }} />
+          
+          <div style={{ position: 'absolute', bottom: '12px', left: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span style={{ fontSize: '0.65rem', fontWeight: 900, color: cert.color || 'var(--accent-purple)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>{cert.issuer}</span>
+          </div>
+        </div>
+
+        <div style={{ width: '100%', marginTop: '20px', transform: 'translateZ(30px)', textAlign: 'center', padding: '0 8px' }}>
+          <h4 style={{ color: '#fff', fontSize: '1.05rem', fontWeight: 800, margin: '0 0 8px 0', lineHeight: '1.4' }}>{cert.title}</h4>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.65rem', fontWeight: 900, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em' }}>
+            <Award size={10} style={{ color: cert.color }} />
+            {cert.category} CREDENTIAL
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
 const Certificates = () => {
   const [activeFilter, setActiveFilter] = useState('ALL');
   const [selectedCert, setSelectedCert] = useState(null);
+  const [activeCert, setActiveCert] = useState(null);
 
   const categories = [
     { id: 'ALL', label: 'All' },
@@ -1468,16 +1624,65 @@ const Certificates = () => {
     { title: "Deloitte Consulting Sim.", issuer: "Deloitte", img: cert_deloatte_2, color: "#86BC25", category: 'COMPANY' },
     { title: "Cybersecurity Awareness", issuer: "Cisco", img: cert_cyber_awareness, color: "#00bceb", category: 'COMPANY' },
     { title: "NxtWave Professional", issuer: "Mastery", img: cert_nxtwave_alt, color: "#22d3ee", category: 'NXTWAVE' },
-    { title: "HackerRank Skills Gold", issuer: "HackerRank", img: cert_hackerrank, color: "#2ec866", category: 'COMPANY' },
-    // { title: "IBM Big Data Expert", issuer: "IBM Cloud", img: cert_ibm_bigdata, color: "#052FAD", category: 'COMPANY' }
+    { title: "HackerRank Skills Gold", issuer: "HackerRank", img: cert_hackerrank, color: "#2ec866", category: 'COMPANY' }
   ];
 
   const filteredCerts = activeFilter === 'ALL' 
     ? certifications 
     : certifications.filter(c => c.category === activeFilter);
 
+  // Sync activeCert with filter change
+  useEffect(() => {
+    if (filteredCerts.length > 0) {
+      setActiveCert(filteredCerts[0]);
+    } else {
+      setActiveCert(null);
+    }
+  }, [activeFilter]);
+
   return (
-    <section id="certificates" className="section" style={{ padding: '160px 24px' }}>
+    <section id="certificates" className="section" style={{ padding: '120px 24px', overflow: 'hidden', position: 'relative' }}>
+      <style>{`
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(255, 255, 255, 0.08);
+          border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: rgba(255, 255, 255, 0.15);
+        }
+        @media (max-width: 768px) {
+          .certificates-desktop-layout {
+            display: none !important;
+          }
+          .certificates-mobile-layout {
+            display: block !important;
+          }
+        }
+        @media (min-width: 769px) {
+          .certificates-desktop-layout {
+            display: flex !important;
+          }
+          .certificates-mobile-layout {
+            display: none !important;
+          }
+        }
+      `}</style>
+
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundImage: 'radial-gradient(rgba(139, 92, 246, 0.02) 1px, transparent 1px)', backgroundSize: '40px 40px', pointerEvents: 'none' }}></div>
+
       <SectionHeader 
         badge="Certificates" 
         color="var(--accent-purple)"
@@ -1485,26 +1690,27 @@ const Certificates = () => {
         desc="A precision-engineered archive of certifications and technical mastery." 
       />
 
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap', marginTop: '60px', marginBottom: '40px' }}>
+      {/* 🧭 Filter Navigation */}
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap', marginTop: '60px', marginBottom: '40px', position: 'relative', zIndex: 10 }}>
         {categories.map((cat) => (
           <button
             key={cat.id}
             onClick={() => setActiveFilter(cat.id)}
             style={{
-              padding: '10px 24px', borderRadius: '12px',
-              border: `1px solid ${activeFilter === cat.id ? 'var(--accent-purple)' : 'rgba(255,255,255,0.08)'}`,
-              background: activeFilter === cat.id ? 'rgba(139, 92, 246, 0.15)' : 'rgba(255,255,255,0.02)',
+              padding: '10px 24px', borderRadius: '100px',
+              border: `1px solid ${activeFilter === cat.id ? 'var(--accent-purple)' : 'rgba(255,255,255,0.06)'}`,
+              background: activeFilter === cat.id ? 'rgba(139, 92, 246, 0.12)' : 'rgba(255,255,255,0.01)',
               color: activeFilter === cat.id ? '#fff' : 'rgba(255,255,255,0.5)',
-              fontSize: '0.85rem', fontWeight: 700, cursor: 'pointer',
+              fontSize: '0.8rem', fontWeight: 700, cursor: 'pointer',
               display: 'flex', alignItems: 'center', gap: '10px',
-              transition: 'all 0.3s ease'
+              transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
             }}
           >
             {cat.logo && (
               <img 
                 src={cat.logo} 
                 alt={`${cat.label} logo`} 
-                style={{ height: '20px', width: 'auto', objectFit: 'contain' }} 
+                style={{ height: '18px', width: 'auto', objectFit: 'contain' }} 
               />
             )}
             {cat.label}
@@ -1512,53 +1718,230 @@ const Certificates = () => {
         ))}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: '24px' }}>
-        {filteredCerts.map((cert, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            whileHover={{ y: -8, transition: { duration: 0.3 } }}
-            onClick={() => setSelectedCert(cert)}
-            style={{ 
-              background: 'rgba(255,255,255,0.02)', borderRadius: '24px',
-              border: '1px solid rgba(255,255,255,0.05)', overflow: 'hidden',
-              cursor: 'pointer'
-            }}
-          >
-            <div style={{ aspectRatio: '16/10', position: 'relative' }}>
-              <img src={cert.img} alt={cert.title} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7 }} />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #000 0%, transparent 80%)' }}></div>
-              
-              {/* Verification & Category Badge */}
-              <div style={{ 
-                position: 'absolute', top: '16px', right: '16px', 
-                padding: '6px 12px', borderRadius: '100px', 
-                background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(10px)',
-                display: 'flex', alignItems: 'center', gap: '8px',
-                border: '1px solid rgba(255,255,255,0.08)',
-                zIndex: 2
-              }}>
-                 <Award size={10} style={{ color: cert.color || 'var(--accent-purple)' }} />
-                 <span style={{ 
-                   fontSize: '0.55rem', fontWeight: 900, 
-                   color: '#fff', textTransform: 'uppercase', 
-                   letterSpacing: '0.1em' 
-                 }}>
-                   {cert.category}
-                 </span>
-              </div>
+      {/* 🖥️ Desktop Layout: Dual Pane Ledger */}
+      <div className="certificates-desktop-layout" style={{
+        gap: '40px',
+        maxWidth: '1200px',
+        margin: '20px auto 0',
+        height: '520px',
+        alignItems: 'stretch',
+        position: 'relative',
+        zIndex: 5
+      }}>
+        {/* Left Scrollable Ledger List */}
+        <div style={{
+          flex: '1 1 55%',
+          overflowY: 'auto',
+          paddingRight: '16px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '12px',
+          maxHeight: '520px',
+        }} className="custom-scrollbar">
+          <AnimatePresence mode="popLayout">
+            {filteredCerts.map((cert, i) => {
+              const isSelected = activeCert === cert;
+              return (
+                <motion.div
+                  key={cert.title}
+                  layout
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.3 }}
+                  onClick={() => setActiveCert(cert)}
+                  whileHover={{ x: 6, backgroundColor: 'rgba(255, 255, 255, 0.02)' }}
+                  style={{
+                    padding: '16px 20px',
+                    borderRadius: '16px',
+                    background: isSelected ? 'rgba(255,255,255,0.015)' : 'transparent',
+                    border: isSelected 
+                      ? `1px solid ${cert.color}33` 
+                      : '1px solid rgba(255,255,255,0.03)',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '16px',
+                    boxShadow: isSelected ? `0 10px 30px ${cert.color}08` : 'none',
+                    transition: 'border-color 0.3s, box-shadow 0.3s'
+                  }}
+                >
+                  <div style={{
+                    width: '3px',
+                    height: '24px',
+                    borderRadius: '2px',
+                    background: isSelected ? cert.color : 'rgba(255,255,255,0.1)',
+                    transition: 'background 0.3s'
+                  }} />
 
-              <div style={{ position: 'absolute', bottom: '16px', left: '20px' }}>
-                <span style={{ fontSize: '0.6rem', fontWeight: 900, color: cert.color || 'var(--accent-purple)', letterSpacing: '0.15em' }}>{cert.issuer}</span>
+                  {/* Tiny Thumbnail */}
+                  <div style={{
+                    width: '38px',
+                    height: '38px',
+                    borderRadius: '8px',
+                    overflow: 'hidden',
+                    background: 'rgba(255,255,255,0.02)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '1px solid rgba(255,255,255,0.05)',
+                    flexShrink: 0
+                  }}>
+                    <img src={cert.img} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="" />
+                  </div>
+
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <h4 style={{ 
+                      color: isSelected ? '#fff' : 'rgba(255,255,255,0.7)', 
+                      fontSize: '0.92rem', 
+                      fontWeight: 800, 
+                      margin: '0 0 2px 0',
+                      transition: 'color 0.3s',
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis'
+                    }}>
+                      {cert.title}
+                    </h4>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.75rem', color: 'rgba(255,255,255,0.35)' }}>
+                      <span style={{ color: cert.color, fontWeight: 700 }}>{cert.issuer}</span>
+                      <span>•</span>
+                      <span>{cert.category}</span>
+                    </div>
+                  </div>
+
+                  <ArrowUpRight size={16} style={{ 
+                    color: isSelected ? cert.color : 'rgba(255,255,255,0.2)',
+                    opacity: isSelected ? 1 : 0.4,
+                    transition: 'all 0.3s',
+                    flexShrink: 0
+                  }} />
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </div>
+
+        {/* Right Preview Panel */}
+        <div style={{
+          flex: '1 1 45%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+          <AnimatePresence mode="wait">
+            {activeCert ? (
+              <motion.div
+                key={activeCert.title}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+                style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+              >
+                <PreviewCard cert={activeCert} />
+                
+                <motion.button
+                  whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.08)', borderColor: 'rgba(255,255,255,0.2)' }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setSelectedCert(activeCert)}
+                  style={{
+                    marginTop: '28px',
+                    background: 'rgba(255, 255, 255, 0.02)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    color: '#fff',
+                    borderRadius: '12px',
+                    padding: '12px 28px',
+                    fontSize: '0.8rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    letterSpacing: '0.05em',
+                    boxShadow: '0 10px 20px rgba(0,0,0,0.2)'
+                  }}
+                >
+                  PREVIEW CREDENTIAL <Maximize2 size={13} />
+                </motion.button>
+              </motion.div>
+            ) : (
+              <div style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.9rem' }}>Select a certificate to view details</div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* 📱 Mobile Layout: Swipeable Card Slider */}
+      <div className="certificates-mobile-layout" style={{
+        marginTop: '20px',
+        width: '100%',
+        position: 'relative',
+        zIndex: 5
+      }}>
+        <div style={{
+          display: 'flex',
+          overflowX: 'auto',
+          gap: '16px',
+          padding: '10px 16px 30px',
+          scrollSnapType: 'x mandatory',
+          scrollbarWidth: 'none',
+          WebkitOverflowScrolling: 'touch'
+        }} className="no-scrollbar">
+          {filteredCerts.map((cert, i) => (
+            <motion.div
+              key={cert.title}
+              onClick={() => setSelectedCert(cert)}
+              style={{
+                flex: '0 0 280px',
+                scrollSnapAlign: 'center',
+                background: 'rgba(255, 255, 255, 0.01)',
+                borderRadius: '20px',
+                border: '1px solid rgba(255, 255, 255, 0.04)',
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
+                cursor: 'pointer',
+                backdropFilter: 'blur(10px)'
+              }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <div style={{ aspectRatio: '16/10', position: 'relative' }}>
+                <img src={cert.img} alt={cert.title} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #000 0%, transparent 80%)' }} />
+                
+                <div style={{ position: 'absolute', bottom: '12px', left: '16px' }}>
+                  <span style={{ fontSize: '0.55rem', fontWeight: 900, color: cert.color || 'var(--accent-purple)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>{cert.issuer}</span>
+                </div>
               </div>
-            </div>
-            <div style={{ padding: '20px' }}>
-              <h4 style={{ color: '#fff', fontSize: '1rem', fontWeight: 800, margin: 0 }}>{cert.title}</h4>
-            </div>
-          </motion.div>
-        ))}
+              
+              <div style={{ padding: '16px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                <h4 style={{ color: '#fff', fontSize: '0.9rem', fontWeight: 800, margin: '0 0 12px 0', lineHeight: 1.4 }}>{cert.title}</h4>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.35)', fontWeight: 800 }}>{cert.category}</span>
+                  <div style={{ color: cert.color, display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.75rem', fontWeight: 700 }}>
+                    VIEW <Maximize2 size={10} />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+        
+        <div style={{ 
+          textAlign: 'center', 
+          color: 'rgba(255,255,255,0.25)', 
+          fontSize: '0.72rem', 
+          fontWeight: 600,
+          letterSpacing: '0.05em',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '6px'
+        }}>
+          Swipe horizontally to explore <span style={{ fontSize: '0.8rem' }}>→</span>
+        </div>
       </div>
 
       {/* 🖼️ Cinematic Lightbox Overlay */}
@@ -1574,36 +1957,37 @@ const Certificates = () => {
               backdropFilter: "blur(20px)",
               display: "flex", 
               flexDirection: "column",
-              justifyContent: "flex-start", // Start from top to allow scrolling
+              justifyContent: "flex-start",
               alignItems: "center",
               zIndex: 10000, 
-              padding: '60px 20px 40px',
-              overflowY: 'auto' // Allow vertical scrolling
+              padding: '80px 20px 40px',
+              overflowY: 'auto'
             }}
             onClick={() => setSelectedCert(null)}
           >
             <motion.button
               whileHover={{ rotate: 90, scale: 1.1 }}
               style={{
-                position: 'fixed', // Keep close button fixed while scrolling
+                position: 'fixed',
                 top: '24px', right: '24px',
-                background: 'rgba(255,255,255,0.1)', 
-                border: '1px solid rgba(255,255,255,0.2)',
+                background: 'rgba(255,255,255,0.06)', 
+                border: '1px solid rgba(255,255,255,0.15)',
                 borderRadius: '50%',
-                width: '48px', height: '48px',
+                width: '44px', height: '44px',
                 color: '#fff', cursor: 'pointer',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 zIndex: 10001
               }}
               onClick={() => setSelectedCert(null)}
             >
-              <X size={24} />
+              <X size={20} />
             </motion.button>
 
             <motion.div
-              initial={{ scale: 0.9, y: 20 }}
+              initial={{ scale: 0.95, y: 15 }}
               animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 20 }}
+              exit={{ scale: 0.95, y: 15 }}
+              transition={{ duration: 0.3, cubicBezier: [0.16, 1, 0.3, 1] }}
               style={{ 
                 position: 'relative', 
                 maxWidth: '900px', 
@@ -1620,15 +2004,15 @@ const Certificates = () => {
                 style={{
                   width: "auto",
                   maxWidth: "100%",
-                  maxHeight: "90vh", // Don't let it exceed viewpoint height initially
-                  borderRadius: "12px",
-                  boxShadow: "0 50px 100px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.1)",
-                  objectFit: "contain" // Ensure full certificate is shown
+                  maxHeight: "80vh",
+                  borderRadius: "16px",
+                  boxShadow: "0 50px 100px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.08)",
+                  objectFit: "contain"
                 }}
               />
               <div style={{ marginTop: '32px', textAlign: 'center', paddingBottom: '40px' }}>
-                 <h2 style={{ fontSize: '1.8rem', fontWeight: 900, color: '#fff', marginBottom: '12px' }}>{selectedCert.title}</h2>
-                 <p style={{ color: 'var(--text-secondary)', letterSpacing: '0.1em', fontWeight: 600 }}>
+                 <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#fff', marginBottom: '10px', letterSpacing: '-0.02em' }}>{selectedCert.title}</h2>
+                 <p style={{ color: selectedCert.color || 'var(--text-secondary)', letterSpacing: '0.1em', fontWeight: 700, fontSize: '0.8rem' }}>
                     {selectedCert.issuer.toUpperCase()} • OFFICIAL CREDENTIAL
                  </p>
                  <div style={{ marginTop: '24px', display: 'flex', gap: '16px', justifyContent: 'center' }}>
@@ -1636,9 +2020,9 @@ const Certificates = () => {
                      href={selectedCert.img} 
                      download={`${selectedCert.title}.jpg`}
                      className="btn-premium btn-primary"
-                     style={{ padding: '12px 24px', fontSize: '0.85rem' }}
+                     style={{ padding: '12px 24px', fontSize: '0.8rem', borderRadius: '100px' }}
                    >
-                     Download Certificate <Download size={16} />
+                     Download Certificate <Download size={14} />
                    </a>
                  </div>
               </div>

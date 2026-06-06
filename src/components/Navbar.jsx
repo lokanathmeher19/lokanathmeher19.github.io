@@ -19,7 +19,13 @@ export default function Navbar() {
 
   useEffect(() => {
     if (location.pathname !== "/") {
-      setActive("/resume");
+      if (location.pathname === "/resume") {
+        setActive("#resume");
+      } else if (location.pathname === "/certificates") {
+        setActive("#certificates");
+      } else {
+        setActive("");
+      }
       return;
     }
 
@@ -49,16 +55,17 @@ export default function Navbar() {
     <div className="nav-container">
       <nav className="navbar">
         {links.map((link) => {
+          const isHomePage = location.pathname === "/";
           const isAnchor = link.href.startsWith("#");
-          const Tag = isAnchor ? "a" : Link;
-          const toProps = isAnchor ? { href: link.href } : { to: link.href };
+          const Tag = (isAnchor && isHomePage) ? "a" : Link;
+          const toProps = (isAnchor && isHomePage) ? { href: link.href } : { to: isAnchor ? `/${link.href}` : link.href };
 
           return (
             <Tag
               key={link.href}
               {...toProps}
               className={`nav-item ${active === link.href ? "active" : ""}`}
-              onClick={() => isAnchor && setActive(link.href)}
+              onClick={() => isAnchor && isHomePage && setActive(link.href)}
               style={{ position: 'relative' }}
             >
               {active === link.href && (

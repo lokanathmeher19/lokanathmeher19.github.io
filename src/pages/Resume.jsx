@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   Download, MapPin, Mail, Phone, ChevronLeft, Award, 
   Code2, Terminal, CheckCircle2, Briefcase, 

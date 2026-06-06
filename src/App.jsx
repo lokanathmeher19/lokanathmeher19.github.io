@@ -20,6 +20,19 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    if (!loading && location.hash) {
+      const id = location.hash.substring(1);
+      const element = document.getElementById(id);
+      if (element) {
+        const timer = setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [loading, location.hash]);
+
   return (
     <div className="app-container">
       <AnimatePresence mode="wait">
