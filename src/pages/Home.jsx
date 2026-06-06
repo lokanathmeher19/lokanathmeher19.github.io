@@ -1325,10 +1325,27 @@ const Education = () => {
               }}
             >
               <motion.div
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.7, ease: "easeOut" }}
+                initial={{ 
+                  opacity: 0, 
+                  x: i % 2 === 0 ? -120 : 120, 
+                  y: 80, 
+                  rotate: i % 2 === 0 ? -6 : 6,
+                  scale: 0.95
+                }}
+                whileInView={{ 
+                  opacity: 1, 
+                  x: 0, 
+                  y: 0, 
+                  rotate: 0,
+                  scale: 1
+                }}
+                viewport={{ once: false, margin: "-100px" }}
+                transition={{ 
+                  type: "spring",
+                  stiffness: 70,
+                  damping: 14,
+                  mass: 0.8
+                }}
                 whileHover={{ 
                   y: -5,
                   borderColor: `${edu.color}88`,
