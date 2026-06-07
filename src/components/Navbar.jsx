@@ -6,11 +6,11 @@ const links = [
   { label: "Home", href: "#home" },
   { label: "Skills", href: "#skills" },
   { label: "Certificates", href: "#certificates" },
-  { label: "Education", href: "#education" },
-  { label: "Projects", href: "#projects" },
-  { label: "Resume", href: "#resume" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Education", href: "#Education" },
+  { label: "Projects", href: "#Projects" },
+  { label: "Resume", href: "#Resume" },
+  { label: "About", href: "#About" },
+  { label: "Contact", href: "#Contact" },
 ];
 
 export default function Navbar() {
@@ -32,7 +32,7 @@ export default function Navbar() {
     const handleScroll = () => {
       const scrollPos = window.scrollY + 150;
       const anchorLinks = links.filter(l => l.href.startsWith("#"));
-      
+
       for (const link of anchorLinks) {
         const id = link.href.substring(1);
         const element = document.getElementById(id);

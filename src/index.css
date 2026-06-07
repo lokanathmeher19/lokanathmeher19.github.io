@@ -461,3 +461,129 @@ h1, h2, h3, h4 {
   background: currentColor;
   border-radius: 100px;
 }
+
+/* 🎓 Premium Education Stack & 3D Cards */
+.education-perspective {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.education-stack-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+}
+
+.education-glass-card {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(135deg, var(--bg-3) 0%, var(--bg-2) 100%);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+  transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 
+    0 30px 60px -15px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.education-glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 
+    0 40px 100px -20px rgba(0, 0, 0, 0.9),
+    0 0 30px rgba(34, 211, 238, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* 🌅 Corner accent radial lights */
+.education-corner-glow {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, var(--glow-color, rgba(34, 211, 238, 0.15)) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 🕸️ Geometric overlay pattern */
+.education-grid-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.education-card-watermark {
+  position: absolute;
+  bottom: 8%;
+  right: 6%;
+  opacity: 0.02;
+  color: var(--watermark-color, #fff);
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.education-glass-card:hover .education-card-watermark {
+  opacity: 0.04;
+  transform: scale(1.05) rotate(-3deg);
+}
+
+/* 🏷️ Micro-animations & Interactive elements */
+.education-logo-container {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  box-shadow: 0 8px 24px -10px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.education-glass-card:hover .education-logo-container {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 12px 32px -8px var(--glow-color, rgba(34, 211, 238, 0.25));
+  transform: translateY(-2px);
+}
+
+/* Responsive tweaks for smaller devices */
+@media (max-width: 767px) {
+  .education-stack-container {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .education-glass-card {
+    padding: 30px 24px;
+    height: auto;
+    min-height: 380px;
+  }
+}
