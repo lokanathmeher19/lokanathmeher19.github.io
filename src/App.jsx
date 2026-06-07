@@ -9,6 +9,7 @@ import Preloader from './components/Preloader'
 const Home = lazy(() => import('./pages/Home'))
 const Resume = lazy(() => import('./pages/Resume'))
 const Certificates = lazy(() => import('./pages/Certificates'))
+const Blog = lazy(() => import('./pages/Blog'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 export default function App() {
@@ -70,6 +71,7 @@ export default function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/resume" element={<Resume />} />
                 <Route path="/certificates" element={<Certificates />} />
+                <Route path="/blog" element={<Blog />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </motion.div>

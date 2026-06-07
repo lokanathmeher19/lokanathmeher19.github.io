@@ -7,71 +7,39 @@ import {
   Cpu, GraduationCap, Zap, Link as LinkIcon
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { PROJECTS } from "../data/portfolioData";
+import { 
+  PROJECTS, 
+  EDUCATION, 
+  EXPERIENCES, 
+  SKILLS_CATEGORIES, 
+  RESUME_ACHIEVEMENTS, 
+  CONTACT_CONFIG, 
+  HERO_CONFIG, 
+  RESUME_CONFIG,
+  ICON_MAP 
+} from "../data/portfolioData";
 
 export default function Resume() {
   const [showPDF, setShowPDF] = useState(false);
 
-  const education = [
-    {
-      degree: "B.Tech in Computer Science & Engineering",
-      institution: "GIET University, Bhubaneswar",
-      period: "2024 — 2028",
-      grade: "8.5 CGPA (Current)",
-      color: "var(--accent-cyan)",
-      icon: <GraduationCap size={20} />,
-      highlights: ["Data Structures & Algorithms", "Full Stack Development", "Operating Systems", "DBMS Architecture", "Software Engineering"]
-    },
-    {
-      degree: "Higher Secondary Education (Class XII)",
-      institution: "Dadhi Baman Higher Secondary School",
-      period: "2022 — 2024",
-      grade: "68% (Science)",
-      color: "var(--accent-purple)",
-      icon: <BookOpen size={20} />,
-      highlights: ["Mathematics", "Physics", "Chemistry", "Information Technology", "Analytical Thinking"]
-    }
-  ];
+  const education = EDUCATION.map(edu => ({
+    degree: edu.degreeFull || edu.degree,
+    institution: edu.institution,
+    period: edu.period,
+    grade: edu.grade,
+    color: edu.color,
+    icon: ICON_MAP[edu.iconName] || <GraduationCap size={20} />,
+    highlights: edu.highlights || edu.features
+  }));
 
-  const experience = [
-    {
-      role: "Python Programming Intern",
-      company: "Codec Networks",
-      period: "June 2023 — August 2023",
-      location: "New Delhi, India (Remote)",
-      desc: [
-        "Architected and optimized Python-driven automation scripts, reducing manual processing time by approximately 30%.",
-        "Developed robust backend modules using Flask framework and integrated complex SQL database schemas.",
-        "Collaborated in an Agile environment to debug production issues and enhance system reliability.",
-        "Implemented secure authentication protocols and optimized API response times for internal tools."
-      ]
-    }
-  ];
+  const experience = EXPERIENCES;
 
-  const skillGroups = [
-    {
-      title: "Core Programming",
-      skills: ["Python (Advanced)", "JavaScript (ES6+)", "C++", "Java", "C Language"]
-    },
-    {
-      title: "Web Architecture",
-      skills: ["React.js", "Node.js", "Express.js", "MongoDB", "REST APIs", "Tailwind CSS", "HTML5/CSS3"]
-    },
-    {
-      title: "Engineering Tools",
-      skills: ["Git & GitHub", "Docker", "Linux (Kali/Ubuntu)", "DBMS/SQL", "Postman", "Vite"]
-    },
-    {
-      title: "Domain Knowledge",
-      skills: ["DSA", "System Design", "Cybersecurity Basics", "Agile Methodology", "Problem Solving"]
-    }
-  ];
+  const skillGroups = SKILLS_CATEGORIES.map(cat => ({
+    title: cat.title,
+    skills: cat.skills.map(s => s.name)
+  }));
 
-  const achievements = [
-    { title: "NxtWave Intensive Participant", detail: "Focused on MERN Stack excellence and industry-ready development." },
-    { title: "ICCOSET 2024 Contributor", detail: "Actively participated in International Conference on Emerging Technologies." },
-    { title: "Open Source Contributor", detail: "Regularly contributing to personal and community projects on GitHub." }
-  ];
+  const achievements = RESUME_ACHIEVEMENTS;
 
   return (
     <div className="section" style={{ minHeight: '100vh', paddingTop: '140px', paddingBottom: '100px', position: 'relative' }}>
@@ -101,14 +69,14 @@ export default function Resume() {
           style={{ padding: '60px 40px', marginBottom: '40px', borderRadius: '32px', border: '1px solid rgba(255,255,255,0.1)' }}
         >
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', marginBottom: '40px' }}>
-            <span className="badge" style={{ marginBottom: '16px' }}>Software Development Engineer</span>
+            <span className="badge" style={{ marginBottom: '16px' }}>{HERO_CONFIG.roleBadge}</span>
             <h1 className="hero-title" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 900, marginBottom: '12px', letterSpacing: '-0.02em' }}>
-              Lokanath <span className="text-gradient">Meher</span>
+              {HERO_CONFIG.fullName.split(' ')[0]} <span className="text-gradient">{HERO_CONFIG.fullName.split(' ').slice(1).join(' ')}</span>
             </h1>
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
-               <p style={{ color: 'var(--accent-cyan)', fontSize: '1.2rem', fontWeight: 700, letterSpacing: '0.05em' }}>B.Tech CSE Undergraduate</p>
+               <p style={{ color: 'var(--accent-cyan)', fontSize: '1.2rem', fontWeight: 700, letterSpacing: '0.05em' }}>{RESUME_CONFIG.subTitle1}</p>
                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'rgba(255,255,255,0.2)' }}></div>
-               <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', fontWeight: 500 }}>Full-Stack Developer</p>
+               <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', fontWeight: 500 }}>{RESUME_CONFIG.subTitle2}</p>
             </div>
           </div>
 
@@ -125,7 +93,7 @@ export default function Resume() {
               </div>
               <div>
                 <p style={{ fontSize: '0.7rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '2px' }}>Email</p>
-                <span style={{ fontSize: '0.95rem', fontWeight: 600, color: '#fff' }}>meherlokanath314@gmail.com</span>
+                <span style={{ fontSize: '0.95rem', fontWeight: 600, color: '#fff' }}>{CONTACT_CONFIG.email}</span>
               </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--text-secondary)' }}>
@@ -134,7 +102,7 @@ export default function Resume() {
               </div>
               <div>
                 <p style={{ fontSize: '0.7rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '2px' }}>Contact</p>
-                <span style={{ fontSize: '0.95rem', fontWeight: 600, color: '#fff' }}>+91 9937164359</span>
+                <span style={{ fontSize: '0.95rem', fontWeight: 600, color: '#fff' }}>{CONTACT_CONFIG.phone}</span>
               </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--text-secondary)' }}>
@@ -143,7 +111,7 @@ export default function Resume() {
               </div>
               <div>
                 <p style={{ fontSize: '0.7rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '2px' }}>Location</p>
-                <span style={{ fontSize: '0.95rem', fontWeight: 600, color: '#fff' }}>Bhubaneswar, India</span>
+                <span style={{ fontSize: '0.95rem', fontWeight: 600, color: '#fff' }}>{CONTACT_CONFIG.bhubaneswarLocation}</span>
               </div>
             </div>
           </div>
@@ -164,7 +132,7 @@ export default function Resume() {
              <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#fff', letterSpacing: '-0.01em' }}>Executive Summary</h2>
           </div>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.15rem', lineHeight: 1.8, fontWeight: 400 }}>
-            Result-driven <span style={{ color: '#fff', fontWeight: 600 }}>Computer Science Engineering student</span> with a deep focus on software architecture and full-cycle application development. Expert in building scalable web solutions using the <span style={{ color: 'var(--accent-cyan)', fontWeight: 600 }}>MERN stack</span> and optimizing business logic through Python automation. Proven track record of delivering high-performance code, collaborating in cross-functional teams, and maintaining security-first development practices.
+            {RESUME_CONFIG.summary}
           </p>
         </motion.div>
 
@@ -183,7 +151,7 @@ export default function Resume() {
             {showPDF ? "Dismiss PDF Preview" : "Examine PDF Document"}
           </button>
           <a 
-            href="Lokanath_Meher_Resume.pdf" 
+            href={RESUME_CONFIG.pdfPath} 
             download 
             className="btn-premium btn-primary" 
             style={{ flex: 1, justifyContent: 'center', minWidth: '240px', height: '64px', borderRadius: '16px', fontSize: '1rem', fontWeight: 700 }}
@@ -381,14 +349,14 @@ export default function Resume() {
               <div className="glass-panel" style={{ padding: '24px', borderRadius: '32px', background: 'rgba(5, 8, 22, 0.95)', border: '1px solid rgba(255,255,255,0.1)' }}>
                  <div style={{ width: '100%', height: '1000px', borderRadius: '16px', overflow: 'hidden', background: '#fff', boxShadow: '0 40px 100px rgba(0,0,0,0.5)' }}>
                  <object
-                    data="Lokanath_Meher_Resume.pdf"
+                    data={RESUME_CONFIG.pdfPath}
                     type="application/pdf"
                     width="100%"
                     height="100%"
                  >
                     <div style={{ padding: '40px', textAlign: 'center', color: '#000' }}>
                       <p style={{ marginBottom: '20px', fontWeight: 600 }}>PDF preview is not supported by your browser.</p>
-                      <a href="Lokanath_Meher_Resume.pdf" className="btn-premium btn-primary" download>Download PDF Instead</a>
+                      <a href={RESUME_CONFIG.pdfPath} className="btn-premium btn-primary" download>Download PDF Instead</a>
                     </div>
                  </object>
                  </div>

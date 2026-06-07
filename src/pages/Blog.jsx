@@ -3,27 +3,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ThumbsUp, ThumbsDown, MessageSquare } from "lucide-react";
 import emailjs from "emailjs-com";
 
+import { BLOG_POSTS } from "../data/portfolioData";
+
 export default function Blog() {
-  const defaultPosts = [
-    {
-      id: 1,
-      title: "Why I Love Building AI Projects",
-      text: "Working on AI-based systems like mammogram cancer detection has taught me how impactful technology can be when applied to healthcare. Combining deep learning with real-world problems is my favorite way to innovate.",
-      date: "Oct 12, 2024"
-    },
-    {
-      id: 2,
-      title: "My Thoughts on Design & Aesthetics",
-      text: "I believe design should be a balance between functionality and emotion. Dark themes with minimalist layouts always inspire me to create something that feels personal and futuristic.",
-      date: "Nov 05, 2024"
-    },
-    {
-      id: 3,
-      title: "Balancing Tech and Creativity",
-      text: "As someone who codes and dances, I’ve realized creativity isn’t limited to art — it also lives in algorithms. Each project is like choreography for the mind.",
-      date: "Dec 20, 2024"
-    }
-  ];
+  const defaultPosts = BLOG_POSTS;
 
   const [posts, setPosts] = useState([]);
 

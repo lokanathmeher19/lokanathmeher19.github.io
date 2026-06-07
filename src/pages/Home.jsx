@@ -71,41 +71,21 @@ const XIcon = ({ size = 18 }) => (
     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
   </svg>
 );
-import photo from '../assets/my photo.png';
-import { PROJECTS, INFO_CARDS } from '../data/portfolioData';
-
-// 🎓 Certificate Imports
-import cert_google from '../assets/certs/coursera_genai.jpg';
-import cert_ibm from '../assets/certs/coursera_cybersecurity.jpg';
-import cert_deloitte from '../assets/certs/deloitte_data_analytics.png';
-import cert_nxtwave from '../assets/certs/nxtwave_responsive.jpg';
-import cert_giet_conf from '../assets/certs/giet_iccoset_conf.jpg';
-import cert_codtech from '../assets/certs/codtech_python.jpg';
-import cert_codec from '../assets/certs/codec_python_achievement.jpg';
-import cert_simplilearn from '../assets/certs/simplilearn_software_dev.jpg';
-import cert_suravi from '../assets/certs/giet_suravi_model.jpg';
-import cert_autonomous from '../assets/certs/nxtwave_autonomous.jpg';
-import cert_cad from '../assets/certs/giet_cad_bootcamp.jpg';
-import cert_drone from '../assets/certs/giet_drone_bootcamp.jpg';
-import cert_gemini from '../assets/certs/coursera_gemini.jpg';
-import cert_wordpress from '../assets/certs/coursera_wordpress.jpg';
-import cert_static from '../assets/certs/nxtwave_static.jpg';
-import cert_codec_intern from '../assets/certs/codec_python_internship.jpg';
-import cert_nccengt from '../assets/certs/giet_nccengt_paper.jpg';
-import cert_workshop from '../assets/certs/workshop.png';
-import cert_deloatte_2 from '../assets/certs/Deloatte.jpg';
-import cert_cyber_awareness from '../assets/certs/Introduction to Cybersecurity Awareness_page-0001.jpg';
-import cert_nxtwave_alt from '../assets/certs/Nxtwave.jpeg';
-import cert_hackerrank from '../assets/certs/Hackerrank.png';
-// import cert_ibm_bigdata from '../assets/certs/IBM BIg Data_page-0001.jpg';
-
-// 🏷️ Category Logos
-import logo_giet from '../assets/GIET-removebg-preview.png';
-import logo_hp from '../assets/HP-removebg-preview.png';
-import logo_nxtwave from '../assets/Nxtwave.webp';
-import logo_coursera from '../assets/coursera.webp';
-import logo_secondary from '../assets/logo-1.webp';
 import Education from './Education';
+import { 
+  PROJECTS, 
+  INFO_CARDS, 
+  HERO_CONFIG, 
+  CONTACT_CONFIG, 
+  SKILLS_CATEGORIES, 
+  CERTIFICATES, 
+  CERTIFICATES_CATEGORIES, 
+  ACHIEVEMENTS, 
+  ABOUT_CONFIG, 
+  EXPERIENCES, 
+  SYSTEM_CONFIG,
+  ICON_MAP 
+} from '../data/portfolioData';
 
 
 // --- Section Components ---
@@ -136,6 +116,11 @@ const Hero = () => {
     };
   }, []);
 
+  const specializations = HERO_CONFIG.specializations.map(spec => ({
+    ...spec,
+    icon: ICON_MAP[spec.icon]
+  }));
+
   return (
     <section id="home" className="section" style={{ minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 500px), 1fr))', gap: '80px', alignItems: 'center', width: '100%' }}>
@@ -145,10 +130,10 @@ const Hero = () => {
               animate={{ opacity: 1, x: 0 }}
               style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}
             >
-              <span className="badge" style={{ margin: 0 }}>Software Development Engineer</span>
+              <span className="badge" style={{ margin: 0 }}>{HERO_CONFIG.roleBadge}</span>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(255, 51, 102, 0.1)', padding: '6px 14px', borderRadius: '100px', border: '1px solid rgba(255, 51, 102, 0.2)' }}>
                 <div className="pulse-dot"></div>
-                <span style={{ fontSize: '0.65rem', fontWeight: 800, color: '#ff3366', letterSpacing: '0.05em' }}>AVAILABLE FOR HIRE</span>
+                <span style={{ fontSize: '0.65rem', fontWeight: 800, color: '#ff3366', letterSpacing: '0.05em' }}>{HERO_CONFIG.hireStatusText}</span>
               </div>
             </motion.div>
 
@@ -166,14 +151,14 @@ const Hero = () => {
                 fontFamily: 'var(--font-heading)'
               }}
             >
-              <span style={{ color: '#fff' }}>Building the </span>
+              <span style={{ color: '#fff' }}>{HERO_CONFIG.mainTitlePrefix}</span>
               <span style={{ 
                 background: 'linear-gradient(90deg, #22d3ee, #3b82f6, #8b5cf6)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 display: 'inline-block'
               }}>
-                Digital Future
+                {HERO_CONFIG.mainTitleGradient}
               </span>
             </motion.h1>
 
@@ -204,7 +189,7 @@ const Hero = () => {
                 marginBottom: '16px',
                 letterSpacing: '-0.04em'
               }}>
-                Hi, I'm <span className="text-gradient">Lokanath Meher</span>
+                {HERO_CONFIG.subTitle}<span className="text-gradient">{HERO_CONFIG.fullName}</span>
               </h2>
               
               <p style={{ 
@@ -214,7 +199,7 @@ const Hero = () => {
                 letterSpacing: '0.01em',
                 lineHeight: 1.4
               }}>
-                I build <span style={{ color: '#fff', fontWeight: 700 }}>scalable web applications</span> and <span style={{ color: '#fff', fontWeight: 700 }}>secure digital solutions</span>
+                {HERO_CONFIG.tagline}
               </p>
             </motion.div>
 
@@ -234,7 +219,7 @@ const Hero = () => {
             >
               <div style={{ height: '1px', width: '24px', background: 'var(--accent-cyan)' }}></div>
               <span style={{ fontSize: '0.65rem', fontWeight: 900, color: 'var(--accent-cyan)', letterSpacing: '0.25em', textTransform: 'uppercase' }}>
-                TECHNICAL_SPECIALIZATIONS
+                {HERO_CONFIG.specializationsLabel}
               </span>
             </motion.div>
 
@@ -251,11 +236,7 @@ const Hero = () => {
                 flexWrap: 'nowrap'
               }}
             >
-              {[
-                { label: "Full-Stack Developer", icon: <Layers size={14} />, desc: "MERN Stack apps" },
-                { label: "Python Developer", icon: <Code2 size={14} />, desc: "Logic & Scripts" },
-                { label: "DSA Solver", icon: <Brain size={14} />, desc: "Problem Solving", isDeep: true }
-              ].map((module, i) => (
+              {specializations.map((module, i) => (
                 <motion.div
                   key={module.label}
                   whileHover={{ 
@@ -397,7 +378,7 @@ const Hero = () => {
                   border: '1px solid rgba(255, 255, 255, 0.2)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center'
                 }}>
-                  SOFTWARE DEVELOPER
+                  {HERO_CONFIG.architectRibbon}
                 </div>
 
                 <div 
@@ -406,7 +387,7 @@ const Hero = () => {
                 >
                   <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '20px 20px', zIndex: 1 }}></div>
                   <img 
-                    src={photo} 
+                    src={HERO_CONFIG.photo} 
                     alt="Lokanath" 
                     style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%', position: 'relative', zIndex: 0 }} 
                   />
@@ -421,7 +402,7 @@ const Hero = () => {
                     fontSize: '0.55rem', fontWeight: 800, letterSpacing: '0.2em',
                     boxShadow: '0 8px 32px rgba(0, 0, 0, 0.8)'
                   }}>
-                    <Terminal size={12} className="text-gradient" /> DEV_IDENTITY
+                    <Terminal size={12} className="text-gradient" /> {HERO_CONFIG.devIdentityHint}
                   </div>
                 </div>
 
@@ -434,19 +415,19 @@ const Hero = () => {
                   zIndex: 100 
                 }}>
                   <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-                    <motion.a whileHover={{ y: -4, color: '#fff' }} whileTap={{ scale: 0.9 }} href="https://github.com/lokanathmeher19" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.45)', transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
+                    <motion.a whileHover={{ y: -4, color: '#fff' }} whileTap={{ scale: 0.9 }} href={CONTACT_CONFIG.github} target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.45)', transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
                       <Github size={20} />
                     </motion.a>
-                    <motion.a whileHover={{ y: -4, color: '#0077b5' }} whileTap={{ scale: 0.9 }} href="https://www.linkedin.com/in/lokanath-meher-a79506353/" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.45)', transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
+                    <motion.a whileHover={{ y: -4, color: '#0077b5' }} whileTap={{ scale: 0.9 }} href={CONTACT_CONFIG.linkedin} target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.45)', transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
                       <Linkedin size={20} />
                     </motion.a>
-                    <motion.a whileHover={{ y: -4, color: '#E4405F' }} whileTap={{ scale: 0.9 }} href="https://www.instagram.com/syntxerror_01/" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.45)', transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
+                    <motion.a whileHover={{ y: -4, color: '#E4405F' }} whileTap={{ scale: 0.9 }} href={CONTACT_CONFIG.instagram} target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.45)', transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
                       <Instagram size={20} />
                     </motion.a>
-                    <motion.a whileHover={{ y: -4, color: '#25D366' }} whileTap={{ scale: 0.9 }} href="https://wa.me/919937164359?text=Hello%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.45)', transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
+                    <motion.a whileHover={{ y: -4, color: '#25D366' }} whileTap={{ scale: 0.9 }} href={CONTACT_CONFIG.whatsapp} target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.45)', transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
                       <WhatsAppIcon size={20} />
                     </motion.a>
-                    <motion.a whileHover={{ y: -4, color: '#fff' }} whileTap={{ scale: 0.9 }} href="https://x.com/Lokanath_meher_" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.45)', transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
+                    <motion.a whileHover={{ y: -4, color: '#fff' }} whileTap={{ scale: 0.9 }} href={CONTACT_CONFIG.twitter} target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.45)', transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
                       <XIcon size={18} />
                     </motion.a>
                   </div>
@@ -505,7 +486,7 @@ const Hero = () => {
                   boxShadow: '0 0 40px rgba(34, 211, 238, 0.2)', marginBottom: '24px'
                 }}>
                   <img 
-                    src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.linkedin.com/in/lokanath-meher-a79506353/`} 
+                    src={CONTACT_CONFIG.linkedinQrApiUrl} 
                     alt="LinkedIn QR" 
                     style={{ width: '180px', height: '180px', display: 'block' }}
                   />
@@ -520,7 +501,7 @@ const Hero = () => {
                     opacity: 0.9,
                     fontWeight: 400
                   }}>
-                    Lokanath Meher
+                    {HERO_CONFIG.signatureText}
                   </p>
                   <div style={{ 
                     color: 'rgba(255,255,255,0.4)', 
@@ -530,7 +511,7 @@ const Hero = () => {
                     textTransform: 'uppercase',
                     marginTop: '0px'
                   }}>
-                    Software Developer
+                    {HERO_CONFIG.signatureSub}
                   </div>
                 </div>
               </div>
@@ -1043,96 +1024,14 @@ const PremiumSkillCard = ({ cat, i, children }) => {
 };
 
 const Skills = () => {
-  const categories = [
-    {
-      title: "Engineering Core",
-      desc: "Foundational software principles, algorithmic integrity, and systems-level logic.",
-      icon: <Terminal size={32} />,
-      color: "#06b6d4",
-      classes: "col-span-12 lg:col-span-12",
-      specialEffect: "floating-logos",
-      skills: [
-        { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/python/python-original.svg", level: 98 },
-        { name: "C++", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/cplusplus/cplusplus-original.svg", level: 85 },
-        { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/java/java-original.svg", level: 88 },
-        { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/javascript/javascript-original.svg", level: 92 },
-        { name: "C Language", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/c/c-original.svg", level: 80 },
-        { name: "HTML5 & CSS3", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/html5/html5-original.svg", level: 95 },
-        { name: "Data Structures", icon: <Binary size={14} />, level: 90 },
-        { name: "Problem Solving", icon: <Brain size={14} />, level: 94 },
-        { name: "OOPS Concepts", icon: <Layers size={14} />, level: 88 },
-        { name: "DBMS / SQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/mysql/mysql-original.svg", level: 85 },
-        { name: "OS Fundamentals", icon: <Cpu size={14} />, level: 80 },
-        { name: "Computer Networks", icon: <Globe size={14} />, level: 78 },
-        { name: "Algorithms", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/python/python-original.svg", level: 90 },
-        { name: "System Design", icon: <Layers size={14} />, level: 85 }
-      ]
-    },
-    {
-      title: "MERN Full-stack",
-      desc: "Full-cycle application development with modern reactive frameworks and scalable backends.",
-      icon: <Globe size={32} />,
-      color: "#a855f7",
-      classes: "col-span-12 lg:col-span-8",
-      specialEffect: "mern-bg",
-      skills: [
-        { name: "React.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/react/react-original.svg", level: 95 },
-        { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/nodejs/nodejs-original.svg", level: 90 },
-        { name: "Express.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/express/express-original.svg", level: 88, filter: 'invert(1)' },
-        { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/mongodb/mongodb-original.svg", level: 85 },
-        { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/typescript/typescript-original.svg", level: 80 },
-        { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/nextjs/nextjs-original.svg", level: 82, filter: 'invert(1)' },
-        { name: "Tailwind CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/tailwindcss/tailwindcss-original.svg", level: 95 },
-        { name: "GraphQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/graphql/graphql-plain.svg", level: 75 },
-        { name: "Socket.io", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/socketio/socketio-original.svg", level: 80, filter: 'invert(1)' },
-        { name: "REST APIs", icon: <Command size={14} />, level: 95 },
-        { name: "Redux / Toolkit", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/redux/redux-original.svg", level: 85 },
-        { name: "Storybook", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/storybook/storybook-original.svg", level: 80 }
-      ]
-    },
-    {
-      title: "Security",
-      desc: "Resilient protocols & offensive research.",
-      icon: <ShieldCheck size={32} />,
-      color: "#f97316",
-      classes: "col-span-12 lg:col-span-4",
-      specialEffect: "security-bg",
-      skills: [
-        { name: "Kali Linux", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/linux/linux-original.svg", level: 85 },
-        { name: "Metasploit", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/python/python-original.svg", level: 78 },
-        { name: "Nmap Sec", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/c/c-original.svg", level: 82 },
-        { name: "Cryptography", icon: <Lock size={14} />, level: 75 }
-      ]
-    },
-    {
-      title: "DevOps",
-      desc: "Automation & deployment pipelines.",
-      icon: <Box size={32} />,
-      color: "#ec4899",
-      classes: "col-span-12 lg:col-span-6",
-      specialEffect: "devops-bg",
-      skills: [
-        { name: "Git Workflow", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/git/git-original.svg", level: 92 },
-        { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/docker/docker-original.svg", level: 88 },
-        { name: "Jenkins CI/CD", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/jenkins/jenkins-original.svg", level: 85 },
-        { name: "Linux Arch", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/linux/linux-original.svg", level: 88 }
-      ]
-    },
-    {
-      title: "Cloud",
-      desc: "Serverless & scalable infrastructure.",
-      icon: <Cloud size={32} />,
-      color: "#06b6d4",
-      classes: "col-span-12 lg:col-span-6",
-      specialEffect: "mern-bg",
-      skills: [
-        { name: "AWS Cloud", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg", level: 82, filter: 'invert(1)' },
-        { name: "GCP Services", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/googlecloud/googlecloud-original.svg", level: 78 },
-        { name: "Supabase DB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/supabase/supabase-original.svg", level: 85 },
-        { name: "Netlify Dep", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/netlify/netlify-original.svg", level: 88 }
-      ]
-    }
-  ];
+  const categories = SKILLS_CATEGORIES.map(cat => ({
+    ...cat,
+    icon: ICON_MAP[cat.iconName] ? React.cloneElement(ICON_MAP[cat.iconName], { size: 32 }) : null,
+    skills: cat.skills.map(s => ({
+      ...s,
+      icon: s.iconName ? React.cloneElement(ICON_MAP[s.iconName], { size: 14 }) : null
+    }))
+  }));
 
   return (
     <section id="skills" className="section" style={{ position: 'relative', padding: '160px 24px' }}>
@@ -1347,38 +1246,8 @@ const Certificates = () => {
   const [selectedCert, setSelectedCert] = useState(null);
   const [activeCert, setActiveCert] = useState(null);
 
-  const categories = [
-    { id: 'ALL', label: 'All' },
-    { id: 'GIET', label: 'GIET', logo: logo_giet },
-    { id: 'COURSERA', label: 'Coursera', logo: logo_coursera },
-    { id: 'NXTWAVE', label: 'NxtWave', logo: logo_nxtwave },
-    { id: 'COMPANY', label: "Company's", logo: logo_hp }
-  ];
-
-  const certifications = [
-    { title: "Intro to Generative AI", issuer: "Google Cloud", img: cert_google, color: "#4285F4", category: 'COMPANY' },
-    { title: "Cybersecurity Essentials", issuer: "IBM", img: cert_ibm, color: "#052FAD", category: 'COMPANY' },
-    { title: "Data Analytics Simulation", issuer: "Deloitte", img: cert_deloitte, color: "#86BC25", category: 'COMPANY' },
-    { title: "Responsive Web Dev Mastery", issuer: "NxtWave", img: cert_nxtwave, color: "#22d3ee", category: 'NXTWAVE' },
-    { title: "ICCOSET 2024 Conference", issuer: "GIET", img: cert_giet_conf, color: "#f97316", category: 'GIET' },
-    { title: "Python Development Exp.", issuer: "CodTech", img: cert_codtech, color: "#3776ab", category: 'COMPANY' },
-    { title: "Full Stack Development", issuer: "Simplilearn", img: cert_simplilearn, color: "#ff9900", category: 'COMPANY' },
-    { title: "Python Achievement Cert", issuer: "Codec", img: cert_codec, color: "#8b5cf6", category: 'COMPANY' },
-    { title: "Autonomous Vehicle Sys", issuer: "NxtWave", img: cert_autonomous, color: "#06b6d4", category: 'NXTWAVE' },
-    { title: "Model Fiesta 2025", issuer: "SURAVI", img: cert_suravi, color: "#ec4899", category: 'COMPANY' },
-    { title: "CAD Design Foundations", issuer: "NIELIT", img: cert_cad, color: "#10b981", category: 'COMPANY' },
-    { title: "Drone Aerodynamics", issuer: "NIELIT", img: cert_drone, color: "#e11d48", category: 'COMPANY' },
-    { title: "Google Gemini AI Acad.", issuer: "Google", img: cert_gemini, color: "#4285F4", category: 'COMPANY' },
-    { title: "WordPress Dev Pro", issuer: "Coursera", img: cert_wordpress, color: "#21759b", category: 'COURSERA' },
-    { title: "Static Website Design", issuer: "NxtWave", img: cert_static, color: "#22d3ee", category: 'NXTWAVE' },
-    { title: "Python Tech Internship", issuer: "Codec", img: cert_codec_intern, color: "#8b5cf6", category: 'COMPANY' },
-    { title: "Research Paper (GIET)", issuer: "NCCENGT", img: cert_nccengt, color: "#f97316", category: 'GIET' },
-    { title: "Industrial Workshop", issuer: "Skill dev", img: cert_workshop, color: "#8b5cf6", category: 'COMPANY' },
-    { title: "Deloitte Consulting Sim.", issuer: "Deloitte", img: cert_deloatte_2, color: "#86BC25", category: 'COMPANY' },
-    { title: "Cybersecurity Awareness", issuer: "Cisco", img: cert_cyber_awareness, color: "#00bceb", category: 'COMPANY' },
-    { title: "NxtWave Professional", issuer: "Mastery", img: cert_nxtwave_alt, color: "#22d3ee", category: 'NXTWAVE' },
-    { title: "HackerRank Skills Gold", issuer: "HackerRank", img: cert_hackerrank, color: "#2ec866", category: 'COMPANY' }
-  ];
+  const categories = CERTIFICATES_CATEGORIES;
+  const certifications = CERTIFICATES;
 
   const filteredCerts = activeFilter === 'ALL' 
     ? certifications 
@@ -1788,12 +1657,7 @@ const Certificates = () => {
 };
 
 const CoreAchievements = () => {
-  const stats = [
-    { label: "PROJECTS_DEPLOYED", value: "10+", sub: "Full-stack & AI", color: "#22d3ee" },
-    { label: "CERTS_VALIDATED", value: "20+", sub: "Industry Credentials", color: "#a855f7" },
-    { label: "ALGORITHMIC_SCORE", value: "1.2k+", sub: "Problem Solving", color: "#3b82f6" },
-    { label: "GITHUB_COMMITS", value: "500+", sub: "Yearly Activity", color: "#10b981" }
-  ];
+  const stats = ACHIEVEMENTS;
 
   return (
     <section id="achievements" className="section" style={{ padding: '80px 24px' }}>
@@ -1833,10 +1697,10 @@ const CoreAchievements = () => {
 const About = () => (
   <section id="about" className="section" style={{ padding: '100px 24px' }}>
     <SectionHeader 
-      badge="ABOUT ME" 
+      badge={ABOUT_CONFIG.badge} 
       color="var(--accent-purple)"
-      title={<><span className="text-gradient">Core</span> Identity</>} 
-      desc="Mapping the technical frameworks and design philosophies behind the creator." 
+      title={<><span className="text-gradient">{ABOUT_CONFIG.titlePrefix}</span> {ABOUT_CONFIG.titleGradient}</>} 
+      desc={ABOUT_CONFIG.desc} 
     />
     <div style={{ 
       display: 'flex', 
@@ -1866,7 +1730,7 @@ const About = () => (
           backdropFilter: 'blur(20px)', boxShadow: '0 30px 60px rgba(0,0,0,0.4)'
         }}>
           <img 
-            src={photo} 
+            src={ABOUT_CONFIG.photo} 
             alt="About Me" 
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%', borderRadius: '16px' }} 
           />
@@ -1880,23 +1744,18 @@ const About = () => (
         viewport={{ once: true }}
         style={{ flex: '1 1 500px', maxWidth: '750px' }}
       >
-        <span className="badge">Academic Profile</span>
+        <span className="badge">{ABOUT_CONFIG.academicBadge}</span>
         <h2 className="section-title" style={{ fontSize: 'clamp(2rem, 4vw, 2.5rem)', fontWeight: 850, lineHeight: 1.2, marginBottom: '20px' }}>
-          Building Secure, <br /><span className="text-gradient">Intelligent Systems</span>
+          {ABOUT_CONFIG.academicSubtitlePrefix} <br /><span className="text-gradient">{ABOUT_CONFIG.academicSubtitleGradient}</span>
         </h2>
         
         <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '24px' }}>
-          I am a dedicated <strong style={{ color: 'var(--accent-cyan)', fontWeight: 800 }}>Computer Science Engineering student</strong> at GIET University. My engineering philosophy revolves around writing clean, well-architected code that prioritizes execution speed and strict defensive integrations.
+          {ABOUT_CONFIG.aboutText}
         </p>
 
         {/* Feature Checkpoints */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '24px', marginBottom: '30px' }}>
-          {[
-            { title: "Engineering", desc: "Data Structures, algorithms, optimization routines.", icon: "💻", color: "#3b82f6" },
-            { title: "Security", desc: "Threat parsing, zero-trust system implementations.", icon: "🛡️", color: "#ef4444" },
-            { title: "Architecture", desc: "MERN stack ecosystems, state caching procedures.", icon: "🌐", color: "#10b981" },
-            { title: "Vision", desc: "Adapting neural AI tooling securely into legacy code.", icon: "🚀", color: "#f59e0b" }
-          ].map((pillar, pIdx) => (
+          {ABOUT_CONFIG.pillars.map((pillar, pIdx) => (
             <motion.div
               key={pIdx}
               className="glass-panel"
@@ -1969,12 +1828,12 @@ const Contact = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '80px' }}>
           <div>
             <h2 className="section-title" style={{ marginBottom: '24px' }}>Let's Build Something Great.</h2>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '40px' }}>Available for freelance projects, open-source collaboration, and strategic consultations.</p>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '40px' }}>{CONTACT_CONFIG.contactParagraph}</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-              <a href="mailto:meherlokanath314@gmail.com" style={{ color: 'var(--text-primary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '16px', fontSize: '1.1rem' }}>
-                meherlokanath314@gmail.com
+              <a href={`mailto:${CONTACT_CONFIG.email}`} style={{ color: 'var(--text-primary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '16px', fontSize: '1.1rem' }}>
+                {CONTACT_CONFIG.email}
               </a>
-              <a href="https://www.linkedin.com/in/lokanath-meher-a79506353/" target="_blank" rel="noreferrer" style={{ color: 'var(--text-primary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '16px', fontSize: '1.1rem' }}>
+              <a href={CONTACT_CONFIG.linkedin} target="_blank" rel="noreferrer" style={{ color: 'var(--text-primary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '16px', fontSize: '1.1rem' }}>
                 <div style={{ width: 40, height: 40, borderRadius: '12px', background: 'rgba(255, 255, 255, 0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--accent-purple)' }}>
                   <Linkedin size={20} />
                 </div> 
@@ -2021,19 +1880,11 @@ const Contact = () => {
 };
 
 const ResumeSection = () => {
-  const experience = [
-    {
-      role: "Python Programming Intern",
-      company: "Codec Networks",
-      period: "June 2023 — Aug 2023",
-      location: "Remote (India)",
-      desc: "Architected automated Python scripts for high-volume data processing and engineered backend modules using the Flask framework. Collaborated on production-level code optimization and security protocols.",
-      color: "var(--accent-cyan)",
-      icon: <Terminal size={24} />
-    }
-  ];
-
-  const coreSkills = ["MERN Stack", "Python Automation", "Algorithms", "System Architecture"];
+  const experience = EXPERIENCES.map(exp => ({
+    ...exp,
+    desc: exp.summary,
+    icon: ICON_MAP[exp.iconName] || <Terminal size={24} />
+  }));
 
   return (
     <section id="resume" className="section" style={{ padding: '120px 24px', position: 'relative' }}>
@@ -2090,9 +1941,9 @@ const ResumeSection = () => {
               
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem', fontWeight: 600 }}>
-                  <MapPin size={16} style={{ color: exp.color }} /> {exp.location}
+                  <MapPin size={16} style={{ color: exp.color }} /> {exp.locationShort || exp.location}
                 </div>
-                <span style={{ fontSize: '0.75rem', fontWeight: 900, color: 'rgba(255,255,255,0.5)', background: 'rgba(255,255,255,0.03)', padding: '6px 14px', borderRadius: '100px', border: '1px solid rgba(255,255,255,0.05)' }}>{exp.period}</span>
+                <span style={{ fontSize: '0.75rem', fontWeight: 900, color: 'rgba(255,255,255,0.5)', background: 'rgba(255,255,255,0.03)', padding: '6px 14px', borderRadius: '100px', border: '1px solid rgba(255,255,255,0.05)' }}>{exp.periodShort || exp.period}</span>
               </div>
             </motion.div>
           ))}
@@ -2136,7 +1987,7 @@ const ResumeSection = () => {
               <Link to="/resume" className="btn-premium btn-secondary" style={{ flex: 1, justifyContent: 'center', height: '56px', borderRadius: '14px', fontSize: '0.9rem', fontWeight: 800 }}>
                 View Full CV
               </Link>
-              <a href="Lokanath_Meher_Resume.pdf" download className="btn-premium btn-primary" style={{ flex: 1, justifyContent: 'center', height: '56px', borderRadius: '14px', fontSize: '0.9rem', fontWeight: 800 }}>
+              <a href={HERO_CONFIG.resumePdfName} download className="btn-premium btn-primary" style={{ flex: 1, justifyContent: 'center', height: '56px', borderRadius: '14px', fontSize: '0.9rem', fontWeight: 800 }}>
                 Download PDF <Download size={18} />
               </a>
             </div>
@@ -2172,10 +2023,10 @@ export default function Home() {
         {/* 🔗 Social Connectivity Bar */}
         <div style={{ display: 'flex', justifyContent: 'center', gap: '32px', marginBottom: '48px' }}>
           {[
-            { icon: <Github size={22} />, link: "https://github.com/lokanathmeher19" },
-            { icon: <Linkedin size={22} />, link: "https://www.linkedin.com/in/lokanath-meher-a79506353/" },
-            { icon: <Instagram size={22} />, link: "https://www.instagram.com/syntxerror_01/" },
-            { icon: <XIcon size={20} />, link: "https://x.com/Lokanath_meher_" }
+            { icon: <Github size={22} />, link: CONTACT_CONFIG.github },
+            { icon: <Linkedin size={22} />, link: CONTACT_CONFIG.linkedin },
+            { icon: <Instagram size={22} />, link: CONTACT_CONFIG.instagram },
+            { icon: <XIcon size={20} />, link: CONTACT_CONFIG.twitter }
           ].map((soc, i) => (
             <motion.a 
               key={i}
@@ -2199,10 +2050,10 @@ export default function Home() {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 10px #10b981' }}></div>
-            <span style={{ fontSize: '0.65rem', fontWeight: 800, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>ARCHIVE_STATUS: PRODUCTION_READY</span>
+            <span style={{ fontSize: '0.65rem', fontWeight: 800, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>{SYSTEM_CONFIG.archiveStatusText}</span>
           </div>
           <div style={{ height: '2px', width: '40px', background: 'rgba(255,255,255,0.05)' }}></div>
-          <span style={{ fontSize: '0.65rem', fontWeight: 800, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>DEPLOYMENT_V: 2.4.0_STABLE</span>
+          <span style={{ fontSize: '0.65rem', fontWeight: 800, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>{SYSTEM_CONFIG.deploymentVersion}</span>
         </div>
 
          <p style={{ 
@@ -2212,7 +2063,7 @@ export default function Home() {
            fontWeight: 900,
            textTransform: 'uppercase'
          }}>
-           Designed & Engineered by Lokanath Meher // © {new Date().getFullYear()}
+           {SYSTEM_CONFIG.copyrightText}
          </p>
 
          {/* Bottom Glow */}

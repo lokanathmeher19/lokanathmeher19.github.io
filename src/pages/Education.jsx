@@ -2,65 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, useTransform, useSpring, useScroll } from 'framer-motion';
 import { Code2, Layers, Terminal, GraduationCap } from 'lucide-react';
 
-// Logo Imports
-import logo_giet from '../assets/GIET-removebg-preview.png';
-import logo_secondary from '../assets/logo-1.webp';
+import { EDUCATION, EDUCATION_LOGOMAP } from '../data/portfolioData';
 
-// ==========================================
-// 🎓 EDUCATION DETAILS HERE:
-// ==========================================
-const EDUCATION = [
-  {
-    id: 'giet',
-    label: "DEGREE_COURSE",
-    degree: "Computer Science Engineering",
-    institution: "GIET Bhubaneswar (B.Tech)",
-    university: "BPUT Rourkela",
-    period: "2024 — 2028",
-    score: 8.5,
-    unit: "CGPA",
-    features: ["OOPS", "Data Structures", "Security", "System Design", "Algorithms", "DBMS", "Computer Networking"],
-    color: "#22d3ee",
-    iconName: "Code2",
-    logoType: "logo_giet"
-  },
-  {
-    id: 'dadhibaman',
-    label: "JUNIOR_COLLEGE",
-    degree: "Higher Secondary",
-    institution: "Dadhi Baman Higher Secondary School, Bhatli",
-    board: "CHSE Odisha",
-    period: "2022 — 2024",
-    score: 68,
-    unit: "%",
-    features: ["Physics", "Chemistry", "Mathematics", "IT"],
-    color: "#818cf8",
-    iconName: "Layers",
-    logoType: "dadhibaman",
-    logoScale: 1.2
-  },
-  {
-    id: 'saiier',
-    label: "SECONDARY_SCHOOL",
-    degree: "Secondary Education",
-    institution: "Sri Aurobindo Institute of Integral Education, Bargarh",
-    board: "BSE Odisha",
-    period: "2019 — 2022",
-    score: 78,
-    unit: "%",
-    features: ["Odia", "English", "Sanskrit", "Mathematics", "Science"],
-    color: "#60a5fa",
-    iconName: "Terminal",
-    logoType: "logo_secondary",
-    logoScale: 1.4
-  }
-];
-
-const logoMap = {
-  logo_giet: logo_giet,
-  logo_secondary: logo_secondary,
-  dadhibaman: "/dadhibaman-logo.jpg"
-};
+const logoMap = EDUCATION_LOGOMAP;
 
 const iconMap = {
   Code2: <Code2 size={24} />,
@@ -68,6 +12,7 @@ const iconMap = {
   Terminal: <Terminal size={22} />,
   GraduationCap: <GraduationCap size={22} />
 };
+
 
 // Internal SectionHeader to make component fully self-contained
 const SectionHeader = ({ badge, title, desc, color = "var(--accent-cyan)" }) => (
@@ -254,7 +199,7 @@ const EducationCard = ({ edu, index, total, scrollYProgress }) => {
             {edu.degree}
           </h3>
           <div style={{ fontSize: '1rem', color: 'rgba(255, 255, 255, 0.75)', fontWeight: 600, marginBottom: '6px', lineHeight: 1.4 }}>
-            {edu.institution}
+            {edu.institutionShort || edu.institution}
           </div>
           <div style={{ fontSize: '0.75rem', fontWeight: 800, color: 'rgba(255, 255, 255, 0.35)', letterSpacing: '0.1em' }}>
             {edu.university ? `UNIVERSITY: ${edu.university.toUpperCase()}` : `BOARD: ${edu.board.toUpperCase()}`}
@@ -392,7 +337,7 @@ const MobileEducationCard = ({ edu }) => {
             {edu.degree}
           </h3>
           <div style={{ fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.75)', fontWeight: 600, marginBottom: '6px', lineHeight: 1.4 }}>
-            {edu.institution}
+            {edu.institutionShort || edu.institution}
           </div>
           <div style={{ fontSize: '0.7rem', fontWeight: 800, color: 'rgba(255, 255, 255, 0.35)', letterSpacing: '0.1em' }}>
             {edu.university ? `UNIVERSITY: ${edu.university.toUpperCase()}` : `BOARD: ${edu.board.toUpperCase()}`}

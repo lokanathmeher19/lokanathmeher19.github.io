@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
+import { NAV_LINKS } from "../data/portfolioData";
 
-const links = [
-  { label: "Home", href: "#home" },
-  { label: "Skills", href: "#skills" },
-  { label: "Certificates", href: "#certificates" },
-  { label: "Education", href: "#Education" },
-  { label: "Projects", href: "#Projects" },
-  { label: "Resume", href: "#Resume" },
-  { label: "About", href: "#About" },
-  { label: "Contact", href: "#Contact" },
-];
+const links = NAV_LINKS;
 
 export default function Navbar() {
   const [active, setActive] = useState("#home");

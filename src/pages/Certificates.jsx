@@ -2,61 +2,18 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { BookOpen, Award, Maximize2, X, Download, ExternalLink, ArrowUpRight } from "lucide-react";
 
-// 🖼️ Import Certificate Images
-import nxtwave_responsive from "../assets/certs/nxtwave_responsive.jpg";
-import nxtwave_autonomous from "../assets/certs/nxtwave_autonomous.jpg";
-import nxtwave_static from "../assets/certs/nxtwave_static.jpg";
-import coursera_wordpress from "../assets/certs/coursera_wordpress.jpg";
-import coursera_genai from "../assets/certs/coursera_genai.jpg";
-import coursera_cybersecurity from "../assets/certs/coursera_cybersecurity.jpg";
-import coursera_gemini from "../assets/certs/coursera_gemini.jpg";
-import giet_cad_bootcamp from "../assets/certs/giet_cad_bootcamp.jpg";
-import giet_suravi_model from "../assets/certs/giet_suravi_model.jpg";
-import giet_nccengt_paper from "../assets/certs/giet_nccengt_paper.jpg";
-import giet_drone_bootcamp from "../assets/certs/giet_drone_bootcamp.jpg";
-import giet_iccoset_conf from "../assets/certs/giet_iccoset_conf.jpg";
-import codtech_python from "../assets/certs/codtech_python.jpg";
-import codec_python_achievement from "../assets/certs/codec_python_achievement.jpg";
-import codec_python_internship from "../assets/certs/codec_python_internship.jpg";
-import simplilearn_software_dev from "../assets/certs/simplilearn_software_dev.jpg";
-import deloitte_data_analytics from "../assets/certs/deloitte_data_analytics.png";
-import workshop from "../assets/certs/workshop.png";
-import deloatte_misspelled from "../assets/certs/Deloatte.jpg";
-import cyber_awareness from "../assets/certs/Introduction to Cybersecurity Awareness_page-0001.jpg";
-import nxtwave_alt from "../assets/certs/Nxtwave.jpeg";
+import { CERTIFICATES } from "../data/portfolioData";
 
 const CERTS = {
-  nxtwave: [
-    { title: "Build Your Own Responsive Website", org: "NxtWave", date: "2025", img: nxtwave_responsive },
-    { title: "Autonomous Vehicles Masterclass", org: "NxtWave", date: "2025", img: nxtwave_autonomous },
-    { title: "Build Your Own Static Website", org: "NxtWave", date: "2025", img: nxtwave_static },
-    { title: "Mastery Certification", org: "NxtWave", date: "2025", img: nxtwave_alt },
-  ],
-  coursera: [
-    { title: "Build a free website with WordPress", org: "Coursera", date: "2025", img: coursera_wordpress },
-    { title: "Introduction to Generative AI", org: "Google Cloud", date: "2025", img: coursera_genai },
-    { title: "Introduction to Cybersecurity Essentials", org: "IBM", date: "2025", img: coursera_cybersecurity },
-    { title: "Introduction to Gemini", org: "Google Cloud", date: "2025", img: coursera_gemini },
-    { title: "Cybersecurity Awareness", org: "Cisco", date: "2025", img: cyber_awareness },
-  ],
-  giet: [
-    { title: "CAD Designs to 3D Printing", org: "NIELIT & GIET", date: "2025", img: giet_cad_bootcamp },
-    { title: "Model Fiesta 'SURAVI-2K25'", org: "GIET", date: "2025", img: giet_suravi_model },
-    { title: "Paper Presentation NCCENGT-2025", org: "GIET", date: "2025", img: giet_nccengt_paper },
-    { title: "Drone Aeromechanics Bootcamp", org: "NIELIT", date: "2025", img: giet_drone_bootcamp },
-    { title: "International Conf ICCOSET-2024", org: "GIET", date: "2024", img: giet_iccoset_conf },
-  ],
-  other: [
-    { title: "Python Programming Internship", org: "CodTech", date: "2025", img: codtech_python },
-    { title: "Python Developer (Achievement)", org: "Codec Tech", date: "2025", img: codec_python_achievement },
-    { title: "Python Developer Internship", org: "Codec Tech", date: "2025", img: codec_python_internship },
-    { title: "What is Software Development?", org: "Simplilearn", date: "2025", img: simplilearn_software_dev },
-    { title: "Data Analytics Simulation", org: "Deloitte", date: "2025", img: deloitte_data_analytics },
-    { title: "Strategic Global Simulation", org: "Deloitte", date: "2025", img: deloatte_misspelled },
-  ],
+  nxtwave: CERTIFICATES.filter(c => c.tab === 'nxtwave'),
+  coursera: CERTIFICATES.filter(c => c.tab === 'coursera'),
+  giet: CERTIFICATES.filter(c => c.tab === 'giet'),
+  other: CERTIFICATES.filter(c => c.tab === 'other'),
 };
 
 const getCertColor = (org) => {
+  const matchingCert = CERTIFICATES.find(c => c.org === org || c.issuer === org);
+  if (matchingCert && matchingCert.color) return matchingCert.color;
   const o = org.toLowerCase();
   if (o.includes('nxtwave')) return '#22d3ee';
   if (o.includes('coursera') || o.includes('google') || o.includes('ibm') || o.includes('cisco')) return '#4285F4';
