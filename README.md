@@ -8,9 +8,18 @@ Welcome to the repository for my personal portfolio website. This project showca
 
 ## 📸 Interface Showcase
 
+### 🖥️ Desktop Showcase
 <p align="center">
-  <img src="public/screenshots/hero.png" alt="Portfolio Hero Section" width="49%" />
-  <img src="public/screenshots/projects.png" alt="Portfolio Projects Section" width="49%" />
+  <img src="public/screenshots/projects.png" alt="Projects Showcase" width="49%" />
+  <img src="public/screenshots/skills.png" alt="Skills Grid" width="49%" />
+</p>
+<p align="center">
+  <img src="public/screenshots/certificates.png" alt="Certifications Directory" width="99%" />
+</p>
+
+### 📱 Mobile Preview
+<p align="center">
+  <img src="public/screenshots/hero.png" alt="Mobile Hero View" width="280" />
 </p>
 
 ---
