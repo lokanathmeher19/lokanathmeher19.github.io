@@ -309,6 +309,7 @@ export const EXPERIENCES = [
 ];
 
 // --- Education Configuration ---
+
 export const EDUCATION = [
     {
       id: 'giet',
