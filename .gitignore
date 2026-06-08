@@ -29,7 +29,7 @@ Thumbs.db
 # Ignore local-only keys/certs
 *.pem
 *.key
-
+.git/COMMIT_EDITMSG
 
 # Databases and local data
 *.db
