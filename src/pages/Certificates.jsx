@@ -236,7 +236,7 @@ export default function Certificates() {
             }}
           >
             {getTabIcon(t)}
-            {t === "giet" ? "GIET UNIVERSITY" : t}
+            {t === "giet" ? "GIET BHUBANESWAR" : t}
           </button>
         ))}
       </div>

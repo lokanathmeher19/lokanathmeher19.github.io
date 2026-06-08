@@ -1,6 +1,6 @@
 # 💻 Lokanath Meher | Software Development Engineer
 
-A detail-oriented **Computer Science & Engineering** undergraduate at **GIET University** (8.5 CGPA). Passionate about building full-stack applications with the **MERN** stack, writing **Python** automation scripts, and exploring **cybersecurity** fundamentals.
+A detail-oriented **Computer Science & Engineering** undergraduate at **GIET Bhubaneswar** (8.5 CGPA). Passionate about building full-stack applications with the **MERN** stack, writing **Python** automation scripts, and exploring **cybersecurity** fundamentals.
 
 [**✨ Interactive Portfolio**](https://lokanathmeher19.github.io) • [**💼 View Resume**](public/Lokanath_Meher_Resume.pdf) • [**📬 Let's Connect**](https://wa.me/919937164359)
 
@@ -32,7 +32,7 @@ A detail-oriented **Computer Science & Engineering** undergraduate at **GIET Uni
 ## 🎓 Education & Experience
 
 ### 🏫 Education
-*   **B.Tech in Computer Science & Engineering** | *GIET University* | **2024 — 2028** (Current: 8.5 CGPA)
+*   **B.Tech in Computer Science & Engineering** | *GIET Bhubaneswar* | **2024 — 2028** (Current: 8.5 CGPA)
 *   **Higher Secondary (Class XII - Science)** | *Dadhi Baman HS School* | **2022 — 2024**
 *   **Secondary (Class X)** | *Sri Aurobindo Institute* | **2019 — 2022**
 

@@ -66,7 +66,7 @@ const About = () => (
         </h2>
         
         <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '24px' }}>
-          I am a dedicated <strong style={{ color: 'var(--accent-cyan)', fontWeight: 800 }}>Computer Science Engineering student</strong> at GIET University. My engineering philosophy revolves around writing clean, well-architected code that prioritizes execution speed and strict defensive integrations.
+          I am a dedicated <strong style={{ color: 'var(--accent-cyan)', fontWeight: 800 }}>Computer Science Engineering student</strong> at GIET Bhubaneswar. My engineering philosophy revolves around writing clean, well-architected code that prioritizes execution speed and strict defensive integrations.
         </p>
 
         {/* Feature Checkpoints */}

@@ -277,7 +277,7 @@ export const ABOUT_CONFIG = {
     academicBadge: "Academic Profile",
     academicSubtitlePrefix: "Building Secure, ",
     academicSubtitleGradient: "Intelligent Systems",
-    aboutText: formatAboutHighlightText("I am a dedicated **Computer Science Engineering student** at GIET University. My engineering philosophy revolves around writing clean, well-architected code that prioritizes execution speed and strict defensive integrations."),
+    aboutText: formatAboutHighlightText("I am a dedicated **Computer Science Engineering student** at GIET Bhubaneswar. My engineering philosophy revolves around writing clean, well-architected code that prioritizes execution speed and strict defensive integrations."),
     pillars: [
       { title: "Engineering", desc: "Data Structures, algorithms, optimization routines.", icon: "💻", color: "#3b82f6" },
       { title: "Security", desc: "Threat parsing, zero-trust system implementations.", icon: "🛡️", color: "#ef4444" },
@@ -316,7 +316,7 @@ export const EDUCATION = [
       label: "DEGREE_COURSE",
       degree: "Computer Science Engineering",
       degreeFull: "B.Tech in Computer Science & Engineering",
-      institution: "GIET University, Bhubaneswar",
+      institution: "GIET Bhubaneswar",
       institutionShort: "GIET Bhubaneswar (B.Tech)",
       university: "BPUT Rourkela",
       period: "2024 — 2028",
