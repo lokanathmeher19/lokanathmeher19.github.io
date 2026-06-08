@@ -78,7 +78,7 @@ const EducationCard = ({ edu, index, total, scrollYProgress }) => {
       blurAmount.push(0); // sharp when active
     } else {
       scale.push(0.95);
-      y.push(-800);
+      y.push(-150);
       z.push(50);
       rotateX.push(-12);
       opacity.push(0);
@@ -138,7 +138,6 @@ const EducationCard = ({ edu, index, total, scrollYProgress }) => {
         rotateX: smoothRotateX,
         opacity: smoothOpacity,
         rotate: smoothRotateZ,
-        filter: cardFilter,
         pointerEvents,
       }}
     >

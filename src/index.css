@@ -30,16 +30,22 @@
 }
 
 html {
+  position: relative;
   scroll-behavior: smooth;
   background-color: var(--bg-1);
 }
 
 body {
+  position: relative;
   color: var(--text-primary);
   font-family: var(--font-body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+.app-container {
+  position: relative;
 }
 
 /* 🌌 Premium Ambient Background */
@@ -94,6 +100,10 @@ body {
 }
 
 /* 🕸️ Decorative Grid & System Line */
+.page-root {
+  position: relative;
+}
+
 .page-root::before {
   content: "";
   position: fixed;
@@ -252,6 +262,7 @@ h1, h2, h3, h4 {
 
 /* 📦 Sections */
 .section {
+  position: relative;
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 120px 24px;
