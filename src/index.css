@@ -519,7 +519,7 @@ h1, h2, h3, h4 {
   border-color: rgba(255, 255, 255, 0.18);
   box-shadow: 
     0 40px 100px -20px rgba(0, 0, 0, 0.9),
-    0 0 30px rgba(34, 211, 238, 0.08),
+    0 0 30px var(--glow-color, rgba(74, 222, 128, 0.08)),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
@@ -530,7 +530,7 @@ h1, h2, h3, h4 {
   right: -40px;
   width: 160px;
   height: 160px;
-  background: radial-gradient(circle, var(--glow-color, rgba(34, 211, 238, 0.15)) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--glow-color, rgba(74, 222, 128, 0.15)) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -580,7 +580,7 @@ h1, h2, h3, h4 {
 .education-glass-card:hover .education-logo-container {
   border-color: rgba(255, 255, 255, 0.2);
   background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 12px 32px -8px var(--glow-color, rgba(34, 211, 238, 0.25));
+  box-shadow: 0 12px 32px -8px var(--glow-color, rgba(74, 222, 128, 0.25));
   transform: translateY(-2px);
 }
 
@@ -597,4 +597,83 @@ h1, h2, h3, h4 {
     height: auto;
     min-height: 380px;
   }
+}
+
+/* 🛠️ Redesigned Premium Project Section */
+
+.project-card-container {
+  perspective: 1000px;
+}
+
+.project-card-container:hover .project-inner-card {
+  border-color: var(--glow-color, rgba(255, 255, 255, 0.15));
+  box-shadow: 
+    0 30px 60px -15px rgba(0, 0, 0, 0.6),
+    0 0 25px var(--tag-hover-shadow, rgba(34, 211, 238, 0.05));
+  transform: translateY(-8px);
+}
+
+.project-card-container:hover .project-card-image {
+  transform: scale(1.08);
+}
+
+.project-card-container:hover .project-title-heading {
+  color: var(--glow-color, #fff);
+  text-shadow: 0 0 10px var(--tag-hover-shadow, rgba(34, 211, 238, 0.1));
+}
+
+.project-tag {
+  font-size: 0.62rem;
+  font-weight: 850;
+  color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.015);
+  padding: 5px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+}
+
+.project-tag:hover {
+  color: #fff;
+  background: var(--tag-hover-bg, rgba(255, 255, 255, 0.08));
+  border-color: var(--tag-hover-border, rgba(255, 255, 255, 0.2));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px var(--tag-hover-shadow, rgba(0, 0, 0, 0.2));
+}
+
+@keyframes scan-down {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(250%); }
+}
+
+.project-scanner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to bottom, transparent, var(--glow-color, rgba(34, 211, 238, 0.08)), transparent);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.project-card-container:hover .project-scanner {
+  opacity: 1;
+  animation: scan-down 2.2s infinite linear;
+}
+
+.project-live-btn:hover {
+  background: var(--glow-color, #fff) !important;
+  color: #000 !important;
+  box-shadow: 0 10px 20px -5px var(--glow-color, rgba(255, 255, 255, 0.3)) !important;
+}
+
+.project-code-btn:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: var(--glow-color, rgba(255, 255, 255, 0.3)) !important;
+  color: var(--glow-color, #fff) !important;
+  box-shadow: 0 6px 15px -5px var(--glow-color, rgba(255, 255, 255, 0.15)) !important;
 }

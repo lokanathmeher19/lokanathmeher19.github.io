@@ -78,7 +78,7 @@ const EducationCard = ({ edu, index, total, scrollYProgress }) => {
       blurAmount.push(0); // sharp when active
     } else {
       scale.push(0.95);
-      y.push(-150);
+      y.push(-800);
       z.push(50);
       rotateX.push(-12);
       opacity.push(0);
@@ -139,6 +139,7 @@ const EducationCard = ({ edu, index, total, scrollYProgress }) => {
         opacity: smoothOpacity,
         rotate: smoothRotateZ,
         pointerEvents,
+        filter: cardFilter,
       }}
     >
       <div
@@ -201,7 +202,7 @@ const EducationCard = ({ edu, index, total, scrollYProgress }) => {
             {edu.institutionShort || edu.institution}
           </div>
           <div style={{ fontSize: '0.75rem', fontWeight: 800, color: 'rgba(255, 255, 255, 0.35)', letterSpacing: '0.1em' }}>
-            {edu.university ? `UNIVERSITY: ${edu.university.toUpperCase()}` : `BOARD: ${edu.board.toUpperCase()}`}
+            {edu.university ? `UNIVERSITY: ${edu.university.toUpperCase()}` : edu.board ? `BOARD: ${edu.board.toUpperCase()}` : ''}
           </div>
         </div>
 
@@ -339,7 +340,7 @@ const MobileEducationCard = ({ edu }) => {
             {edu.institutionShort || edu.institution}
           </div>
           <div style={{ fontSize: '0.7rem', fontWeight: 800, color: 'rgba(255, 255, 255, 0.35)', letterSpacing: '0.1em' }}>
-            {edu.university ? `UNIVERSITY: ${edu.university.toUpperCase()}` : `BOARD: ${edu.board.toUpperCase()}`}
+            {edu.university ? `UNIVERSITY: ${edu.university.toUpperCase()}` : edu.board ? `BOARD: ${edu.board.toUpperCase()}` : ''}
           </div>
         </div>
 

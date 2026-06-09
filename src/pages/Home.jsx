@@ -527,116 +527,185 @@ const Hero = () => {
 
 
 const ProjectCard = ({ p }) => {
+  const [btnHover, setBtnHover] = useState(false);
+  
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      whileHover={{ y: -8 }}
-      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+    <div 
+      className="project-card-container"
       style={{ 
         height: '100%',
-        position: 'relative'
+        position: 'relative',
+        '--glow-color': p.color,
+        '--tag-hover-shadow': `${p.color}22`
       }}
     >
       <div 
         style={{ 
           height: '100%',
-          background: 'rgba(255, 255, 255, 0.015)',
-          WebkitBackdropFilter: 'blur(20px) saturate(160%)',
-          backdropFilter: 'blur(20px) saturate(160%)',
+          background: 'rgba(10, 15, 30, 0.45)',
+          WebkitBackdropFilter: 'blur(30px) saturate(180%)',
+          backdropFilter: 'blur(30px) saturate(180%)',
           borderRadius: '24px',
           border: '1px solid rgba(255, 255, 255, 0.08)',
           overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
-          transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-          boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)'
+          transition: 'border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+          boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)',
+          position: 'relative'
         }}
+        className="project-inner-card"
       >
-        {/* 🖼️ Compact Premium Image */}
-        <div style={{ height: '150px', overflow: 'hidden', position: 'relative' }}>
-          <motion.img 
+        {/* Glow backdrop */}
+        <div style={{
+          position: 'absolute',
+          top: '-15%',
+          left: '-15%',
+          width: '130%',
+          height: '130%',
+          background: `radial-gradient(circle at 50% 50%, ${p.color}0d, transparent 60%)`,
+          pointerEvents: 'none',
+          zIndex: 0
+        }} />
+
+        {/* Grid pattern overlay */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px)',
+          backgroundSize: '20px 20px',
+          pointerEvents: 'none',
+          opacity: 0.7,
+          zIndex: 0
+        }} />
+
+        {/* Scanner Sweep Line */}
+        <div className="project-scanner" />
+
+        {/* Corner accent glow */}
+        <div style={{
+          position: 'absolute',
+          top: '-1px',
+          right: '-1px',
+          width: '100px',
+          height: '100px',
+          background: `radial-gradient(circle at top right, ${p.color}1c, transparent 70%)`,
+          pointerEvents: 'none',
+          zIndex: 1
+        }} />
+
+        {/* 🖼️ Premium Image Container */}
+        <div style={{ height: '180px', overflow: 'hidden', position: 'relative', zIndex: 2 }}>
+          <img 
             src={p.img} 
             alt={p.title} 
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.8 }}
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+            style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' }} 
+            className="project-card-image"
           />
           <div style={{ 
             position: 'absolute', inset: 0, 
-            background: `linear-gradient(to bottom, transparent 40%, rgba(2, 6, 23, 0.9) 100%)` 
+            background: `linear-gradient(to bottom, transparent 30%, rgba(2, 6, 23, 0.95) 100%)`,
+            zIndex: 1
           }}></div>
           
           <div style={{ 
-            position: 'absolute', top: '12px', left: '12px',
-            padding: '4px 10px', borderRadius: '100px', fontSize: '0.55rem',
-            fontWeight: 900, background: 'rgba(34, 211, 238, 0.1)',
-            color: 'var(--accent-cyan)', border: `1px solid rgba(34, 211, 238, 0.2)`, 
+            position: 'absolute', top: '16px', left: '16px',
+            padding: '5px 14px', borderRadius: '100px', fontSize: '0.62rem',
+            fontWeight: 900, background: `${p.color}15`,
+            color: p.color, border: `1px solid ${p.color}25`, 
             letterSpacing: '0.1em', textTransform: 'uppercase',
-            backdropFilter: 'blur(8px)', zIndex: 10
+            backdropFilter: 'blur(12px)', zIndex: 10,
+            boxShadow: `0 4px 12px ${p.color}15`,
+            display: 'flex', alignItems: 'center', gap: '6px'
           }}>
+            <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: p.color, display: 'inline-block', boxShadow: `0 0 8px ${p.color}` }}></span>
             {p.category}
           </div>
         </div>
 
-        <div style={{ padding: '20px', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-          <div style={{ marginBottom: '16px' }}>
+        <div style={{ padding: '24px', flexGrow: 1, display: 'flex', flexDirection: 'column', position: 'relative', zIndex: 2 }}>
+          <div style={{ marginBottom: '20px' }}>
             <h3 style={{ 
-              fontSize: '1.15rem', 
+              fontSize: '1.3rem', 
               fontWeight: 850, 
               color: '#fff', 
-              marginBottom: '6px', 
-              letterSpacing: '-0.01em'
-            }}>{p.title}</h3>
+              marginBottom: '8px', 
+              letterSpacing: '-0.02em',
+              transition: 'color 0.3s ease'
+            }} className="project-title-heading">{p.title}</h3>
             
             <p style={{ 
-              color: 'rgba(255, 255, 255, 0.5)', 
-              fontSize: '0.82rem', 
+              color: 'rgba(255, 255, 255, 0.55)', 
+              fontSize: '0.85rem', 
               lineHeight: 1.6,
               marginBottom: '16px',
+              height: '52px',
               display: '-webkit-box',
               WebkitLineClamp: 2,
               WebkitBoxOrient: 'vertical',
-              overflow: 'hidden'
+              overflow: 'hidden',
+              textOverflow: 'ellipsis'
             }}>{p.desc}</p>
           </div>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '24px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '28px' }}>
             {p.tech?.map((t, idx) => (
-              <span key={idx} style={{ 
-                fontSize: '0.58rem', 
-                color: 'rgba(255, 255, 255, 0.7)', 
-                background: 'rgba(255, 255, 255, 0.04)',
-                padding: '4px 10px', 
-                borderRadius: '6px', 
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                fontWeight: 700
-              }}>{t}</span>
+              <span 
+                key={idx} 
+                className="project-tag"
+                style={{
+                  '--tag-hover-bg': `${p.color}15`,
+                  '--tag-hover-border': `${p.color}35`,
+                  '--tag-hover-shadow': `${p.color}10`,
+                }}
+              >
+                {t}
+              </span>
             ))}
           </div>
 
-          <div style={{ marginTop: 'auto', display: 'flex', gap: '8px' }}>
-            <motion.a whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} href={p.live} target="_blank" rel="noreferrer" style={{ 
-              flex: 1, padding: '10px', fontSize: '0.75rem', background: '#fff', 
-              color: '#000', border: 'none', borderRadius: '10px', fontWeight: 800,
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
-              boxShadow: '0 8px 16px rgba(255, 255, 255, 0.08)'
-            }}>
-              Live <ArrowUpRight size={14} />
-            </motion.a>
+          <div style={{ marginTop: 'auto', display: 'flex', gap: '12px' }}>
+            <a 
+              href={p.live} 
+              target="_blank" 
+              rel="noreferrer" 
+              onMouseEnter={() => setBtnHover(true)}
+              onMouseLeave={() => setBtnHover(false)}
+              style={{ 
+                flex: 1, padding: '12px', fontSize: '0.8rem', background: '#fff', 
+                color: '#000', border: 'none', borderRadius: '12px', fontWeight: 800,
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+                boxShadow: `0 8px 16px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 255, 255, 0.05)`,
+                transition: 'all 0.3s ease',
+                textDecoration: 'none'
+              }}
+              className="project-live-btn"
+            >
+              <span>Live Demo</span>
+              <motion.span animate={{ x: btnHover ? 3 : 0, y: btnHover ? -3 : 0 }} transition={{ type: "spring", stiffness: 300, damping: 15 }}>
+                <ArrowUpRight size={14} />
+              </motion.span>
+            </a>
             
-            <motion.a whileHover={{ background: 'rgba(255, 255, 255, 0.06)' }} whileTap={{ scale: 0.98 }} href={p.github} target="_blank" rel="noreferrer" style={{ 
-              padding: '10px 12px', fontSize: '0.75rem', background: 'rgba(255, 255, 255, 0.02)', 
-              color: '#fff', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '10px', fontWeight: 700,
-              display: 'flex', alignItems: 'center', justifyContent: 'center'
-            }}>
-              <Github size={14} />
-            </motion.a>
+            <a 
+              href={p.github} 
+              target="_blank" 
+              rel="noreferrer" 
+              style={{ 
+                padding: '12px 16px', fontSize: '0.8rem', background: 'rgba(255, 255, 255, 0.03)', 
+                color: '#fff', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '12px', fontWeight: 700,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                transition: 'all 0.3s ease',
+                textDecoration: 'none'
+              }}
+              className="project-code-btn"
+            >
+              <Github size={16} />
+            </a>
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -710,7 +779,7 @@ const Projects = () => {
           justifyContent: 'center', 
           marginBottom: '56px',
           position: 'relative',
-          zIndex: 1
+          zIndex: 10
         }}
       >
         <div style={{
@@ -729,17 +798,33 @@ const Projects = () => {
               key={cat}
               onClick={() => setFilter(cat)}
               style={{ 
+                position: 'relative',
                 padding: '10px 24px', 
                 borderRadius: '100px', 
                 fontSize: '0.78rem',
                 fontWeight: 800,
-                transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-                background: filter === cat ? '#fff' : 'transparent',
-                color: filter === cat ? '#000' : 'rgba(255, 255, 255, 0.4)',
+                color: filter === cat ? '#000' : 'rgba(255, 255, 255, 0.5)',
                 border: 'none',
-                cursor: 'pointer'
+                background: 'transparent',
+                cursor: 'pointer',
+                transition: 'color 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+                zIndex: 1
               }}
             >
+              {filter === cat && (
+                <motion.div
+                  layoutId="active-project-tab"
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: '#fff',
+                    borderRadius: '100px',
+                    zIndex: -1,
+                    boxShadow: '0 8px 20px rgba(255, 255, 255, 0.15)'
+                  }}
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
               {cat}
             </button>
           ))}
@@ -747,19 +832,32 @@ const Projects = () => {
       </motion.div>
 
       <motion.div 
+        layout
         className="projects-grid" 
         style={{ 
           position: 'relative', 
           zIndex: 1,
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-          gap: '24px',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+          gap: '30px',
           marginBottom: '80px'
         }}
       >
-        {filteredProjects.map((p, i) => (
-          <ProjectCard key={p.title} p={p} />
-        ))}
+        <AnimatePresence mode="popLayout">
+          {filteredProjects.map((p) => (
+            <motion.div
+              layout
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              key={p.title}
+              style={{ height: '100%' }}
+            >
+              <ProjectCard p={p} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </motion.div>
 
       <motion.div 

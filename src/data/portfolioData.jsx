@@ -343,7 +343,7 @@ export const EDUCATION = [
       unit: "%",
       features: ["Physics", "Chemistry", "Mathematics", "IT"],
       highlights: ["Mathematics", "Physics", "Chemistry", "Information Technology", "Analytical Thinking"],
-      color: "#818cf8",
+      color: "#3b82f6",
       iconName: "Layers",
       logoType: "dadhibaman",
       logoScale: 1.2
@@ -362,7 +362,7 @@ export const EDUCATION = [
       unit: "%",
       features: ["Odia", "English", "Sanskrit", "Mathematics", "Science"],
       highlights: ["Odia", "English", "Sanskrit", "Mathematics", "Science"],
-      color: "#60a5fa",
+      color: "#8b5cf6",
       iconName: "Terminal",
       logoType: "logo_secondary",
       logoScale: 1.4
