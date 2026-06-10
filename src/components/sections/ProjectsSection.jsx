@@ -14,108 +14,60 @@ const ProjectCard = ({ p }) => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      whileHover={{ y: -8 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+      className="project-card"
       style={{ 
-        height: '100%',
-        position: 'relative'
+        '--glow-color': p.color || 'var(--accent-cyan)'
       }}
     >
-      <div 
-        style={{ 
-          height: '100%',
-          background: 'rgba(255, 255, 255, 0.015)',
-          WebkitBackdropFilter: 'blur(20px) saturate(160%)',
-          backdropFilter: 'blur(20px) saturate(160%)',
-          borderRadius: '24px',
-          border: '1px solid rgba(255, 255, 255, 0.08)',
-          overflow: 'hidden',
-          display: 'flex',
-          flexDirection: 'column',
-          transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-          boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)'
-        }}
-      >
-        {/* 🖼️ Compact Premium Image */}
-        <div style={{ height: '150px', overflow: 'hidden', position: 'relative' }}>
-          <motion.img 
-            src={p.img} 
-            alt={p.title} 
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.8 }}
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-          />
-          <div style={{ 
-            position: 'absolute', inset: 0, 
-            background: `linear-gradient(to bottom, transparent 40%, rgba(2, 6, 23, 0.9) 100%)` 
-          }}></div>
+      {/* Left side: Image wrapper */}
+      <div className="project-image-wrapper">
+        <img 
+          src={p.img} 
+          alt={p.title} 
+          className="project-image" 
+        />
+        <div className="project-image-overlay" />
+        
+        <div className="project-category-badge">
+          {p.category}
+        </div>
+      </div>
+
+      {/* Right side: text content */}
+      <div className="project-text-content">
+        <div className="project-header-section">
+          <h3 className="project-title">{p.title}</h3>
           
-          <div style={{ 
-            position: 'absolute', top: '12px', left: '12px',
-            padding: '4px 10px', borderRadius: '100px', fontSize: '0.55rem',
-            fontWeight: 900, background: 'rgba(34, 211, 238, 0.1)',
-            color: 'var(--accent-cyan)', border: `1px solid rgba(34, 211, 238, 0.2)`, 
-            letterSpacing: '0.1em', textTransform: 'uppercase',
-            backdropFilter: 'blur(8px)', zIndex: 10
-          }}>
-            {p.category}
-          </div>
+          <p className="project-description">{p.desc}</p>
         </div>
 
-        <div style={{ padding: '20px', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-          <div style={{ marginBottom: '16px' }}>
-            <h3 style={{ 
-              fontSize: '1.15rem', 
-              fontWeight: 850, 
-              color: '#fff', 
-              marginBottom: '6px', 
-              letterSpacing: '-0.01em'
-            }}>{p.title}</h3>
-            
-            <p style={{ 
-              color: 'rgba(255, 255, 255, 0.5)', 
-              fontSize: '0.82rem', 
-              lineHeight: 1.6,
-              marginBottom: '16px',
-              display: '-webkit-box',
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: 'vertical',
-              overflow: 'hidden'
-            }}>{p.desc}</p>
-          </div>
+        <div className="project-tech-container">
+          {p.tech?.map((t, idx) => (
+            <span key={idx} className="project-tech-tag">{t}</span>
+          ))}
+        </div>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '24px' }}>
-            {p.tech?.map((t, idx) => (
-              <span key={idx} style={{ 
-                fontSize: '0.58rem', 
-                color: 'rgba(255, 255, 255, 0.7)', 
-                background: 'rgba(255, 255, 255, 0.04)',
-                padding: '4px 10px', 
-                borderRadius: '6px', 
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                fontWeight: 700
-              }}>{t}</span>
-            ))}
-          </div>
-
-          <div style={{ marginTop: 'auto', display: 'flex', gap: '8px' }}>
-            <motion.a whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} href={p.live} target="_blank" rel="noreferrer" style={{ 
-              flex: 1, padding: '10px', fontSize: '0.75rem', background: '#fff', 
-              color: '#000', border: 'none', borderRadius: '10px', fontWeight: 800,
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
-              boxShadow: '0 8px 16px rgba(255, 255, 255, 0.08)'
-            }}>
-              Live <ArrowUpRight size={14} />
-            </motion.a>
-            
-            <motion.a whileHover={{ background: 'rgba(255, 255, 255, 0.06)' }} whileTap={{ scale: 0.98 }} href={p.github} target="_blank" rel="noreferrer" style={{ 
-              padding: '10px 12px', fontSize: '0.75rem', background: 'rgba(255, 255, 255, 0.02)', 
-              color: '#fff', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '10px', fontWeight: 700,
-              display: 'flex', alignItems: 'center', justifyContent: 'center'
-            }}>
-              <Github size={14} />
-            </motion.a>
-          </div>
+        <div className="project-actions">
+          <motion.a 
+            whileTap={{ scale: 0.98 }} 
+            href={p.live} 
+            target="_blank" 
+            rel="noreferrer" 
+            className="project-btn-live"
+          >
+            {p.btnText || 'Live'} <ArrowUpRight size={14} />
+          </motion.a>
+          
+          <motion.a 
+            whileTap={{ scale: 0.98 }} 
+            href={p.github} 
+            target="_blank" 
+            rel="noreferrer" 
+            className="project-btn-code"
+          >
+            <Github size={14} />
+          </motion.a>
         </div>
       </div>
     </motion.div>
@@ -195,14 +147,6 @@ const Projects = () => {
 
       <motion.div 
         className="projects-grid" 
-        style={{ 
-          position: 'relative', 
-          zIndex: 1,
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-          gap: '24px',
-          marginBottom: '80px'
-        }}
       >
         {filteredProjects.map((p, i) => (
           <ProjectCard key={p.title} p={p} />
