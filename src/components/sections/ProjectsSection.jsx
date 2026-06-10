@@ -8,66 +8,82 @@ import { PROJECTS, INFO_CARDS } from '../../data/portfolioData';
 
 import SectionHeader from "./SectionHeader";
 
-const ProjectCard = ({ p }) => {
+const PROJECT_ICONS = {
+  'BARESKIN': <Layers size={18} />,
+  'TruthGuard AI': <Brain size={18} />,
+  'SambalpuriHUB': <Globe size={18} />,
+  'Internet Speed Test': <Zap size={18} />,
+  'Cybersecurity Toolkit': <ShieldCheck size={18} />,
+  'Golf Charity App': <Award size={18} />
+};
+
+const getProjectIcon = (title) => {
+  return PROJECT_ICONS[title] || <Terminal size={18} />;
+};
+
+const ProjectRow = ({ p }) => {
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      className="project-card"
+      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+      className="project-row"
       style={{ 
         '--glow-color': p.color || 'var(--accent-cyan)'
       }}
     >
-      {/* Left side: Image wrapper */}
-      <div className="project-image-wrapper">
-        <img 
-          src={p.img} 
-          alt={p.title} 
-          className="project-image" 
-        />
-        <div className="project-image-overlay" />
-        
-        <div className="project-category-badge">
-          {p.category}
-        </div>
+      {/* Left Icon Container */}
+      <div className="project-row-icon-box">
+        {getProjectIcon(p.title)}
       </div>
 
-      {/* Right side: text content */}
-      <div className="project-text-content">
-        <div className="project-header-section">
-          <h3 className="project-title">{p.title}</h3>
-          
-          <p className="project-description">{p.desc}</p>
+      {/* Right Content Area */}
+      <div className="project-row-content">
+        {/* Top Header Level: Title & Badges and Links */}
+        <div className="project-row-header">
+          <div className="project-row-title-section">
+            <h3 className="project-row-title">{p.title}</h3>
+            <span className="project-row-badge">{p.category}</span>
+          </div>
+
+          <div className="project-row-actions">
+            {p.live && (
+              <motion.a 
+                whileTap={{ scale: 0.95 }} 
+                href={p.live} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="project-row-btn"
+                title={p.btnText || "Live Demo"}
+              >
+                <ArrowUpRight size={16} />
+              </motion.a>
+            )}
+            
+            {p.github && (
+              <motion.a 
+                whileTap={{ scale: 0.95 }} 
+                href={p.github} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="project-row-btn"
+                title="GitHub Repository"
+              >
+                <Github size={16} />
+              </motion.a>
+            )}
+          </div>
         </div>
 
-        <div className="project-tech-container">
+        {/* Middle Level: Description */}
+        <p className="project-row-description">{p.desc}</p>
+
+        {/* Bottom Level: Tech Stack Tags */}
+        <div className="project-row-tech">
           {p.tech?.map((t, idx) => (
-            <span key={idx} className="project-tech-tag">{t}</span>
+            <span key={idx} className="project-row-tech-tag">{t}</span>
           ))}
-        </div>
-
-        <div className="project-actions">
-          <motion.a 
-            whileTap={{ scale: 0.98 }} 
-            href={p.live} 
-            target="_blank" 
-            rel="noreferrer" 
-            className="project-btn-live"
-          >
-            {p.btnText || 'Live'} <ArrowUpRight size={14} />
-          </motion.a>
-          
-          <motion.a 
-            whileTap={{ scale: 0.98 }} 
-            href={p.github} 
-            target="_blank" 
-            rel="noreferrer" 
-            className="project-btn-code"
-          >
-            <Github size={14} />
-          </motion.a>
         </div>
       </div>
     </motion.div>
@@ -146,10 +162,10 @@ const Projects = () => {
       </motion.div>
 
       <motion.div 
-        className="projects-grid" 
+        className="projects-list-container" 
       >
         {filteredProjects.map((p, i) => (
-          <ProjectCard key={p.title} p={p} />
+          <ProjectRow key={p.title} p={p} />
         ))}
       </motion.div>
 
