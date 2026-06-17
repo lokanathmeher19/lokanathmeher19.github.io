@@ -687,11 +687,21 @@ h1, h2, h3, h4 {
   box-shadow: 0 10px 20px var(--glow-color)11 !important;
 }
 
-/* responsive media queries */
+/* responsive media queries & ledger layout definitions */
 @media (max-width: 768px) {
-  .projects-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 24px;
+  .projects-desktop-layout {
+    display: none !important;
+  }
+  .projects-mobile-layout {
+    display: block !important;
+  }
+}
+@media (min-width: 769px) {
+  .projects-desktop-layout {
+    display: flex !important;
+  }
+  .projects-mobile-layout {
+    display: none !important;
   }
 }
 
@@ -702,4 +712,191 @@ h1, h2, h3, h4 {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+/* 🧬 Unique Cyber/SRE Ledger Styling */
+.cyber-ledger-row {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.cyber-ledger-row::before,
+.cyber-ledger-row::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: var(--row-color, var(--accent-cyan));
+  border-style: solid;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.cyber-ledger-row::before {
+  top: 0;
+  left: 0;
+  border-width: 1px 0 0 1px;
+}
+
+.cyber-ledger-row::after {
+  bottom: 0;
+  right: 0;
+  border-width: 0 1px 1px 0;
+}
+
+.cyber-ledger-row:hover::before,
+.cyber-ledger-row:hover::after,
+.cyber-ledger-row.selected::before,
+.cyber-ledger-row.selected::after {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* pulsing neon node */
+.cyber-pulse-node {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  position: relative;
+  background-color: var(--node-color, var(--accent-cyan));
+  box-shadow: 0 0 8px var(--node-color, var(--accent-cyan));
+}
+
+.cyber-pulse-node::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 1px solid var(--node-color, var(--accent-cyan));
+  border-radius: 50%;
+  animation: cyber-node-pulse 2s infinite ease-out;
+}
+
+@keyframes cyber-node-pulse {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* diagnostic readout table */
+.cyber-diag-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+  font-family: var(--font-heading), monospace;
+  font-size: 0.72rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+}
+
+.cyber-diag-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.cyber-diag-row:last-child {
+  border-bottom: none;
+}
+
+.cyber-diag-label {
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.cyber-diag-value {
+  color: var(--glow-color, #fff);
+  font-weight: 800;
+  text-shadow: 0 0 10px var(--glow-color)33;
+}
+
+/* code tag brackets */
+.cyber-badge-tag {
+  font-family: var(--font-heading), monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.55);
+  transition: all 0.3s ease;
+}
+
+.cyber-badge-tag::before {
+  content: "[ ";
+  color: var(--accent-color, var(--accent-cyan));
+  opacity: 0.7;
+}
+
+.cyber-badge-tag::after {
+  content: " ]";
+  color: var(--accent-color, var(--accent-cyan));
+  opacity: 0.7;
+}
+
+.cyber-ledger-row:hover .cyber-badge-tag,
+.cyber-inner-card:hover .cyber-badge-tag {
+  color: #fff;
+  text-shadow: 0 0 10px var(--accent-color)33;
+}
+
+/* shell executables styling */
+.cyber-shell-btn {
+  font-family: var(--font-heading), monospace;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  font-size: 0.72rem;
+}
+
+.cyber-shell-btn::before {
+  content: "> ";
+  opacity: 0.8;
+  color: inherit;
+}
+
+.cyber-shell-btn-live {
+  background: #fff !important;
+  color: #000 !important;
+  border: none !important;
+}
+
+.cyber-shell-btn-live:hover {
+  background: var(--glow-color) !important;
+  box-shadow: 0 8px 24px var(--glow-color)44 !important;
+  transform: translateY(-2px);
+}
+
+.cyber-shell-btn-code {
+  background: rgba(255, 255, 255, 0.01) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.cyber-shell-btn-code:hover {
+  border-color: var(--glow-color) !important;
+  color: var(--glow-color) !important;
+  box-shadow: 0 8px 20px var(--glow-color)11 !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  transform: translateY(-2px);
+}
+
+/* radar scanning sweep line */
+.cyber-radar-sweep {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 48%, var(--glow-color, rgba(34, 211, 238, 0.1)) 50%, transparent 52%);
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cyber-ledger-row:hover .cyber-radar-sweep {
+  animation: cyber-radar-scan 4s linear infinite;
+}
+
+@keyframes cyber-radar-scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
 }

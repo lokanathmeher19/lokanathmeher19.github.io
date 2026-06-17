@@ -1,29 +1,32 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, useMotionValue, useTransform, useSpring, AnimatePresence, useScroll } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import { 
-  MapPin, Cpu, Mail, Github, Linkedin, Code, Code2, Terminal, Database, Shield, Send, Download, ArrowUpRight, ShieldCheck, Smartphone, Layers, Globe, Server, Box, Hexagon, Command, Binary, Braces, Orbit, Atom, Wind, BoxSelect, Brain, Lightbulb, Share2, Wrench, Search, CheckCircle2, MessageSquare, Zap, Cloud, Trophy, Award, Instagram, Lock, GraduationCap, Maximize2, Briefcase, X
+  Github, Terminal, ArrowUpRight, ShieldCheck, Smartphone, Layers, Globe, Zap, Award, Brain, Download, Maximize2, X
 } from 'lucide-react';
-import { PROJECTS, INFO_CARDS } from '../../data/portfolioData';
+import { PROJECTS } from '../../data/portfolioData';
 
 import SectionHeader from "./SectionHeader";
 
-const PROJECT_ICONS = {
-  'BARESKIN': <Layers size={18} />,
-  'TruthGuard AI': <Brain size={18} />,
-  'SambalpuriHUB': <Globe size={18} />,
-  'Internet Speed Test': <Zap size={18} />,
-  'Cybersecurity Toolkit': <ShieldCheck size={18} />,
-  'Golf Charity App': <Award size={18} />
+const getProjectTelemetry = (title) => {
+  const defaults = { status: 'DEPLOYED // ACTIVE', latency: '15ms', integrity: 'PASS // SSG_SECURE', port: 'PORT // 80' };
+  const data = {
+    'BARESKIN': { status: 'PRODUCTION // LIVE', latency: '18ms', integrity: 'SHA-256 SECURE', port: 'HTTPS // 443' },
+    'TruthGuard AI': { status: 'MODEL_RUN // STANDBY', latency: '45ms (CUDA)', integrity: 'FP16 CHECKED', port: 'TENSOR // 8888' },
+    'SambalpuriHUB': { status: 'ARCHIVE // STABLE', latency: '22ms', integrity: 'VITE_OPTIMIZED', port: 'REACT // 3000' },
+    'Internet Speed Test': { status: 'READY // TEST_STANDBY', latency: '11ms', integrity: 'DOCKER_VERIFIED', port: 'REST // 8080' },
+    'Cybersecurity Toolkit': { status: 'ACTIVE // INTRUSION_DET', latency: '5ms', integrity: 'MD5_VALIDATED', port: 'NMAP // 80_443' },
+    'Golf Charity App': { status: 'PRODUCTION // STABLE', latency: '14ms', integrity: 'NEXT_SSG_PASS', port: 'NODE // 3000' }
+  };
+  return data[title] || defaults;
 };
 
 const ProjectCard = ({ p }) => {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  // Springs for smooth 3D tilt dynamics (gentle max 7 degrees)
-  const rotateX = useSpring(useTransform(y, [-180, 180], [7, -7]), { stiffness: 220, damping: 22 });
-  const rotateY = useSpring(useTransform(x, [-180, 180], [-7, 7]), { stiffness: 220, damping: 22 });
+  // Springs for smooth 3D tilt dynamics (gentle max 8 degrees)
+  const rotateX = useSpring(useTransform(y, [-180, 180], [8, -8]), { stiffness: 220, damping: 22 });
+  const rotateY = useSpring(useTransform(x, [-180, 180], [-8, 8]), { stiffness: 220, damping: 22 });
 
   // Sheen gradient tracking
   const sheenX = useTransform(x, [-180, 180], ["0%", "100%"]);
@@ -44,7 +47,7 @@ const ProjectCard = ({ p }) => {
     y.set(0);
   }
 
-  const [btnHover, setBtnHover] = useState(false);
+  const telemetry = getProjectTelemetry(p.title);
 
   return (
     <div style={{ perspective: 1000, height: '100%', width: '100%' }}>
@@ -60,11 +63,11 @@ const ProjectCard = ({ p }) => {
         }}
       >
         <div 
-          className="project-inner-card"
+          className="cyber-inner-card"
           style={{ 
             '--glow-color': p.color || 'var(--accent-cyan)',
             height: '100%',
-            background: 'rgba(10, 15, 30, 0.45)',
+            background: 'rgba(5, 8, 22, 0.95)',
             backdropFilter: 'blur(30px) saturate(180%)',
             WebkitBackdropFilter: 'blur(30px) saturate(180%)',
             borderRadius: '24px',
@@ -73,7 +76,7 @@ const ProjectCard = ({ p }) => {
             display: 'flex',
             flexDirection: 'column',
             transition: 'border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)',
+            boxShadow: '0 30px 60px rgba(0, 0, 0, 0.6)',
             position: 'relative'
           }}
         >
@@ -114,6 +117,9 @@ const ProjectCard = ({ p }) => {
           {/* Scanner sweep line */}
           <div className="project-scanner" />
 
+          {/* Radar Sweep Grid Accent */}
+          <div className="cyber-radar-sweep" style={{ '--glow-color': `${p.color}08` }} />
+
           {/* Corner radial accent light */}
           <div style={{
             position: 'absolute',
@@ -127,7 +133,7 @@ const ProjectCard = ({ p }) => {
           }} />
 
           {/* 🖼️ Cover Image */}
-          <div style={{ height: '180px', overflow: 'hidden', position: 'relative', zIndex: 2, transform: 'translateZ(15px)' }}>
+          <div style={{ height: '150px', overflow: 'hidden', position: 'relative', zIndex: 2, transform: 'translateZ(15px)' }}>
             <img 
               src={p.img} 
               alt={p.title} 
@@ -151,29 +157,29 @@ const ProjectCard = ({ p }) => {
               boxShadow: `0 4px 12px ${p.color}15`,
               display: 'flex', alignItems: 'center', gap: '6px'
             }}>
-              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: p.color, display: 'inline-block', boxShadow: `0 0 8px ${p.color}` }}></span>
+              <span className="cyber-pulse-node" style={{ '--node-color': p.color }}></span>
               {p.category}
             </div>
           </div>
 
           {/* Card body content */}
-          <div style={{ padding: '24px', flexGrow: 1, display: 'flex', flexDirection: 'column', position: 'relative', zIndex: 2, transform: 'translateZ(25px)' }}>
-            <div style={{ marginBottom: '20px' }}>
+          <div style={{ padding: '20px', flexGrow: 1, display: 'flex', flexDirection: 'column', position: 'relative', zIndex: 2, transform: 'translateZ(25px)' }}>
+            <div style={{ marginBottom: '14px' }}>
               <h3 style={{ 
-                fontSize: '1.3rem', 
-                fontWeight: 850, 
+                fontSize: '1.25rem', 
+                fontWeight: 900, 
                 color: '#fff', 
-                marginBottom: '8px', 
+                marginBottom: '4px', 
                 letterSpacing: '-0.02em',
                 transition: 'color 0.3s ease'
               }} className="project-title-heading">{p.title}</h3>
               
               <p style={{ 
-                color: 'rgba(255, 255, 255, 0.55)', 
-                fontSize: '0.85rem', 
-                lineHeight: 1.6,
-                marginBottom: '16px',
-                height: '52px',
+                color: 'rgba(255, 255, 255, 0.5)', 
+                fontSize: '0.78rem', 
+                lineHeight: 1.5,
+                marginBottom: '10px',
+                height: '36px',
                 display: '-webkit-box',
                 WebkitLineClamp: 2,
                 WebkitBoxOrient: 'vertical',
@@ -182,46 +188,57 @@ const ProjectCard = ({ p }) => {
               }}>{p.desc}</p>
             </div>
 
-            {/* Tech badges */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '28px' }}>
-              {p.tech?.map((t, idx) => (
+            {/* SRE Diagnostic Readout Table */}
+            <div className="cyber-diag-table" style={{ '--glow-color': p.color }}>
+              <div className="cyber-diag-row">
+                <span className="cyber-diag-label">SYSTEM_STATUS</span>
+                <span className="cyber-diag-value">{telemetry.status}</span>
+              </div>
+              <div className="cyber-diag-row">
+                <span className="cyber-diag-label">NET_LATENCY</span>
+                <span className="cyber-diag-value">{telemetry.latency}</span>
+              </div>
+              <div className="cyber-diag-row">
+                <span className="cyber-diag-label">SYS_INTEGRITY</span>
+                <span className="cyber-diag-value">{telemetry.integrity}</span>
+              </div>
+              <div className="cyber-diag-row">
+                <span className="cyber-diag-label">HOST_INTERFACE</span>
+                <span className="cyber-diag-value">{telemetry.port}</span>
+              </div>
+            </div>
+
+            {/* Tech badges in code brackets */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', margin: '16px 0' }}>
+              {p.tech?.slice(0, 4).map((t, idx) => (
                 <span 
                   key={idx} 
-                  className="project-tag"
-                  style={{
-                    '--tag-hover-bg': `${p.color}15`,
-                    '--tag-hover-border': `${p.color}35`,
-                    '--tag-hover-shadow': `${p.color}10`,
-                  }}
+                  className="cyber-badge-tag"
+                  style={{ '--accent-color': p.color }}
                 >
                   {t}
                 </span>
               ))}
             </div>
 
-            {/* Premium Action Buttons */}
-            <div style={{ marginTop: 'auto', display: 'flex', gap: '12px' }}>
+            {/* Terminal Shell Buttons */}
+            <div style={{ marginTop: 'auto', display: 'flex', gap: '10px' }}>
               {p.live && (
                 <a 
                   href={p.live} 
                   target="_blank" 
                   rel="noreferrer" 
-                  onMouseEnter={() => setBtnHover(true)}
-                  onMouseLeave={() => setBtnHover(false)}
+                  className="cyber-shell-btn cyber-shell-btn-live"
                   style={{ 
-                    flex: 1, padding: '12px', fontSize: '0.8rem', background: '#fff', 
-                    color: '#000', border: 'none', borderRadius: '12px', fontWeight: 800,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
-                    boxShadow: `0 8px 16px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 255, 255, 0.05)`,
+                    flex: 1, padding: '10px', borderRadius: '10px',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
                     transition: 'all 0.3s ease',
-                    textDecoration: 'none'
+                    textDecoration: 'none',
+                    '--glow-color': p.color
                   }}
-                  className="project-live-btn"
                 >
-                  <span>Live Demo</span>
-                  <motion.span animate={{ x: btnHover ? 3 : 0, y: btnHover ? -3 : 0 }} transition={{ type: "spring", stiffness: 300, damping: 15 }}>
-                    <ArrowUpRight size={14} />
-                  </motion.span>
+                  <span>EXECUTE_LIVE</span>
+                  <ArrowUpRight size={12} />
                 </a>
               )}
               
@@ -230,16 +247,16 @@ const ProjectCard = ({ p }) => {
                   href={p.github} 
                   target="_blank" 
                   rel="noreferrer" 
+                  className="cyber-shell-btn cyber-shell-btn-code"
                   style={{ 
-                    padding: '12px 16px', fontSize: '0.8rem', background: 'rgba(255, 255, 255, 0.03)', 
-                    color: '#fff', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '12px', fontWeight: 700,
+                    padding: '10px 14px', borderRadius: '10px',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     transition: 'all 0.3s ease',
-                    textDecoration: 'none'
+                    textDecoration: 'none',
+                    '--glow-color': p.color
                   }}
-                  className="project-code-btn"
                 >
-                  <Github size={16} />
+                  <span>DECOMPILE</span>
                 </a>
               )}
             </div>
@@ -403,7 +420,9 @@ const Projects = () => {
                   transition={{ duration: 0.3 }}
                   onClick={() => setActiveProject(p)}
                   whileHover={{ x: 6, backgroundColor: 'rgba(255, 255, 255, 0.02)' }}
+                  className={`cyber-ledger-row ${isSelected ? 'selected' : ''}`}
                   style={{
+                    '--row-color': p.color || 'var(--accent-cyan)',
                     padding: '16px 20px',
                     borderRadius: '16px',
                     background: isSelected ? 'rgba(255,255,255,0.015)' : 'transparent',
@@ -418,11 +437,8 @@ const Projects = () => {
                     transition: 'border-color 0.3s, box-shadow 0.3s'
                   }}
                 >
-                  <div style={{
-                    width: '3px',
-                    height: '24px',
-                    borderRadius: '2px',
-                    background: isSelected ? (p.color || 'var(--accent-cyan)') : 'rgba(255,255,255,0.1)',
+                  <div className="cyber-pulse-node" style={{
+                    '--node-color': isSelected ? (p.color || 'var(--accent-cyan)') : 'rgba(255,255,255,0.1)',
                     transition: 'background 0.3s'
                   }} />
 
@@ -437,9 +453,11 @@ const Projects = () => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     border: '1px solid rgba(255,255,255,0.05)',
-                    flexShrink: 0
+                    flexShrink: 0,
+                    position: 'relative'
                   }}>
                     <img src={p.img} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="" />
+                    <div className="cyber-radar-sweep" style={{ '--glow-color': `${p.color}22` }} />
                   </div>
 
                   <div style={{ flex: 1, minWidth: 0 }}>
@@ -456,7 +474,7 @@ const Projects = () => {
                       {p.title}
                     </h4>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.75rem', color: 'rgba(255,255,255,0.35)' }}>
-                      <span style={{ color: p.color || 'var(--accent-cyan)', fontWeight: 700 }}>{p.category}</span>
+                      <span className="cyber-badge-tag" style={{ '--accent-color': p.color }}>{p.category}</span>
                       <span>•</span>
                       <span>{p.tech ? p.tech.slice(0, 2).join(', ') : ''}</span>
                     </div>
