@@ -900,3 +900,270 @@ h1, h2, h3, h4 {
   0% { transform: translateY(-100%); }
   100% { transform: translateY(100%); }
 }
+
+/* 🏷️ Simple Premium Logo Design Bar - New Style */
+.cyber-logo-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  padding: 16px 40px;
+  background: rgba(255, 255, 255, 0.015);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  width: fit-content;
+  margin: 60px auto 40px;
+  position: relative;
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .cyber-logo-bar {
+    gap: 16px;
+    padding: 12px 20px;
+    border-radius: 20px;
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+}
+
+.cyber-logo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px 12px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.cyber-logo-wrapper {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.cyber-logo-img {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(40%);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cyber-logo-icon {
+  color: rgba(255, 255, 255, 0.4);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cyber-logo-label {
+  font-family: var(--font-heading), monospace;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover and Active states */
+.cyber-logo-item:hover .cyber-logo-img,
+.cyber-logo-item.active .cyber-logo-img {
+  filter: grayscale(0%) opacity(100%);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.cyber-logo-item:hover .cyber-logo-icon,
+.cyber-logo-item.active .cyber-logo-icon {
+  color: var(--logo-color, var(--accent-purple));
+  filter: drop-shadow(0 0 8px var(--logo-color, var(--accent-purple)));
+  transform: translateY(-2px) scale(1.06);
+}
+
+.cyber-logo-item:hover .cyber-logo-label,
+.cyber-logo-item.active .cyber-logo-label {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.cyber-logo-glow {
+  position: absolute;
+  bottom: -4px;
+  width: 16px;
+  height: 3px;
+  background: var(--logo-color, var(--accent-purple));
+  border-radius: 100px;
+  box-shadow: 0 0 12px var(--logo-color, var(--accent-purple));
+}
+
+/* 💼 Professional Vercel/Linear Style Projects Section */
+.pro-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 16px 0;
+  width: 100%;
+}
+
+.pro-metric-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.pro-metric-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.pro-metric-icon {
+  color: var(--glow-color, var(--accent-cyan));
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+}
+
+.pro-metric-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.pro-metric-label {
+  font-size: 0.58rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.pro-metric-val {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pro-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 100px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pro-badge-pill:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent-color, rgba(255, 255, 255, 0.15));
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.pro-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-color, var(--accent-cyan));
+  box-shadow: 0 0 8px var(--accent-color, var(--accent-cyan));
+}
+
+.pro-btn-primary {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #fff !important;
+  color: #000 !important;
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-decoration: none;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.pro-btn-primary:hover {
+  background: var(--glow-color, var(--accent-cyan)) !important;
+  color: #000 !important;
+  box-shadow: 0 8px 24px var(--glow-color, var(--accent-cyan))44;
+  transform: translateY(-2px);
+}
+
+.pro-btn-secondary {
+  padding: 12px 18px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.01) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pro-btn-secondary:hover {
+  border-color: var(--glow-color, var(--accent-cyan)) !important;
+  color: var(--glow-color, var(--accent-cyan)) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--glow-color, var(--accent-cyan))11;
+}
+
+/* Professional ledger row styling */
+.pro-ledger-row {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.pro-ledger-row:hover,
+.pro-ledger-row.selected {
+  border-color: var(--row-color, var(--accent-cyan))44 !important;
+  box-shadow: 0 10px 30px var(--row-color, var(--accent-cyan))08;
+  background: rgba(255, 255, 255, 0.015) !important;
+}
+
+.pro-ledger-indicator {
+  width: 3px;
+  height: 24px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pro-ledger-row.selected .pro-ledger-indicator {
+  background: var(--row-color, var(--accent-cyan));
+  box-shadow: 0 0 10px var(--row-color, var(--accent-cyan));
+  height: 32px;
+}
