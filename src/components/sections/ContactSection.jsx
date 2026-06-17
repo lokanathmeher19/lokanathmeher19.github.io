@@ -128,7 +128,7 @@ const ResumeSection = () => {
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(34, 211, 238, 0.03) 0%, transparent 70%)', filter: 'blur(80px)', pointerEvents: 'none' }}></div>
       
       <SectionHeader 
-        badge="Career Track" 
+        badge="Resume" 
         color="var(--accent-cyan)"
         title={<><span className="text-gradient">Professional</span> Trajectory</>} 
         desc="A summary of industrial engagement and engineering milestones." 

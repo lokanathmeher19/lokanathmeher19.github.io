@@ -1666,7 +1666,7 @@ const ResumeSection = () => {
       <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(34, 211, 238, 0.03) 0%, transparent 70%)', filter: 'blur(80px)', pointerEvents: 'none' }}></div>
       
       <SectionHeader 
-        badge="Career Track" 
+        badge="Resume" 
         color="var(--accent-cyan)"
         title={<><span className="text-gradient">Professional</span> Trajectory</>} 
         desc="A summary of industrial engagement and engineering milestones." 
@@ -1675,49 +1675,87 @@ const ResumeSection = () => {
       <div style={{ maxWidth: '1100px', margin: '80px auto 0' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
           
-          {/* 💼 Industrial Experience Card */}
+          {/* 💼 Industrial Experience Card - Certificated Style */}
           {experience.map((exp, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="glass-panel"
               style={{ 
-                padding: '48px', 
-                borderRadius: '32px',
-                background: 'rgba(255, 255, 255, 0.015)',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                padding: '16px', 
+                borderRadius: '24px',
+                background: 'rgba(255, 255, 255, 0.01)',
+                border: '1px solid rgba(255, 255, 255, 0.05)',
+                position: 'relative',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                boxShadow: '0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05)',
+                transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                backdropFilter: 'blur(15px)',
+              }}
+              whileHover={{ y: -5, borderColor: `${exp.color}44`, boxShadow: `0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 ${exp.color}22` }}
+            >
+              {/* Icon Type Box */}
+              <div style={{ 
+                width: '100%', 
+                height: '160px',
+                borderRadius: '16px', 
+                backgroundColor: '#000',
                 position: 'relative',
                 overflow: 'hidden',
-                transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
-              }}
-              whileHover={{ y: -8, background: 'rgba(255, 255, 255, 0.025)', borderColor: 'rgba(34, 211, 238, 0.2)' }}
-            >
-              <div style={{ 
-                position: 'absolute', top: 0, left: 0, width: '4px', height: '100%', 
-                background: `linear-gradient(to bottom, ${exp.color}, transparent)` 
-              }} />
-              
-              <div style={{ display: 'flex', gap: '20px', alignItems: 'center', marginBottom: '32px' }}>
-                 <div style={{ width: '56px', height: '56px', borderRadius: '16px', background: `${exp.color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', color: exp.color, border: `1px solid ${exp.color}22` }}>
-                    {exp.icon}
-                 </div>
-                 <div>
-                    <h3 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#fff', marginBottom: '4px', letterSpacing: '-0.02em' }}>{exp.role}</h3>
-                    <p style={{ color: exp.color, fontWeight: 800, fontSize: '0.95rem', letterSpacing: '0.08em' }}>{exp.company.toUpperCase()}</p>
-                 </div>
-              </div>
-              
-              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: '1.05rem', marginBottom: '32px', fontWeight: 400 }}>
-                {exp.desc}
-              </p>
-              
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem', fontWeight: 600 }}>
-                  <MapPin size={16} style={{ color: exp.color }} /> {exp.locationShort || exp.location}
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                border: `1px solid ${exp.color}22`
+              }}>
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: `radial-gradient(circle at center, ${exp.color}33 0%, transparent 70%)`,
+                  zIndex: 0
+                }} />
+                
+                <div style={{
+                  width: '64px',
+                  height: '64px',
+                  borderRadius: '20px',
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  backdropFilter: 'blur(10px)',
+                  border: `1px solid ${exp.color}44`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: exp.color,
+                  zIndex: 1,
+                  boxShadow: `0 10px 30px ${exp.color}33`
+                }}>
+                  {exp.icon}
                 </div>
-                <span style={{ fontSize: '0.75rem', fontWeight: 900, color: 'rgba(255,255,255,0.5)', background: 'rgba(255,255,255,0.03)', padding: '6px 14px', borderRadius: '100px', border: '1px solid rgba(255,255,255,0.05)' }}>{exp.periodShort || exp.period}</span>
+                
+                <div style={{ position: 'absolute', bottom: '12px', left: '16px', display: 'flex', alignItems: 'center', gap: '8px', zIndex: 1 }}>
+                  <span style={{ fontSize: '0.65rem', fontWeight: 900, color: exp.color, letterSpacing: '0.15em', textTransform: 'uppercase', background: 'rgba(0,0,0,0.6)', padding: '4px 8px', borderRadius: '8px', backdropFilter: 'blur(4px)' }}>
+                    {exp.company}
+                  </span>
+                </div>
+              </div>
+
+              {/* Content Box */}
+              <div style={{ width: '100%', marginTop: '20px', textAlign: 'center', padding: '0 8px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                <h3 style={{ color: '#fff', fontSize: '1.2rem', fontWeight: 900, margin: '0 0 8px 0', letterSpacing: '-0.01em' }}>{exp.role}</h3>
+                
+                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '0.9rem', marginBottom: '24px', fontWeight: 400, flex: 1 }}>
+                  {exp.desc}
+                </p>
+                
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'rgba(255,255,255,0.4)', fontSize: '0.75rem', fontWeight: 600 }}>
+                    <MapPin size={14} style={{ color: exp.color }} /> {exp.locationShort || exp.location}
+                  </div>
+                  <span style={{ fontSize: '0.7rem', fontWeight: 900, color: 'rgba(255,255,255,0.5)', background: 'rgba(255,255,255,0.03)', padding: '4px 10px', borderRadius: '100px', border: '1px solid rgba(255,255,255,0.05)' }}>{exp.periodShort || exp.period}</span>
+                </div>
               </div>
             </motion.div>
           ))}
