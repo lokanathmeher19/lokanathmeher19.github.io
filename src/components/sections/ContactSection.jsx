@@ -1,12 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, useMotionValue, useTransform, useSpring, AnimatePresence, useScroll } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { 
-  MapPin, Cpu, Mail, Github, Linkedin, Code, Code2, Terminal, Database, Shield, Send, Download, ArrowUpRight, ShieldCheck, Smartphone, Layers, Globe, Server, Box, Hexagon, Command, Binary, Braces, Orbit, Atom, Wind, BoxSelect, Brain, Lightbulb, Share2, Wrench, Search, CheckCircle2, MessageSquare, Zap, Cloud, Trophy, Award, Instagram, Lock, GraduationCap, Maximize2, Briefcase, X
-} from 'lucide-react';
-import { PROJECTS, INFO_CARDS } from '../../data/portfolioData';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Linkedin, Send } from 'lucide-react';
 import toast from 'react-hot-toast';
 import emailjs from 'emailjs-com';
+import SectionHeader from "./SectionHeader";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -45,7 +42,13 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section">
+    <section id="contact" className="section" style={{ padding: '60px 24px' }}>
+      <SectionHeader 
+        badge="CONTACT" 
+        color="var(--accent-cyan)"
+        title={<><span className="text-gradient">Get In</span> Touch</>} 
+        desc="Ready to start your next project? Let's connect and discuss how I can help." 
+      />
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -55,8 +58,6 @@ const Contact = () => {
       >
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '80px' }}>
           <div>
-            <h2 className="section-title" style={{ marginBottom: '24px' }}>Let's Build Something Great.</h2>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '40px' }}>Available for freelance projects, open-source collaboration, and strategic consultations.</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
               <a href="mailto:meherlokanath314@gmail.com" style={{ color: 'var(--text-primary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '16px', fontSize: '1.1rem' }}>
                 meherlokanath314@gmail.com

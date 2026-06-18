@@ -1602,7 +1602,13 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section">
+    <section id="contact" className="section" style={{ padding: '60px 24px' }}>
+      <SectionHeader 
+        badge="CONTACT" 
+        color="var(--accent-cyan)"
+        title={<><span className="text-gradient">Get In</span> Touch</>} 
+        desc={CONTACT_CONFIG.contactParagraph || "Available for freelance projects, open-source collaboration, and strategic consultations."} 
+      />
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -1612,8 +1618,6 @@ const Contact = () => {
       >
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '80px' }}>
           <div>
-            <h2 className="section-title" style={{ marginBottom: '24px' }}>Let's Build Something Great.</h2>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '40px' }}>{CONTACT_CONFIG.contactParagraph}</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
               <a href={`mailto:${CONTACT_CONFIG.email}`} style={{ color: 'var(--text-primary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '16px', fontSize: '1.1rem' }}>
                 {CONTACT_CONFIG.email}

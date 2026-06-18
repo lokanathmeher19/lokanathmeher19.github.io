@@ -273,8 +273,8 @@ export const INFO_CARDS = [
 export const ABOUT_CONFIG = {
     photo: photo,
     badge: "ABOUT ME",
-    titlePrefix: "Core",
-    titleGradient: "Identity",
+    titlePrefix: "Professional",
+    titleGradient: "Profile",
     desc: "",
     academicBadge: "",
     academicSubtitlePrefix: "Building Secure, ",
