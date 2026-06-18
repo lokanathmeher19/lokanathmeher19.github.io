@@ -26,7 +26,8 @@ import {
     Binary,
     Cpu,
     CheckCircle2,
-    Briefcase
+    Briefcase,
+    Database
 } from 'lucide-react';
 
 // --- Assets & Media Imports ---
@@ -111,7 +112,8 @@ export const ICON_MAP = {
     Award: <Award size={22} />,
     Lock: <Lock size={14} />,
     Binary: <Binary size={14} />,
-    Cpu: <Cpu size={14} />
+    Cpu: <Cpu size={14} />,
+    Database: <Database size={14} />
 };
 
 // --- Navbar Configuration ---
@@ -274,15 +276,14 @@ export const ABOUT_CONFIG = {
     titlePrefix: "Core",
     titleGradient: "Identity",
     desc: "",
-    academicBadge: "Academic Profile",
+    academicBadge: "",
     academicSubtitlePrefix: "Building Secure, ",
     academicSubtitleGradient: "Intelligent Systems",
     aboutText: formatAboutHighlightText("I am a dedicated **Computer Science Engineering student** at GIET Bhubaneswar. My engineering philosophy revolves around writing clean, well-architected code that prioritizes execution speed and strict defensive integrations."),
     pillars: [
-      { title: "Engineering", desc: "Data Structures, algorithms, optimization routines.", icon: "💻", color: "#3b82f6" },
-      { title: "Security", desc: "Threat parsing, zero-trust system implementations.", icon: "🛡️", color: "#ef4444" },
-      { title: "Architecture", desc: "MERN stack ecosystems, state caching procedures.", icon: "🌐", color: "#10b981" },
-      { title: "Vision", desc: "Adapting neural AI tooling securely into legacy code.", icon: "🚀", color: "#f59e0b" }
+      { title: "Security Protocols", desc: "Zero-trust architecture & defensive coding.", iconName: "ShieldCheck", color: "#ef4444" },
+      { title: "Cloud Architecture", desc: "Scalable serverless backends & MERN systems.", iconName: "Cloud", color: "#0ea5e9" },
+      { title: "Data Intelligence", desc: "Parsing, modeling, and analytical engines.", iconName: "Database", color: "#8b5cf6" }
     ]
 };
 

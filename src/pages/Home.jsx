@@ -1493,7 +1493,7 @@ const About = () => (
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        style={{ position: 'relative', flex: '1 1 300px', maxWidth: '380px', display: 'flex', justifyContent: 'center' }}
+        style={{ position: 'relative', flex: '0 1 280px', maxWidth: '280px', display: 'flex', justifyContent: 'center' }}
       >
         <div style={{
           position: 'absolute', inset: '-10px', background: 'linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(139, 92, 246, 0.2))',
@@ -1520,7 +1520,9 @@ const About = () => (
         style={{ flex: '2 1 500px', display: 'flex', flexDirection: 'column', gap: '24px' }}
       >
         <div>
-          <span className="badge" style={{ marginBottom: '16px', display: 'inline-block' }}>{ABOUT_CONFIG.academicBadge}</span>
+          {ABOUT_CONFIG.academicBadge && (
+            <span className="badge" style={{ marginBottom: '16px', display: 'inline-block' }}>{ABOUT_CONFIG.academicBadge}</span>
+          )}
           <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.5rem)', fontWeight: 850, lineHeight: 1.2, margin: '0 0 16px 0', color: '#fff' }}>
             {ABOUT_CONFIG.academicSubtitlePrefix} <br /><span className="text-gradient">{ABOUT_CONFIG.academicSubtitleGradient}</span>
           </h2>
@@ -1531,30 +1533,29 @@ const About = () => (
         </div>
 
         {/* Feature Checkpoints */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px', marginTop: '8px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px', marginTop: '16px' }}>
           {ABOUT_CONFIG.pillars.map((pillar, pIdx) => (
             <motion.div
               key={pIdx}
-              className="glass-panel"
-              whileHover={{ scale: 1.03, translateY: -4, borderColor: `${pillar.color}55`, boxShadow: `0 10px 20px ${pillar.color}15` }}
+              whileHover={{ scale: 1.02, translateY: -2, background: 'rgba(255,255,255,0.04)' }}
               style={{
-                padding: '24px',
-                borderRadius: '16px',
+                padding: '16px',
+                borderRadius: '12px',
                 background: 'rgba(255, 255, 255, 0.02)',
                 border: '1px solid rgba(255, 255, 255, 0.05)',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                transition: 'all 0.3s ease',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '12px'
+                gap: '10px'
               }}
             >
-              <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: `${pillar.color}15`, color: pillar.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem' }}>
-                {pillar.icon}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div style={{ flexShrink: 0, width: '28px', height: '28px', borderRadius: '6px', background: `${pillar.color}15`, color: pillar.color, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  {ICON_MAP[pillar.iconName] || pillar.icon}
+                </div>
+                <h4 style={{ color: '#fff', fontSize: '0.95rem', fontWeight: 700, margin: 0, letterSpacing: '0.01em' }}>{pillar.title}</h4>
               </div>
-              <div>
-                <h4 style={{ color: '#fff', fontSize: '1.05rem', fontWeight: 800, margin: '0 0 4px 0' }}>{pillar.title}</h4>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.6, margin: 0 }}>{pillar.desc}</p>
-              </div>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', lineHeight: 1.5, margin: 0 }}>{pillar.desc}</p>
             </motion.div>
           ))}
         </div>
