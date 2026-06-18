@@ -1661,10 +1661,7 @@ const ResumeSection = () => {
   }));
 
   return (
-    <section id="resume" className="section" style={{ padding: '120px 24px', position: 'relative' }}>
-      {/* 🌌 Background Elements */}
-      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(34, 211, 238, 0.03) 0%, transparent 70%)', filter: 'blur(80px)', pointerEvents: 'none' }}></div>
-      
+    <section id="resume" className="section" style={{ padding: '100px 24px' }}>
       <SectionHeader 
         badge="Resume" 
         color="var(--accent-cyan)"
@@ -1672,140 +1669,67 @@ const ResumeSection = () => {
         desc="A summary of industrial engagement and engineering milestones." 
       />
       
-      <div style={{ maxWidth: '1100px', margin: '80px auto 0' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
-          
-          {/* 💼 Industrial Experience Card - Certificated Style */}
-          {experience.map((exp, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="glass-panel"
-              style={{ 
-                padding: '16px', 
-                borderRadius: '24px',
-                background: 'rgba(255, 255, 255, 0.01)',
-                border: '1px solid rgba(255, 255, 255, 0.05)',
-                position: 'relative',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                boxShadow: '0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05)',
-                transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-                backdropFilter: 'blur(15px)',
-              }}
-              whileHover={{ y: -5, borderColor: `${exp.color}44`, boxShadow: `0 30px 60px rgba(0,0,0,0.6), inset 0 1px 0 ${exp.color}22` }}
-            >
-              {/* Icon Type Box */}
-              <div style={{ 
-                width: '100%', 
-                height: '160px',
-                borderRadius: '16px', 
-                backgroundColor: '#000',
-                position: 'relative',
-                overflow: 'hidden',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                border: `1px solid ${exp.color}22`
-              }}>
-                <div style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background: `radial-gradient(circle at center, ${exp.color}33 0%, transparent 70%)`,
-                  zIndex: 0
-                }} />
-                
-                <div style={{
-                  width: '64px',
-                  height: '64px',
-                  borderRadius: '20px',
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  backdropFilter: 'blur(10px)',
-                  border: `1px solid ${exp.color}44`,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: exp.color,
-                  zIndex: 1,
-                  boxShadow: `0 10px 30px ${exp.color}33`
-                }}>
-                  {exp.icon}
-                </div>
-                
-                <div style={{ position: 'absolute', bottom: '12px', left: '16px', display: 'flex', alignItems: 'center', gap: '8px', zIndex: 1 }}>
-                  <span style={{ fontSize: '0.65rem', fontWeight: 900, color: exp.color, letterSpacing: '0.15em', textTransform: 'uppercase', background: 'rgba(0,0,0,0.6)', padding: '4px 8px', borderRadius: '8px', backdropFilter: 'blur(4px)' }}>
-                    {exp.company}
-                  </span>
-                </div>
-              </div>
-
-              {/* Content Box */}
-              <div style={{ width: '100%', marginTop: '20px', textAlign: 'center', padding: '0 8px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                <h3 style={{ color: '#fff', fontSize: '1.2rem', fontWeight: 900, margin: '0 0 8px 0', letterSpacing: '-0.01em' }}>{exp.role}</h3>
-                
-                <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '0.9rem', marginBottom: '24px', fontWeight: 400, flex: 1 }}>
-                  {exp.desc}
-                </p>
-                
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'rgba(255,255,255,0.4)', fontSize: '0.75rem', fontWeight: 600 }}>
-                    <MapPin size={14} style={{ color: exp.color }} /> {exp.locationShort || exp.location}
-                  </div>
-                  <span style={{ fontSize: '0.7rem', fontWeight: 900, color: 'rgba(255,255,255,0.5)', background: 'rgba(255,255,255,0.03)', padding: '4px 10px', borderRadius: '100px', border: '1px solid rgba(255,255,255,0.05)' }}>{exp.periodShort || exp.period}</span>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-
-          {/* 📄 Executive Call to Action Card */}
+      <div style={{ maxWidth: '800px', margin: '60px auto 0', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        {experience.map((exp, idx) => (
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            key={idx}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="glass-panel"
             style={{ 
-              padding: '48px', 
-              borderRadius: '32px',
-              background: 'linear-gradient(145deg, rgba(34, 211, 238, 0.05), rgba(139, 92, 246, 0.05))',
-              border: '1px solid rgba(255, 255, 255, 0.12)',
+              padding: '32px', 
+              borderRadius: '20px',
+              background: 'rgba(255, 255, 255, 0.02)',
+              border: '1px solid rgba(255, 255, 255, 0.05)',
               display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              textAlign: 'center',
-              transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
+              gap: '24px',
+              alignItems: 'flex-start',
+              transition: 'all 0.3s ease'
             }}
-            whileHover={{ y: -8, background: 'linear-gradient(145deg, rgba(34, 211, 238, 0.08), rgba(139, 92, 246, 0.08))', borderColor: 'rgba(255,255,255,0.2)' }}
+            whileHover={{ y: -4, background: 'rgba(255, 255, 255, 0.03)', borderColor: 'rgba(255, 255, 255, 0.1)' }}
           >
             <div style={{ 
-              width: '72px', height: '72px', borderRadius: '22px', 
-              background: 'rgba(255,255,255,0.04)', display: 'flex', 
-              alignItems: 'center', justifyContent: 'center', marginBottom: '28px',
-              color: 'var(--accent-purple)', border: '1px solid rgba(255,255,255,0.1)',
-              boxShadow: '0 15px 30px rgba(0,0,0,0.2)'
+              width: '56px', height: '56px', borderRadius: '16px', 
+              background: `${exp.color}15`, color: exp.color,
+              display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 
             }}>
-              <Briefcase size={32} />
+              {exp.icon}
             </div>
             
-            <h3 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#fff', marginBottom: '16px', letterSpacing: '-0.02em' }}>Detailed Credentials</h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '40px', maxWidth: '320px' }}>
-              Examine my full engineering portfolio, including academic records and industry certifications.
-            </p>
-            
-            <div style={{ display: 'flex', gap: '16px', width: '100%', flexWrap: 'wrap' }}>
-              <Link to="/resume" className="btn-premium btn-secondary" style={{ flex: 1, justifyContent: 'center', height: '56px', borderRadius: '14px', fontSize: '0.9rem', fontWeight: 800 }}>
-                View Full CV
-              </Link>
-              <a href={HERO_CONFIG.resumePdfName} download className="btn-premium btn-primary" style={{ flex: 1, justifyContent: 'center', height: '56px', borderRadius: '14px', fontSize: '0.9rem', fontWeight: 800 }}>
-                Download PDF <Download size={18} />
-              </a>
+            <div style={{ flex: 1 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '8px', marginBottom: '8px' }}>
+                <div>
+                  <h3 style={{ color: '#fff', fontSize: '1.3rem', fontWeight: 800, margin: '0 0 4px 0' }}>{exp.role}</h3>
+                  <p style={{ color: exp.color, fontWeight: 700, fontSize: '0.9rem', margin: 0 }}>{exp.company}</p>
+                </div>
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.5)', fontWeight: 600, marginBottom: '4px' }}>{exp.periodShort || exp.period}</div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.8rem', color: 'rgba(255,255,255,0.4)', justifyContent: 'flex-end' }}>
+                    <MapPin size={14} /> {exp.locationShort || exp.location}
+                  </div>
+                </div>
+              </div>
+              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '0.95rem', margin: '16px 0 0 0' }}>
+                {exp.desc}
+              </p>
             </div>
           </motion.div>
+        ))}
 
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          style={{ display: 'flex', gap: '16px', marginTop: '32px', justifyContent: 'center', flexWrap: 'wrap' }}
+        >
+          <Link to="/resume" className="btn-premium btn-secondary" style={{ padding: '16px 32px', borderRadius: '12px', fontSize: '0.9rem', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            View Full Resume
+          </Link>
+          <a href={HERO_CONFIG.resumePdfName} download className="btn-premium btn-primary" style={{ padding: '16px 32px', borderRadius: '12px', fontSize: '0.9rem', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+            Download PDF <Download size={18} />
+          </a>
+        </motion.div>
       </div>
     </section>
   );
