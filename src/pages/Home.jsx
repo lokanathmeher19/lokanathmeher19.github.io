@@ -1678,10 +1678,10 @@ const ResumeSection = () => {
   return (
     <section id="resume" className="section" style={{ padding: '100px 24px' }}>
       <SectionHeader 
-        badge="Resume" 
+        badge="EXPERIENCE" 
         color="var(--accent-cyan)"
-        title={<><span className="text-gradient">Professional</span> Trajectory</>} 
-        desc="A summary of industrial engagement and engineering milestones." 
+        title={<><span className="text-gradient">Work</span> Experience</>} 
+        desc="My professional background and industry experience." 
       />
       
       <div style={{ maxWidth: '800px', margin: '60px auto 0', display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -1792,42 +1792,14 @@ export default function Home() {
           ))}
         </div>
 
-        {/* 📟 System Status Bar */}
-        <div style={{ 
-          maxWidth: '800px', margin: '0 auto 40px', padding: '16px',
-          background: 'rgba(255,255,255,0.02)', borderRadius: '100px',
-          border: '1px solid rgba(255,255,255,0.05)', display: 'flex',
-          alignItems: 'center', justifyContent: 'space-between', paddingLeft: '32px', paddingRight: '32px'
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 10px #10b981' }}></div>
-            <span style={{ fontSize: '0.65rem', fontWeight: 800, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>{SYSTEM_CONFIG.archiveStatusText}</span>
-          </div>
-          <div style={{ height: '2px', width: '40px', background: 'rgba(255,255,255,0.05)' }}></div>
-          <span style={{ fontSize: '0.65rem', fontWeight: 800, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>{SYSTEM_CONFIG.deploymentVersion}</span>
-        </div>
-
          <p style={{ 
-           color: 'rgba(255,255,255,0.3)', 
-           fontSize: '0.75rem', 
-           letterSpacing: '0.4em',
-           fontWeight: 900,
-           textTransform: 'uppercase'
+           color: 'rgba(255,255,255,0.4)', 
+           fontSize: '0.85rem', 
+           fontWeight: 500,
          }}>
            {SYSTEM_CONFIG.copyrightText}
          </p>
-
-         {/* Bottom Glow */}
-         <div style={{ 
-           position: 'absolute', bottom: '-150px', left: '50%', transform: 'translateX(-50%)',
-           width: '1000px', height: '300px', background: 'radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%)',
-           filter: 'blur(100px)', zIndex: -1
-         }}></div>
       </footer>
-
-      <div className="app-bg"></div>
-      <div className="glow-orb orb-1"></div>
-      <div className="glow-orb orb-2"></div>
     </div>
   );
 }
