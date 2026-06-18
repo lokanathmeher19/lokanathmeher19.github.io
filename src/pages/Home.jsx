@@ -1434,31 +1434,33 @@ const CoreAchievements = () => {
   const stats = ACHIEVEMENTS;
 
   return (
-    <section id="achievements" className="section" style={{ padding: '80px 24px' }}>
-      <div className="studio-grid">
+    <section id="achievements" className="section" style={{ padding: '40px 24px' }}>
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
+        gap: '16px', 
+        maxWidth: '1000px', 
+        margin: '0 auto' 
+      }}>
         {stats.map((stat, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            whileHover={{ y: -10, background: 'rgba(255,255,255,0.03)', borderColor: stat.color + '33' }}
+            whileHover={{ y: -5, background: 'rgba(255,255,255,0.03)', borderColor: stat.color + '33' }}
             style={{ 
-              gridColumn: window.innerWidth > 1024 ? 'span 3' : 'span 6',
-              padding: '60px 40px',
+              padding: '24px 20px',
               textAlign: 'center',
-              background: 'rgba(255,255,255,0.01)',
+              background: 'rgba(255,255,255,0.02)',
               border: '1px solid rgba(255,255,255,0.05)',
-              borderRadius: '32px',
-              position: 'relative',
-              overflow: 'hidden',
-              transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
+              borderRadius: '16px',
+              transition: 'all 0.3s ease'
             }}
           >
-
-            <div style={{ fontSize: '3.5rem', fontWeight: 950, color: '#fff', marginBottom: '8px', letterSpacing: '-0.05em' }}>{stat.value}</div>
-            <div style={{ fontSize: '0.75rem', fontWeight: 900, color: stat.color, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '12px' }}>{stat.label}</div>
-            <div style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.4)', fontWeight: 600 }}>{stat.sub}</div>
+            <div style={{ fontSize: '2.5rem', fontWeight: 800, color: '#fff', marginBottom: '4px', letterSpacing: '-0.02em' }}>{stat.value}</div>
+            <div style={{ fontSize: '0.8rem', fontWeight: 700, color: stat.color, textTransform: 'uppercase', marginBottom: '6px' }}>{stat.label}</div>
+            <div style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', fontWeight: 500 }}>{stat.sub}</div>
           </motion.div>
         ))}
       </div>
@@ -1469,7 +1471,7 @@ const CoreAchievements = () => {
 
 
 const About = () => (
-  <section id="about" className="section" style={{ padding: '100px 24px' }}>
+  <section id="about" className="section" style={{ padding: '60px 24px' }}>
     <SectionHeader 
       badge={ABOUT_CONFIG.badge} 
       color="var(--accent-purple)"
@@ -1481,10 +1483,9 @@ const About = () => (
       flexWrap: 'wrap', 
       gap: '60px', 
       alignItems: 'center', 
-      justifyContent: 'center', 
-      marginTop: '60px', 
-      maxWidth: '1200px', 
-      margin: '60px auto 0' 
+      justifyContent: 'center',
+      maxWidth: '1100px', 
+      margin: '20px auto 0' 
     }}>
       
       {/* Image with modern background decoration */}
@@ -1492,21 +1493,21 @@ const About = () => (
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        style={{ position: 'relative', flex: '1 1 320px', maxWidth: '360px', display: 'flex', justifyContent: 'center' }}
+        style={{ position: 'relative', flex: '1 1 300px', maxWidth: '380px', display: 'flex', justifyContent: 'center' }}
       >
         <div style={{
-          position: 'absolute', inset: '-20px', background: 'linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(139, 92, 246, 0.2))',
-          filter: 'blur(20px)', borderRadius: '30px', zIndex: -1
+          position: 'absolute', inset: '-10px', background: 'linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(139, 92, 246, 0.2))',
+          filter: 'blur(30px)', borderRadius: '30px', zIndex: -1
         }} />
         <div style={{ 
-          width: '320px', height: '400px', borderRadius: '24px', overflow: 'hidden', 
-          border: '1px solid rgba(255,255,255,0.1)', padding: '10px', background: 'rgba(5, 8, 22, 0.6)',
-          backdropFilter: 'blur(20px)', boxShadow: '0 30px 60px rgba(0,0,0,0.4)'
+          width: '100%', aspectRatio: '4/5', borderRadius: '24px', overflow: 'hidden', 
+          border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(5, 8, 22, 0.6)',
+          boxShadow: '0 30px 60px rgba(0,0,0,0.5)'
         }}>
           <img 
             src={ABOUT_CONFIG.photo} 
             alt="About Me" 
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%', borderRadius: '16px' }} 
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} 
           />
         </div>
       </motion.div>
@@ -1516,35 +1517,44 @@ const About = () => (
         initial={{ opacity: 0, x: 30 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
-        style={{ flex: '1 1 500px', maxWidth: '750px' }}
+        style={{ flex: '2 1 500px', display: 'flex', flexDirection: 'column', gap: '24px' }}
       >
-        <span className="badge">{ABOUT_CONFIG.academicBadge}</span>
-        <h2 className="section-title" style={{ fontSize: 'clamp(2rem, 4vw, 2.5rem)', fontWeight: 850, lineHeight: 1.2, marginBottom: '20px' }}>
-          {ABOUT_CONFIG.academicSubtitlePrefix} <br /><span className="text-gradient">{ABOUT_CONFIG.academicSubtitleGradient}</span>
-        </h2>
-        
-        <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '24px' }}>
-          {ABOUT_CONFIG.aboutText}
-        </p>
+        <div>
+          <span className="badge" style={{ marginBottom: '16px', display: 'inline-block' }}>{ABOUT_CONFIG.academicBadge}</span>
+          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.5rem)', fontWeight: 850, lineHeight: 1.2, margin: '0 0 16px 0', color: '#fff' }}>
+            {ABOUT_CONFIG.academicSubtitlePrefix} <br /><span className="text-gradient">{ABOUT_CONFIG.academicSubtitleGradient}</span>
+          </h2>
+          
+          <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.8, margin: 0 }}>
+            {ABOUT_CONFIG.aboutText}
+          </p>
+        </div>
 
         {/* Feature Checkpoints */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '24px', marginBottom: '30px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px', marginTop: '8px' }}>
           {ABOUT_CONFIG.pillars.map((pillar, pIdx) => (
             <motion.div
               key={pIdx}
               className="glass-panel"
-              whileHover={{ scale: 1.05, translateY: -5, borderColor: `${pillar.color}55`, boxShadow: `0 15px 30px ${pillar.color}22` }}
+              whileHover={{ scale: 1.03, translateY: -4, borderColor: `${pillar.color}55`, boxShadow: `0 10px 20px ${pillar.color}15` }}
               style={{
                 padding: '24px',
                 borderRadius: '16px',
                 background: 'rgba(255, 255, 255, 0.02)',
                 border: '1px solid rgba(255, 255, 255, 0.05)',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '12px'
               }}
             >
-              <div style={{ fontSize: '2rem', marginBottom: '12px' }}>{pillar.icon}</div>
-              <h4 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 800, marginBottom: '8px' }}>{pillar.title}</h4>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.6 }}>{pillar.desc}</p>
+              <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: `${pillar.color}15`, color: pillar.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem' }}>
+                {pillar.icon}
+              </div>
+              <div>
+                <h4 style={{ color: '#fff', fontSize: '1.05rem', fontWeight: 800, margin: '0 0 4px 0' }}>{pillar.title}</h4>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.6, margin: 0 }}>{pillar.desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>

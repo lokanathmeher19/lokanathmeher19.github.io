@@ -273,7 +273,7 @@ export const ABOUT_CONFIG = {
     badge: "ABOUT ME",
     titlePrefix: "Core",
     titleGradient: "Identity",
-    desc: "Mapping the technical frameworks and design philosophies behind the creator.",
+    desc: "",
     academicBadge: "Academic Profile",
     academicSubtitlePrefix: "Building Secure, ",
     academicSubtitleGradient: "Intelligent Systems",
@@ -503,10 +503,10 @@ export const CERTIFICATES_CATEGORIES = [
 
 // --- Core Achievements Config ---
 export const ACHIEVEMENTS = [
-    { label: "PROJECTS_DEPLOYED", value: "10+", sub: "Full-stack & AI", color: "#22d3ee" },
-    { label: "CERTS_VALIDATED", value: "20+", sub: "Industry Credentials", color: "#a855f7" },
-    { label: "ALGORITHMIC_SCORE", value: "1.2k+", sub: "Problem Solving", color: "#3b82f6" },
-    { label: "GITHUB_COMMITS", value: "500+", sub: "Yearly Activity", color: "#10b981" }
+    { label: "Projects Deployed", value: "10+", sub: "Full-stack & AI", color: "#22d3ee" },
+    { label: "Certificates Validated", value: "20+", sub: "Industry Credentials", color: "#a855f7" },
+    { label: "Algorithmic Score", value: "1.2k+", sub: "Problem Solving", color: "#3b82f6" },
+    { label: "GitHub Commits", value: "500+", sub: "Yearly Activity", color: "#10b981" }
 ];
 
 // --- Resume Specific Config ---
