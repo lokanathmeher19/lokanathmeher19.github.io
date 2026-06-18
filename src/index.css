@@ -116,22 +116,7 @@ body {
   pointer-events: none;
 }
 
-.page-root::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 1px;
-  background: linear-gradient(to bottom, 
-    transparent, 
-    rgba(34, 211, 238, 0.05) 5%, 
-    rgba(34, 211, 238, 0.05) 95%, 
-    transparent
-  );
-  z-index: -1;
-  pointer-events: none;
-}
+
 
 
 
