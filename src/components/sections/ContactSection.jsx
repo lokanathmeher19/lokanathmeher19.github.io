@@ -21,29 +21,32 @@ const Contact = () => {
     const toastId = toast.loading("Sending message...");
 
     try {
-      const response = await fetch("https://formsubmit.co/ajax/meherlokanath314@gmail.com", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { 
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
         body: JSON.stringify({
+            access_key: "YOUR_ACCESS_KEY_HERE", // We will replace this
             name: form.name,
             email: form.email,
             message: form.message,
-            _subject: "New Contact Form Submission from Portfolio"
+            subject: "New Contact Form Submission from Portfolio"
         })
       });
 
-      if (response.ok) {
-        toast.success("Message sent successfully! (If this is the first time, please check your email to activate the form)", { id: toastId, duration: 5000 });
+      const result = await response.json();
+
+      if (result.success) {
+        toast.success("Message sent successfully!", { id: toastId });
         setForm({ name: '', email: '', message: '' });
       } else {
-        toast.error("Failed to send message. Please try again later.", { id: toastId });
+        toast.error("Failed to send message: " + result.message, { id: toastId });
       }
     } catch (err) {
       toast.error("Failed to send message. Please try again later.", { id: toastId });
-      console.error("FormSubmit Error:", err);
+      console.error("Web3Forms Error:", err);
     }
   };
 

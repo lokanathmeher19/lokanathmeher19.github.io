@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useMotionValue, useTransform, useSpring, AnimatePresence, useScroll } from 'framer-motion';
-import emailjs from 'emailjs-com';
+
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { 

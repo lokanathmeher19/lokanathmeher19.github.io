@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThumbsUp, ThumbsDown, MessageSquare } from "lucide-react";
-import emailjs from "emailjs-com";
+
 
 import { BLOG_POSTS } from "../data/portfolioData";
 
@@ -47,15 +47,20 @@ export default function Blog() {
     const votes = Object.fromEntries(nextPosts.map((p) => [p.id, { agree: p.agree, disagree: p.disagree }]));
     localStorage.setItem("kd_blog_votes", JSON.stringify(votes));
     localStorage.setItem("kd_blog_voted", JSON.stringify(newVotedByUser));
-
-    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-    if (serviceID && templateID && publicKey) {
-      const postTitle = posts.find((p) => p.id === id)?.title;
-      emailjs.send(serviceID, templateID, { from_name: "Blog Visitor", subject: `Blog Interaction: ${postTitle}`, message: `A user has ${action} : "${postTitle}".` }, publicKey);
-    }
+    const postTitle = posts.find((p) => p.id === id)?.title;
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+          access_key: "YOUR_ACCESS_KEY_HERE", // We will replace this
+          name: "Blog Visitor",
+          subject: `Blog Interaction: ${postTitle}`,
+          message: `A user has ${action} : "${postTitle}".`
+      })
+    }).catch(err => console.error("Web3Forms Error:", err));
   }
 
   return (
