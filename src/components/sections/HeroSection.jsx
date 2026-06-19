@@ -62,10 +62,10 @@ const Hero = () => {
               animate={{ opacity: 1, x: 0 }}
               style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}
             >
-              <span className="badge" style={{ margin: 0 }}>Software Developer</span>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(34, 211, 238, 0.1)', padding: '6px 14px', borderRadius: '100px', border: '1px solid rgba(34, 211, 238, 0.2)' }}>
-                <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22d3ee', boxShadow: '0 0 10px #22d3ee' }}></div>
-                <span style={{ fontSize: '0.65rem', fontWeight: 800, color: '#22d3ee', letterSpacing: '0.05em' }}>AVAILABLE FOR WORK</span>
+              <span className="badge" style={{ margin: 0 }}>Software Development Engineer</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(255, 51, 102, 0.1)', padding: '6px 14px', borderRadius: '100px', border: '1px solid rgba(255, 51, 102, 0.2)' }}>
+                <div className="pulse-dot"></div>
+                <span style={{ fontSize: '0.65rem', fontWeight: 800, color: '#ff3366', letterSpacing: '0.05em' }}>AVAILABLE FOR HIRE</span>
               </div>
             </motion.div>
 
@@ -75,52 +75,164 @@ const Hero = () => {
               transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
               className="hero-title"
               style={{ 
-                fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', 
+                fontSize: 'clamp(2.2rem, 5.5vw, 4rem)', 
                 fontWeight: 900, 
-                letterSpacing: '-0.03em', 
-                lineHeight: 1.1,
-                marginBottom: '24px',
+                letterSpacing: '-0.04em', 
+                lineHeight: 1,
+                marginBottom: '32px',
                 fontFamily: 'var(--font-heading)'
               }}
             >
-              Hi, I'm <br/>
+              <span style={{ color: '#fff' }}>Building the </span>
               <span style={{ 
                 background: 'linear-gradient(90deg, #22d3ee, #3b82f6, #8b5cf6)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 display: 'inline-block'
               }}>
-                Lokanath Meher
+                Digital Future
               </span>
             </motion.h1>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1, duration: 0.8 }}
               style={{ 
-                fontSize: '1.15rem', 
-                color: 'var(--text-secondary)',
-                fontWeight: 400,
-                lineHeight: 1.6,
-                marginBottom: '48px',
-                maxWidth: '600px'
+                marginBottom: '56px',
+                borderLeft: '3px solid var(--accent-cyan)',
+                paddingLeft: '32px',
+                position: 'relative'
               }}
             >
-              A passionate <span style={{ color: '#fff', fontWeight: 600 }}>Software Developer</span> specializing in building exceptional, high-quality websites and applications. I love turning complex problems into simple, beautiful, and intuitive designs.
-            </motion.p>
+              <div style={{ 
+                position: 'absolute', 
+                left: '-3px', top: 0, 
+                height: '40px', width: '3px', 
+                background: '#fff', 
+                boxShadow: '0 0 15px #fff' 
+              }}></div>
+              
+              <h2 style={{ 
+                fontSize: 'clamp(1.8rem, 4vw, 2.4rem)', 
+                fontWeight: 900, 
+                color: '#fff', 
+                lineHeight: 1.2,
+                marginBottom: '16px',
+                letterSpacing: '-0.04em'
+              }}>
+                Hi, I'm <span className="text-gradient">Lokanath Meher</span>
+              </h2>
+              
+              <p style={{ 
+                fontSize: '1.2rem', 
+                color: 'var(--text-secondary)',
+                fontWeight: 500,
+                letterSpacing: '0.01em',
+                lineHeight: 1.4
+              }}>
+                I build <span style={{ color: '#fff', fontWeight: 700 }}>scalable web applications</span> and <span style={{ color: '#fff', fontWeight: 700 }}>secure digital solutions</span>
+              </p>
+            </motion.div>
+
+
+            {/* 🖥️ Engineering Cluster Status */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '12px', 
+                marginBottom: '20px',
+                opacity: 0.8
+              }}
+            >
+              <div style={{ height: '1px', width: '24px', background: 'var(--accent-cyan)' }}></div>
+              <span style={{ fontSize: '0.65rem', fontWeight: 900, color: 'var(--accent-cyan)', letterSpacing: '0.25em', textTransform: 'uppercase' }}>
+                TECHNICAL_SPECIALIZATIONS
+              </span>
+            </motion.div>
+
+            {/* 🔗 Engineering Module Matrix (Essential Trio) */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              style={{ 
+                display: 'flex',
+                gap: '12px',
+                maxWidth: '850px',
+                marginBottom: '48px',
+                flexWrap: 'nowrap'
+              }}
+            >
+              {[
+                { label: "Full-Stack Developer", icon: <Layers size={14} />, desc: "MERN Stack apps" },
+                { label: "Python Developer", icon: <Code2 size={14} />, desc: "Logic & Scripts" },
+                { label: "DSA Solver", icon: <Brain size={14} />, desc: "Problem Solving", isDeep: true }
+              ].map((module, i) => (
+                <motion.div
+                  key={module.label}
+                  whileHover={{ 
+                    scale: 1.02, 
+                    y: -3, 
+                    background: module.isDeep ? 'rgba(34, 211, 238, 0.1)' : 'rgba(255, 255, 255, 0.06)',
+                    borderColor: module.isDeep ? 'var(--accent-cyan)' : 'rgba(255, 255, 255, 0.15)',
+                    boxShadow: module.isDeep ? '0 10px 20px -10px rgba(34, 211, 238, 0.3)' : '0 10px 20px -10px rgba(0, 0, 0, 0.2)'
+                  }}
+                  style={{
+                    flex: '1 1 0',
+                    minWidth: 0,
+                    padding: '12px 14px',
+                    background: module.isDeep ? 'rgba(34, 211, 238, 0.03)' : 'rgba(255, 255, 255, 0.01)',
+                    WebkitBackdropFilter: 'blur(12px)',
+                    backdropFilter: 'blur(12px)',
+                    border: '1px solid rgba(255, 255, 255, 0.05)',
+                    borderBottom: `2px solid ${module.isDeep ? '#00e5ff' : 'var(--accent-cyan)'}`,
+                    borderRadius: '16px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '4px',
+                    cursor: 'default',
+                    transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+                    position: 'relative',
+                    overflow: 'hidden'
+                  }}
+                >
+                  {module.isDeep && (
+                    <div style={{ 
+                      position: 'absolute', 
+                      top: 0, left: 0, right: 0, height: '100%',
+                      background: 'radial-gradient(circle at 50% -20%, rgba(34, 211, 238, 0.15), transparent)',
+                      pointerEvents: 'none'
+                    }}></div>
+                  )}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', position: 'relative', zIndex: 1 }}>
+                    <span style={{ color: 'var(--accent-cyan)', filter: module.isDeep ? 'drop-shadow(0 0 5px rgba(34, 211, 238, 0.5))' : 'none' }}>
+                      {module.icon}
+                    </span>
+                    <span style={{ fontSize: '0.7rem', fontWeight: 850, color: '#fff', letterSpacing: '0.01em', lineHeight: 1.1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{module.label}</span>
+                  </div>
+                  <span style={{ fontSize: '0.55rem', color: 'rgba(255, 255, 255, 0.4)', fontWeight: 600, lineHeight: 1.2, position: 'relative', zIndex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {module.desc}
+                  </span>
+                </motion.div>
+              ))}
+            </motion.div>
 
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginBottom: '64px' }}
+              style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '64px' }}
             >
-              <a href="#projects" className="btn-premium btn-primary" style={{ padding: '14px 28px', borderRadius: '12px', fontSize: '0.95rem' }}>
-                View My Work <ArrowUpRight size={18} />
+              <a href="#projects" className="btn-premium btn-primary" style={{ padding: '10px 20px', borderRadius: '10px', fontSize: '0.85rem' }}>
+                View Projects <ArrowUpRight size={16} />
               </a>
-              <a href="#contact" className="btn-premium btn-secondary" style={{ padding: '14px 28px', borderRadius: '12px', fontSize: '0.95rem' }}>
-                Contact Me
+              <a href="#contact" className="btn-premium btn-secondary" style={{ padding: '10px 20px', borderRadius: '10px', fontSize: '0.85rem' }}>
+                Let's Collaborate
               </a>
             </motion.div>
 

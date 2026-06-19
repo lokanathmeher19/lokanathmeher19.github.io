@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Linkedin, Send } from 'lucide-react';
 import toast from 'react-hot-toast';
-import emailjs from 'emailjs-com';
 import SectionHeader from "./SectionHeader";
 
 const Contact = () => {
@@ -12,7 +11,7 @@ const Contact = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       toast.error("Please fill in all fields.");
@@ -21,24 +20,31 @@ const Contact = () => {
 
     const toastId = toast.loading("Sending message...");
 
-    emailjs.send(
-      import.meta.env.VITE_EMAILJS_SERVICE_ID,
-      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-      {
-        from_name: form.name,
-        reply_to: form.email,
-        message: form.message,
-      },
-      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-    )
-      .then(() => {
-        toast.success("Message sent successfully!", { id: toastId });
-        setForm({ name: '', email: '', message: '' });
-      })
-      .catch((err) => {
-        toast.error("Failed to send message. Please try again later.", { id: toastId });
-        console.error("EmailJS Error:", err);
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/meherlokanath314@gmail.com", {
+        method: "POST",
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            name: form.name,
+            email: form.email,
+            message: form.message,
+            _subject: "New Contact Form Submission from Portfolio"
+        })
       });
+
+      if (response.ok) {
+        toast.success("Message sent successfully! (If this is the first time, please check your email to activate the form)", { id: toastId, duration: 5000 });
+        setForm({ name: '', email: '', message: '' });
+      } else {
+        toast.error("Failed to send message. Please try again later.", { id: toastId });
+      }
+    } catch (err) {
+      toast.error("Failed to send message. Please try again later.", { id: toastId });
+      console.error("FormSubmit Error:", err);
+    }
   };
 
   return (
