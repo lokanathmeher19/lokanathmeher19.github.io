@@ -124,7 +124,7 @@ const Hero = () => {
 
   return (
     <section id="home" className="section" style={{ minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 500px), 1fr))', gap: '80px', alignItems: 'center', width: '100%' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '80px', alignItems: 'center', width: '100%' }}>
           <div style={{ position: 'relative', zIndex: 10 }}>
             <motion.div
               initial={{ opacity: 0, x: -20 }}

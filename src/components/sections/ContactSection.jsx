@@ -28,7 +28,7 @@ const Contact = () => {
             'Accept': 'application/json'
         },
         body: JSON.stringify({
-            access_key: "YOUR_ACCESS_KEY_HERE", // We will replace this
+            access_key: "c5c05138-a234-401e-bc41-3e96514db610",
             name: form.name,
             email: form.email,
             message: form.message,

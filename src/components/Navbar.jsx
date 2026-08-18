@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "../data/portfolioData";
 
 const links = NAV_LINKS;
 
 export default function Navbar() {
   const [active, setActive] = useState("#home");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -43,42 +45,102 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [location.pathname]);
 
-  return (
-    <div className="nav-container">
-      <nav className="navbar">
-        {links.map((link) => {
-          const isHomePage = location.pathname === "/";
-          const isAnchor = link.href.startsWith("#");
-          const Tag = (isAnchor && isHomePage) ? "a" : Link;
-          const toProps = (isAnchor && isHomePage) ? { href: link.href } : { to: isAnchor ? `/${link.href}` : link.href };
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
-          return (
-            <Tag
-              key={link.href}
-              {...toProps}
-              className={`nav-item ${active === link.href ? "active" : ""}`}
-              onClick={() => isAnchor && isHomePage && setActive(link.href)}
-              style={{ position: 'relative' }}
-            >
-              {active === link.href && (
-                <motion.div
-                  layoutId="nav-glow"
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    background: "rgba(255, 255, 255, 0.05)",
-                    borderRadius: "100px",
-                    zIndex: -1,
-                    boxShadow: "0 0 15px rgba(34, 211, 238, 0.15)",
-                  }}
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-              {link.label}
-            </Tag>
-          );
-        })}
-      </nav>
-    </div>
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
+  return (
+    <>
+      <div className="nav-container">
+        {/* Desktop Navbar */}
+        <nav className="navbar desktop-nav">
+          {links.map((link) => {
+            const isHomePage = location.pathname === "/";
+            const isAnchor = link.href.startsWith("#");
+            const Tag = (isAnchor && isHomePage) ? "a" : Link;
+            const toProps = (isAnchor && isHomePage) ? { href: link.href } : { to: isAnchor ? `/${link.href}` : link.href };
+
+            return (
+              <Tag
+                key={link.href}
+                {...toProps}
+                className={`nav-item ${active === link.href ? "active" : ""}`}
+                onClick={() => {
+                  if (isAnchor && isHomePage) setActive(link.href);
+                }}
+                style={{ position: 'relative' }}
+              >
+                {active === link.href && (
+                  <motion.div
+                    layoutId="nav-glow"
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      background: "rgba(255, 255, 255, 0.05)",
+                      borderRadius: "100px",
+                      zIndex: -1,
+                      boxShadow: "0 0 15px rgba(34, 211, 238, 0.15)",
+                    }}
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+                {link.label}
+              </Tag>
+            );
+          })}
+        </nav>
+
+        {/* Mobile Navbar Toggle */}
+        <nav className="navbar mobile-nav-toggle">
+          <button 
+            className="hamburger-btn" 
+            onClick={toggleMobileMenu}
+            aria-label="Toggle Menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </nav>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="mobile-menu-overlay"
+          >
+            <div className="mobile-menu-content">
+              {links.map((link) => {
+                const isHomePage = location.pathname === "/";
+                const isAnchor = link.href.startsWith("#");
+                const Tag = (isAnchor && isHomePage) ? "a" : Link;
+                const toProps = (isAnchor && isHomePage) ? { href: link.href } : { to: isAnchor ? `/${link.href}` : link.href };
+
+                return (
+                  <Tag
+                    key={link.href}
+                    {...toProps}
+                    className={`mobile-nav-item ${active === link.href ? "active" : ""}`}
+                    onClick={() => {
+                      if (isAnchor && isHomePage) setActive(link.href);
+                      closeMobileMenu();
+                    }}
+                  >
+                    {link.label}
+                  </Tag>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

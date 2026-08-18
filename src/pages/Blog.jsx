@@ -55,7 +55,7 @@ export default function Blog() {
           'Accept': 'application/json'
       },
       body: JSON.stringify({
-          access_key: "YOUR_ACCESS_KEY_HERE", // We will replace this
+          access_key: "c5c05138-a234-401e-bc41-3e96514db610",
           name: "Blog Visitor",
           subject: `Blog Interaction: ${postTitle}`,
           message: `A user has ${action} : "${postTitle}".`

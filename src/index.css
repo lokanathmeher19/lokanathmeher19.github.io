@@ -41,7 +41,6 @@ body {
   font-family: var(--font-body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
 .app-container {
@@ -291,7 +290,6 @@ h1, h2, h3, h4 {
 
 @media (max-width: 1024px) {
   .section { padding: 80px 24px; }
-  .navbar { width: calc(100vw - 48px); justify-content: space-around; }
 }
 
 /* 🌀 Modern Tech Animations */
@@ -1151,4 +1149,156 @@ h1, h2, h3, h4 {
   background: var(--row-color, var(--accent-cyan));
   box-shadow: 0 0 10px var(--row-color, var(--accent-cyan));
   height: 32px;
+}
+
+/* ========================================= */
+/* Responsive Mobile & Tablet Styles       */
+/* ========================================= */
+
+/* Mobile Menu & Hamburger Button */
+.mobile-nav-toggle {
+  display: none;
+}
+
+.hamburger-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 15, 30, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+  padding: 24px;
+}
+
+.mobile-nav-item {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  border-radius: 100px;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-align: center;
+  max-width: 300px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-nav-item:hover, .mobile-nav-item.active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Touch Targets Ensure Minimum 44px */
+button, .btn-premium, a {
+  min-height: 44px;
+}
+
+/* Base Responsive Fixes */
+.app-container {
+  overflow-x: hidden;
+  width: 100%;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  /* Navbar tweaks */
+  .desktop-nav {
+    display: none !important;
+  }
+  .mobile-nav-toggle {
+    display: flex !important;
+  }
+  
+  .navbar {
+    width: auto !important;
+    padding: 8px 12px;
+  }
+  
+  .nav-container {
+    top: 16px;
+    right: 16px;
+    left: auto;
+    transform: none;
+  }
+  
+  /* Typography tweaks */
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 3rem) !important;
+  }
+  
+  .section-title {
+    font-size: 1.5rem !important;
+  }
+  
+  /* Layout constraints */
+  .section {
+    padding: 80px 16px !important;
+    overflow-x: hidden;
+  }
+  
+  .studio-grid,
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  
+  .studio-card {
+    padding: 30px !important;
+  }
+  
+  .education-stack-container {
+    height: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 60px 12px !important;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .glass-panel {
+    border-radius: 16px;
+  }
+  
+  .studio-card {
+    padding: 20px !important;
+    border-radius: 20px !important;
+  }
 }
