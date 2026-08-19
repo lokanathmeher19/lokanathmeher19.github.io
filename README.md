@@ -100,7 +100,7 @@ npm run dev
 ## 📬 Let's Connect!
 
 - **📧 Email:** [meherlokanath314@gmail.com](mailto:meherlokanath314@gmail.com)
-- **🔗 LinkedIn:** [lokanath-meher](https://www.linkedin.com/in/lokanath-meher-a79506353/)
+- **🔗 LinkedIn:** [lokanath-meher](https://www.linkedin.com/in/lokanathmeher/)
 - **💻 GitHub:** [lokanathmeher19](https://github.com/lokanathmeher19)
 - **💬 WhatsApp:** [Chat on WhatsApp](https://wa.me/919937164359)
 - **🚀 Telegram:** [@ScorpioX99](http://t.me/ScorpioX99)

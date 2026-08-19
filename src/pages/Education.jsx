@@ -41,79 +41,33 @@ const SectionHeader = ({ badge, title, desc, color = "var(--accent-cyan)" }) => 
   </motion.div>
 );
 
-const EducationCard = ({ edu, index, total, scrollYProgress }) => {
-  const i = index;
-  const N = total;
+const EducationCard = ({ edu, cardPosition, total, onClick }) => {
+  let scale = 1;
+  let y = 0;
+  let z = 0;
+  let rotateX = 0;
+  let opacity = 1;
+  let blurAmount = 0;
+  let pointerEvents = 'auto';
 
-  // Define input ranges and output ranges for this card
-  const input = [];
-  const scale = [];
-  const y = [];
-  const z = [];
-  const rotateX = [];
-  const opacity = [];
-  const rotateZ = [];
-  const blurAmount = [];
-
-  for (let step = 0; step <= N; step++) {
-    const p = step / N;
-    input.push(p);
-
-    if (step < i) {
-      const k = i - step;
-      scale.push(1 - k * 0.04);
-      y.push(k * 24);
-      z.push(-k * 35);
-      rotateX.push(8);
-      opacity.push(1 - k * 0.25);
-      rotateZ.push(0);
-      blurAmount.push(k * 8); // 8px blur per stacked layer to hide info
-    } else if (step === i) {
-      scale.push(1.0);
-      y.push(0);
-      z.push(0);
-      rotateX.push(0);
-      opacity.push(1.0);
-      rotateZ.push(0);
-      blurAmount.push(0); // sharp when active
-    } else {
-      scale.push(0.95);
-      y.push(-800);
-      z.push(50);
-      rotateX.push(-12);
-      opacity.push(0);
-      rotateZ.push(i % 2 === 0 ? -6 : 6);
-      blurAmount.push(0);
-    }
+  if (cardPosition === 0) {
+    scale = 1;
+    y = 0;
+    z = 0;
+    rotateX = 0;
+    opacity = 1;
+    blurAmount = 0;
+    pointerEvents = 'auto';
+  } else {
+    // For cards behind the front one
+    scale = 1 - (cardPosition * 0.04);
+    y = cardPosition * 24;
+    z = -cardPosition * 35;
+    rotateX = 8;
+    opacity = 1 - (cardPosition * 0.25);
+    blurAmount = cardPosition * 8;
+    pointerEvents = 'none'; // Only the front card should be clickable
   }
-
-  // Create transforms
-  const cardScale = useTransform(scrollYProgress, input, scale);
-  const cardY = useTransform(scrollYProgress, input, y);
-  const cardZ = useTransform(scrollYProgress, input, z);
-  const cardRotateX = useTransform(scrollYProgress, input, rotateX);
-  const cardOpacity = useTransform(scrollYProgress, input, opacity);
-  const cardRotateZ = useTransform(scrollYProgress, input, rotateZ);
-  const cardBlur = useTransform(scrollYProgress, input, blurAmount);
-
-  // Apply spring physics for extra butteriness
-  const springConfig = { stiffness: 80, damping: 18, mass: 0.8 };
-  const smoothScale = useSpring(cardScale, springConfig);
-  const smoothY = useSpring(cardY, springConfig);
-  const smoothZ = useSpring(cardZ, springConfig);
-  const smoothRotateX = useSpring(cardRotateX, springConfig);
-  const smoothOpacity = useSpring(cardOpacity, springConfig);
-  const smoothRotateZ = useSpring(cardRotateZ, springConfig);
-  const smoothBlur = useSpring(cardBlur, springConfig);
-
-  // Convert smooth blur number to CSS filter string dynamically
-  const cardFilter = useTransform(smoothBlur, (v) => `blur(${v}px)`);
-
-  // Dynamically disable mouse hover/clicks on cards once they have scrolled away
-  const pointerEvents = useTransform(scrollYProgress, (progress) => {
-    const exitPoint = (i + 0.9) / N;
-    return progress > exitPoint ? 'none' : 'auto';
-  });
 
   // SVG circular gauge variables
   const radius = 30;
@@ -126,20 +80,30 @@ const EducationCard = ({ edu, index, total, scrollYProgress }) => {
 
   return (
     <motion.div
+      onClick={cardPosition === 0 ? onClick : undefined}
+      animate={{
+        scale,
+        y,
+        z,
+        rotateX,
+        opacity,
+        filter: `blur(${blurAmount}px)`,
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 300, 
+        damping: 25,
+        mass: 1
+      }}
       style={{
         position: 'absolute',
         width: '100%',
         height: '100%',
         transformStyle: 'preserve-3d',
-        zIndex: N - i,
-        scale: smoothScale,
-        y: smoothY,
-        z: smoothZ,
-        rotateX: smoothRotateX,
-        opacity: smoothOpacity,
-        rotate: smoothRotateZ,
+        zIndex: total - cardPosition,
         pointerEvents,
-        filter: cardFilter,
+        cursor: cardPosition === 0 ? 'pointer' : 'default',
+        transformOrigin: 'top center'
       }}
     >
       <div
@@ -399,6 +363,8 @@ const MobileEducationCard = ({ edu }) => {
 
 export default function Education() {
   const [isMobile, setIsMobile] = useState(false);
+  const [activeDeck, setActiveDeck] = useState(EDUCATION.map((_, i) => i));
+
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
@@ -406,15 +372,17 @@ export default function Education() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
+  const handleCardClick = () => {
+    setActiveDeck(prev => {
+      const newDeck = [...prev];
+      const frontCard = newDeck.shift();
+      newDeck.push(frontCard);
+      return newDeck;
+    });
+  };
 
   return (
     <section
-      ref={containerRef}
       id="education"
       className="section"
       style={isMobile ? {
@@ -422,9 +390,12 @@ export default function Education() {
         position: 'relative',
         overflow: 'hidden'
       } : {
-        padding: '0',
+        padding: '120px 24px',
         position: 'relative',
-        height: '240vh' // Scroll track duration
+        minHeight: '80vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
       }}
     >
       {/* 🌌 Atmospheric Glow Backdrops */}
@@ -451,38 +422,38 @@ export default function Education() {
           </div>
         </div>
       ) : (
-        // Desktop Layout (3D Sticky Stacking Deck)
+        // Desktop Layout (Interactive Uno Card Deck)
         <div style={{
-          position: 'sticky',
-          top: 0,
-          height: '100vh',
+          position: 'relative',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
           alignItems: 'center',
-          overflow: 'hidden',
-          padding: '24px',
+          width: '100%',
+          maxWidth: '1200px'
         }}>
-          <div style={{ transform: 'translateY(-20px)', zIndex: 10 }}>
+          <div style={{ zIndex: 10, width: '100%', marginBottom: '40px' }}>
             <SectionHeader
               badge="EDUCATION"
               color="#22d3ee"
               title={<><span className="text-gradient">Academic</span> Milestones</>}
-              desc="A chronological log of educational excellence and fundamental knowledge development."
+              desc="Click the top card to flip through the chronological log of educational excellence."
             />
           </div>
 
-          <div className="education-perspective" style={{ marginTop: '40px' }}>
-            <div className="education-stack-container">
-              {EDUCATION.map((edu, idx) => (
-                <EducationCard
-                  key={edu.label}
-                  edu={edu}
-                  index={idx}
-                  total={EDUCATION.length}
-                  scrollYProgress={scrollYProgress}
-                />
-              ))}
+          <div className="education-perspective" style={{ marginTop: '20px' }}>
+            <div className="education-stack-container" style={{ position: 'relative' }}>
+              {EDUCATION.map((edu, originalIndex) => {
+                const currentPosition = activeDeck.indexOf(originalIndex);
+                return (
+                  <EducationCard
+                    key={edu.label}
+                    edu={edu}
+                    cardPosition={currentPosition}
+                    total={EDUCATION.length}
+                    onClick={handleCardClick}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>

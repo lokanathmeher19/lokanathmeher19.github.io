@@ -242,12 +242,12 @@ export const CONTACT_CONFIG = {
     location: "Bargah, Odisha, 768028",
     bhubaneswarLocation: "Bhubaneswar, India",
     github: "https://github.com/lokanathmeher19",
-    linkedin: "https://www.linkedin.com/in/lokanath-meher-a79506353/",
+    linkedin: "https://www.linkedin.com/in/lokanathmeher/",
     instagram: "https://www.instagram.com/syntxerror_01/",
     twitter: "https://x.com/Lokanath_meher_",
     telegram: "http://t.me/ScorpioX99",
     whatsapp: "https://wa.me/919937164359?text=Hello%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect",
-    linkedinQrApiUrl: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.linkedin.com/in/lokanath-meher-a79506353/",
+    linkedinQrApiUrl: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.linkedin.com/in/lokanathmeher/",
     contactParagraph: "Available for freelance projects, open-source collaboration, and strategic consultations."
 };
 

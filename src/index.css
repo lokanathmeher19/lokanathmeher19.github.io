@@ -1225,7 +1225,7 @@ button, .btn-premium, a {
 
 /* Base Responsive Fixes */
 .app-container {
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
 }
 img {
@@ -1266,7 +1266,7 @@ img {
   /* Layout constraints */
   .section {
     padding: 80px 16px !important;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
   
   .studio-grid,
