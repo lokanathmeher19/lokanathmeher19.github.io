@@ -87,7 +87,6 @@ const EducationCard = ({ edu, cardPosition, total, onClick }) => {
         z,
         rotateX,
         opacity,
-        filter: `blur(${blurAmount}px)`,
       }}
       transition={{
         type: "spring",
@@ -99,7 +98,6 @@ const EducationCard = ({ edu, cardPosition, total, onClick }) => {
         position: 'absolute',
         width: '100%',
         height: '100%',
-        transformStyle: 'preserve-3d',
         zIndex: total - cardPosition,
         pointerEvents,
         cursor: cardPosition === 0 ? 'pointer' : 'default',
@@ -162,63 +160,64 @@ const EducationCard = ({ edu, cardPosition, total, onClick }) => {
           <h3 style={{ fontSize: '1.75rem', fontWeight: 900, color: '#fff', marginBottom: '10px', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
             {edu.degree}
           </h3>
-          <div style={{ fontSize: '1rem', color: 'rgba(255, 255, 255, 0.75)', fontWeight: 600, marginBottom: '6px', lineHeight: 1.4 }}>
+          <div style={{ fontSize: '1rem', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 600, marginBottom: '6px', lineHeight: 1.4 }}>
             {edu.institutionShort || edu.institution}
           </div>
-          <div style={{ fontSize: '0.75rem', fontWeight: 800, color: 'rgba(255, 255, 255, 0.35)', letterSpacing: '0.1em' }}>
+          <div style={{ fontSize: '0.75rem', fontWeight: 800, color: 'rgba(255, 255, 255, 0.7)', letterSpacing: '0.1em' }}>
             {edu.university ? `UNIVERSITY: ${edu.university.toUpperCase()}` : edu.board ? `BOARD: ${edu.board.toUpperCase()}` : ''}
           </div>
         </div>
 
         {/* Lower Content */}
-        <div style={{ position: 'relative', zIndex: 1 }}>
-          {/* Score Section with SVG Gauge */}
+        <div style={{ position: 'relative', zIndex: 1, opacity: cardPosition === 0 ? 1 : 0, transition: 'opacity 0.3s' }}>
+          {/* Container holding Score and Tags */}
           <div style={{
-            display: 'flex', alignItems: 'center', gap: '24px',
-            padding: '20px 24px', background: 'rgba(255, 255, 255, 0.01)',
+            display: 'flex', flexDirection: 'column', gap: '24px',
+            padding: '24px', background: 'rgba(255, 255, 255, 0.01)',
             border: '1px solid rgba(255, 255, 255, 0.03)', borderRadius: '24px',
-            marginBottom: '28px',
-            backdropFilter: 'blur(10px)'
           }}>
-            <div style={{ position: 'relative', width: '72px', height: '72px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <svg width="72" height="72" viewBox="0 0 80 80">
-                <circle cx="40" cy="40" r="30" stroke="rgba(255, 255, 255, 0.03)" strokeWidth="5" fill="transparent" />
-                <motion.circle
-                  cx="40" cy="40" r="30"
-                  stroke={edu.color} strokeWidth="5" fill="transparent"
-                  strokeDasharray={circumference}
-                  initial={{ strokeDashoffset: circumference }}
-                  whileInView={{ strokeDashoffset: strokeDashoffset }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.5, ease: "easeOut" }}
-                  strokeLinecap="round"
-                  transform="rotate(-90 40 40)"
-                  style={{ filter: `drop-shadow(0 0 6px ${edu.color}66)` }}
-                />
-              </svg>
-              <div style={{ position: 'absolute', fontSize: '1.1rem', fontWeight: 950, color: '#fff' }}>
-                {edu.score}
+            {/* Score Section with SVG Gauge */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+              <div style={{ position: 'relative', width: '72px', height: '72px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <svg width="72" height="72" viewBox="0 0 80 80">
+                  <circle cx="40" cy="40" r="30" stroke="rgba(255, 255, 255, 0.03)" strokeWidth="5" fill="transparent" />
+                  <motion.circle
+                    cx="40" cy="40" r="30"
+                    stroke={edu.color} strokeWidth="5" fill="transparent"
+                    strokeDasharray={circumference}
+                    initial={{ strokeDashoffset: circumference }}
+                    whileInView={{ strokeDashoffset: strokeDashoffset }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
+                    strokeLinecap="round"
+                    transform="rotate(-90 40 40)"
+                    style={{ filter: `drop-shadow(0 0 6px ${edu.color}66)` }}
+                  />
+                </svg>
+                <div style={{ position: 'absolute', fontSize: '1.1rem', fontWeight: 950, color: '#fff' }}>
+                  {edu.score}
+                </div>
+              </div>
+              <div>
+                <div style={{ fontSize: '0.65rem', color: 'rgba(255, 255, 255, 0.7)', fontWeight: 800, letterSpacing: '0.1em', marginBottom: '4px' }}>ACADEMIC YIELD</div>
+                <div style={{ fontSize: '1rem', fontWeight: 900, color: edu.color }}>
+                  {edu.unit === 'CGPA' ? `${edu.score} / 10.0 CGPA` : `${edu.score}% Overall`}
+                </div>
               </div>
             </div>
-            <div>
-              <div style={{ fontSize: '0.65rem', color: 'rgba(255, 255, 255, 0.4)', fontWeight: 800, letterSpacing: '0.1em', marginBottom: '4px' }}>ACADEMIC YIELD</div>
-              <div style={{ fontSize: '1rem', fontWeight: 900, color: edu.color }}>
-                {edu.unit === 'CGPA' ? `${edu.score} / 10.0 CGPA` : `${edu.score}% Overall`}
-              </div>
-            </div>
-          </div>
 
-          {/* Subject tags */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-            {edu.features.map(feat => (
-              <span key={feat} className="glass-tag" style={{
-                fontSize: '0.65rem', fontWeight: 800, color: 'rgba(255, 255, 255, 0.6)',
-                borderColor: 'rgba(255, 255, 255, 0.06)',
-                padding: '6px 14px', letterSpacing: '0.02em'
-              }}>
-                {feat.toUpperCase()}
-              </span>
-            ))}
+            {/* Subject tags */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              {edu.features.map(feat => (
+                <span key={feat} className="glass-tag" style={{
+                  fontSize: '0.65rem', fontWeight: 800, color: 'rgba(255, 255, 255, 0.9)',
+                  borderColor: 'rgba(255, 255, 255, 0.15)',
+                  padding: '6px 14px', letterSpacing: '0.02em'
+                }}>
+                  {feat.toUpperCase()}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -300,60 +299,63 @@ const MobileEducationCard = ({ edu }) => {
           <h3 style={{ fontSize: '1.4rem', fontWeight: 900, color: '#fff', marginBottom: '8px', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
             {edu.degree}
           </h3>
-          <div style={{ fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.75)', fontWeight: 600, marginBottom: '6px', lineHeight: 1.4 }}>
+          <div style={{ fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 600, marginBottom: '6px', lineHeight: 1.4 }}>
             {edu.institutionShort || edu.institution}
           </div>
-          <div style={{ fontSize: '0.7rem', fontWeight: 800, color: 'rgba(255, 255, 255, 0.35)', letterSpacing: '0.1em' }}>
+          <div style={{ fontSize: '0.7rem', fontWeight: 800, color: 'rgba(255, 255, 255, 0.7)', letterSpacing: '0.1em' }}>
             {edu.university ? `UNIVERSITY: ${edu.university.toUpperCase()}` : edu.board ? `BOARD: ${edu.board.toUpperCase()}` : ''}
           </div>
         </div>
 
         {/* Lower Content */}
         <div style={{ position: 'relative', zIndex: 1, marginTop: '24px' }}>
-          {/* Score Section with SVG Gauge */}
+          {/* Container holding Score and Tags */}
           <div style={{
-            display: 'flex', alignItems: 'center', gap: '20px',
-            padding: '16px 20px', background: 'rgba(255, 255, 255, 0.01)',
+            display: 'flex', flexDirection: 'column', gap: '20px',
+            padding: '20px', background: 'rgba(255, 255, 255, 0.01)',
             border: '1px solid rgba(255, 255, 255, 0.03)', borderRadius: '20px',
-            marginBottom: '20px'
           }}>
-            <div style={{ position: 'relative', width: '64px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <svg width="64" height="64" viewBox="0 0 80 80">
-                <circle cx="40" cy="40" r="30" stroke="rgba(255, 255, 255, 0.03)" strokeWidth="5" fill="transparent" />
-                <motion.circle
-                  cx="40" cy="40" r="30"
-                  stroke={edu.color} strokeWidth="5" fill="transparent"
-                  strokeDasharray={circumference}
-                  initial={{ strokeDashoffset: circumference }}
-                  whileInView={{ strokeDashoffset: strokeDashoffset }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.5, ease: "easeOut" }}
-                  strokeLinecap="round"
-                  transform="rotate(-90 40 40)"
-                />
-              </svg>
-              <div style={{ position: 'absolute', fontSize: '0.95rem', fontWeight: 950, color: '#fff' }}>
-                {edu.score}
+            {/* Score Section with SVG Gauge */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+              <div style={{ position: 'relative', width: '64px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <svg width="64" height="64" viewBox="0 0 80 80">
+                  <circle cx="40" cy="40" r="30" stroke="rgba(255, 255, 255, 0.03)" strokeWidth="5" fill="transparent" />
+                  <motion.circle
+                    cx="40" cy="40" r="30"
+                    stroke={edu.color} strokeWidth="5" fill="transparent"
+                    strokeDasharray={circumference}
+                    initial={{ strokeDashoffset: circumference }}
+                    whileInView={{ strokeDashoffset: strokeDashoffset }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
+                    strokeLinecap="round"
+                    transform="rotate(-90 40 40)"
+                  />
+                </svg>
+                <div style={{ position: 'absolute', fontSize: '0.95rem', fontWeight: 950, color: '#fff' }}>
+                  {edu.score}
+                </div>
+              </div>
+              <div>
+                <div style={{ fontSize: '0.6rem', color: 'rgba(255, 255, 255, 0.7)', fontWeight: 800, letterSpacing: '0.1em', marginBottom: '2px' }}>ACADEMIC YIELD</div>
+                <div style={{ fontSize: '0.85rem', fontWeight: 900, color: edu.color }}>
+                  {edu.unit === 'CGPA' ? `${edu.score} / 10.0 CGPA` : `${edu.score}% Overall`}
+                </div>
               </div>
             </div>
-            <div>
-              <div style={{ fontSize: '0.6rem', color: 'rgba(255, 255, 255, 0.4)', fontWeight: 800, letterSpacing: '0.1em', marginBottom: '2px' }}>ACADEMIC YIELD</div>
-              <div style={{ fontSize: '0.85rem', fontWeight: 900, color: edu.color }}>
-                {edu.unit === 'CGPA' ? `${edu.score} / 10.0 CGPA` : `${edu.score}% Overall`}
-              </div>
-            </div>
-          </div>
 
-          {/* Subject tags */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-            {edu.features.map(feat => (
-              <span key={feat} className="glass-tag" style={{
-                fontSize: '0.6rem', fontWeight: 800, color: 'rgba(255, 255, 255, 0.6)',
-                padding: '5px 12px', letterSpacing: '0.02em'
-              }}>
-                {feat.toUpperCase()}
-              </span>
-            ))}
+            {/* Subject tags */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+              {edu.features.map(feat => (
+                <span key={feat} className="glass-tag" style={{
+                  fontSize: '0.6rem', fontWeight: 800, color: 'rgba(255, 255, 255, 0.9)',
+                  borderColor: 'rgba(255, 255, 255, 0.15)',
+                  padding: '5px 12px', letterSpacing: '0.02em'
+                }}>
+                  {feat.toUpperCase()}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
