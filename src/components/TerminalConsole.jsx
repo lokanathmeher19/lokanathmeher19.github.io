@@ -88,7 +88,7 @@ export default function TerminalConsole() {
                 borderRadius: '8px',
                 padding: '20px',
                 fontFamily: '"Courier New", Courier, monospace',
-                color: '#00ff9d',
+                color: "#8b5cf6",
                 width: '100%',
                 maxWidth: '700px',
                 height: '320px',
@@ -117,7 +117,7 @@ export default function TerminalConsole() {
                     </div>
                 ))}
                 <div style={{ display: 'flex', marginTop: '4px', fontSize: '15px' }}>
-                    <span style={{ marginRight: '8px', color: '#fff' }}>guest@lm_os:~$</span>
+                    <span style={{ marginRight: '8px', color: "#8b5cf6" }}>guest@lm_os:~$</span>
                     <input
                         ref={inputRef}
                         type="text"
@@ -127,7 +127,7 @@ export default function TerminalConsole() {
                         style={{
                             background: 'transparent',
                             border: 'none',
-                            color: '#00ff9d',
+                            color: "#8b5cf6",
                             outline: 'none',
                             flex: 1,
                             fontFamily: 'inherit',

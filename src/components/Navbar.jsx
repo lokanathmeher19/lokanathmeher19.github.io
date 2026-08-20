@@ -83,7 +83,7 @@ export default function Navbar() {
                       background: "rgba(255, 255, 255, 0.05)",
                       borderRadius: "100px",
                       zIndex: -1,
-                      boxShadow: "0 0 15px rgba(34, 211, 238, 0.15)",
+                      boxShadow: "0 0 15px rgba(139, 92, 246, 0.15)",
                     }}
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />

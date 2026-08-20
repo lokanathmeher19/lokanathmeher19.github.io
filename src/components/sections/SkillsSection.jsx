@@ -11,7 +11,7 @@ const Skills = () => {
       title: "Engineering Core",
       desc: "Foundational software principles & systems-level logic.",
       icon: <Terminal size={20} />,
-      color: "#06b6d4",
+      color: "#8b5cf6",
       skills: [
         { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/python/python-original.svg" },
         { name: "C++", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/cplusplus/cplusplus-original.svg" },
@@ -33,7 +33,7 @@ const Skills = () => {
       title: "MERN Full-stack",
       desc: "Application development with reactive frameworks & scalable backends.",
       icon: <Globe size={20} />,
-      color: "#a855f7",
+      color: "#8b5cf6",
       skills: [
         { name: "React.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/react/react-original.svg" },
         { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/nodejs/nodejs-original.svg" },
@@ -53,7 +53,7 @@ const Skills = () => {
       title: "Security",
       desc: "Resilient protocols & offensive research.",
       icon: <ShieldCheck size={20} />,
-      color: "#f97316",
+      color: "#8b5cf6",
       skills: [
         { name: "Kali Linux", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/linux/linux-original.svg" },
         { name: "Metasploit", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/python/python-original.svg" },
@@ -65,7 +65,7 @@ const Skills = () => {
       title: "DevOps",
       desc: "Automation & deployment pipelines.",
       icon: <Box size={20} />,
-      color: "#ec4899",
+      color: "#8b5cf6",
       skills: [
         { name: "Git Workflow", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/git/git-original.svg" },
         { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/docker/docker-original.svg" },
@@ -77,7 +77,7 @@ const Skills = () => {
       title: "Cloud",
       desc: "Serverless & scalable infrastructure.",
       icon: <Cloud size={20} />,
-      color: "#06b6d4",
+      color: "#8b5cf6",
       skills: [
         { name: "AWS Cloud", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg", filter: 'invert(1)' },
         { name: "GCP Services", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@master/icons/googlecloud/googlecloud-original.svg" },
@@ -124,7 +124,7 @@ const Skills = () => {
               <div style={{ width: '36px', height: '36px', borderRadius: '10px', background: `${cat.color}15`, color: cat.color, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 {cat.icon}
               </div>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#fff', margin: 0 }}>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: "#8b5cf6", margin: 0 }}>
                 {cat.title}
               </h3>
             </div>
@@ -145,7 +145,7 @@ const Skills = () => {
                     borderRadius: '8px', 
                     border: '1px solid rgba(255, 255, 255, 0.06)',
                     fontSize: '0.8rem',
-                    color: 'rgba(255,255,255,0.85)',
+                    color: "#8b5cf6",
                     fontWeight: 600
                   }}
                 >

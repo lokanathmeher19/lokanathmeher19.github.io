@@ -8,10 +8,10 @@ import { PROJECTS, INFO_CARDS } from '../../data/portfolioData';
 
 const CoreAchievements = () => {
   const stats = [
-    { label: "PROJECTS_DEPLOYED", value: "10+", sub: "Full-stack & AI", color: "#22d3ee" },
-    { label: "CERTS_VALIDATED", value: "20+", sub: "Industry Credentials", color: "#a855f7" },
-    { label: "ALGORITHMIC_SCORE", value: "1.2k+", sub: "Problem Solving", color: "#3b82f6" },
-    { label: "GITHUB_COMMITS", value: "500+", sub: "Yearly Activity", color: "#10b981" }
+    { label: "PROJECTS_DEPLOYED", value: "10+", sub: "Full-stack & AI", color: "#8b5cf6" },
+    { label: "CERTS_VALIDATED", value: "20+", sub: "Industry Credentials", color: "#8b5cf6" },
+    { label: "ALGORITHMIC_SCORE", value: "1.2k+", sub: "Problem Solving", color: "#8b5cf6" },
+    { label: "GITHUB_COMMITS", value: "500+", sub: "Yearly Activity", color: "#8b5cf6" }
   ];
 
   return (
@@ -37,9 +37,9 @@ const CoreAchievements = () => {
             }}
           >
 
-            <div style={{ fontSize: '3.5rem', fontWeight: 950, color: '#fff', marginBottom: '8px', letterSpacing: '-0.05em' }}>{stat.value}</div>
+            <div style={{ fontSize: '3.5rem', fontWeight: 950, color: "#8b5cf6", marginBottom: '8px', letterSpacing: '-0.05em' }}>{stat.value}</div>
             <div style={{ fontSize: '0.75rem', fontWeight: 900, color: stat.color, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '12px' }}>{stat.label}</div>
-            <div style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.4)', fontWeight: 600 }}>{stat.sub}</div>
+            <div style={{ fontSize: '0.9rem', color: "#8b5cf6", fontWeight: 600 }}>{stat.sub}</div>
           </motion.div>
         ))}
       </div>

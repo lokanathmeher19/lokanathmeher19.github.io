@@ -88,12 +88,12 @@ export default function Resume() {
             paddingTop: '40px' 
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--text-secondary)' }}>
-              <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(34, 211, 238, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(139, 92, 246, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Mail size={18} style={{ color: 'var(--accent-cyan)' }} />
               </div>
               <div>
                 <p style={{ fontSize: '0.7rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '2px' }}>Email</p>
-                <span style={{ fontSize: '0.95rem', fontWeight: 600, color: '#fff' }}>{CONTACT_CONFIG.email}</span>
+                <span style={{ fontSize: '0.95rem', fontWeight: 600, color: "#8b5cf6" }}>{CONTACT_CONFIG.email}</span>
               </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--text-secondary)' }}>
@@ -102,16 +102,16 @@ export default function Resume() {
               </div>
               <div>
                 <p style={{ fontSize: '0.7rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '2px' }}>Contact</p>
-                <span style={{ fontSize: '0.95rem', fontWeight: 600, color: '#fff' }}>{CONTACT_CONFIG.phone}</span>
+                <span style={{ fontSize: '0.95rem', fontWeight: 600, color: "#8b5cf6" }}>{CONTACT_CONFIG.phone}</span>
               </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--text-secondary)' }}>
-              <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(59, 130, 246, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(139, 92, 246, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <MapPin size={18} style={{ color: 'var(--accent-blue)' }} />
               </div>
               <div>
                 <p style={{ fontSize: '0.7rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: '2px' }}>Location</p>
-                <span style={{ fontSize: '0.95rem', fontWeight: 600, color: '#fff' }}>{CONTACT_CONFIG.bhubaneswarLocation}</span>
+                <span style={{ fontSize: '0.95rem', fontWeight: 600, color: "#8b5cf6" }}>{CONTACT_CONFIG.bhubaneswarLocation}</span>
               </div>
             </div>
           </div>
@@ -123,13 +123,13 @@ export default function Resume() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="glass-panel" 
-          style={{ padding: '40px', marginBottom: '40px', borderRadius: '24px', border: '1px solid rgba(34, 211, 238, 0.1)' }}
+          style={{ padding: '40px', marginBottom: '40px', borderRadius: '24px', border: '1px solid rgba(139, 92, 246, 0.1)' }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '24px' }}>
-             <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: 'linear-gradient(135deg, var(--accent-cyan), var(--accent-blue))', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff' }}>
+             <div style={{ width: '48px', height: '48px', borderRadius: '14px', background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%), var(--accent-blue))', display: 'flex', alignItems: 'center', justifyContent: 'center', color: "#8b5cf6" }}>
                 <Star size={24} />
              </div>
-             <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#fff', letterSpacing: '-0.01em' }}>Executive Summary</h2>
+             <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: "#8b5cf6", letterSpacing: '-0.01em' }}>Executive Summary</h2>
           </div>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.15rem', lineHeight: 1.8, fontWeight: 400 }}>
             {RESUME_CONFIG.summary}
@@ -169,7 +169,7 @@ export default function Resume() {
             <section>
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '32px' }}>
                  <div style={{ color: 'var(--accent-purple)' }}><Briefcase size={28} /></div>
-                 <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#fff' }}>Work Experience</h2>
+                 <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: "#8b5cf6" }}>Work Experience</h2>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
                 {experience.map((exp, idx) => (
@@ -183,7 +183,7 @@ export default function Resume() {
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '10px', marginBottom: '20px' }}>
                       <div>
-                        <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#fff', marginBottom: '4px' }}>{exp.role}</h3>
+                        <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: "#8b5cf6", marginBottom: '4px' }}>{exp.role}</h3>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                            <p style={{ color: 'var(--accent-purple)', fontWeight: 700, fontSize: '1.1rem' }}>{exp.company}</p>
                            <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'rgba(255,255,255,0.2)' }}></div>
@@ -209,7 +209,7 @@ export default function Resume() {
             <section>
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '32px' }}>
                  <div style={{ color: 'var(--accent-cyan)' }}><Award size={28} /></div>
-                 <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#fff' }}>Academic History</h2>
+                 <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: "#8b5cf6" }}>Academic History</h2>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
                 {education.map((edu, idx) => (
@@ -222,7 +222,7 @@ export default function Resume() {
                     style={{ padding: '32px', borderRadius: '24px' }}
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '10px', marginBottom: '16px' }}>
-                      <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fff', maxWidth: '350px' }}>{edu.degree}</h3>
+                      <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: "#8b5cf6", maxWidth: '350px' }}>{edu.degree}</h3>
                       <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-muted)', background: 'rgba(255,255,255,0.03)', padding: '6px 14px', borderRadius: '100px', border: '1px solid rgba(255,255,255,0.05)' }}>{edu.period}</span>
                     </div>
                     <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', fontWeight: 600, marginBottom: '20px' }}>{edu.institution}</p>
@@ -251,7 +251,7 @@ export default function Resume() {
             <section>
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '32px' }}>
                  <div style={{ color: 'var(--accent-blue)' }}><Cpu size={28} /></div>
-                 <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#fff' }}>Technical Stack</h2>
+                 <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: "#8b5cf6" }}>Technical Stack</h2>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 {skillGroups.map((group, idx) => (
@@ -261,7 +261,7 @@ export default function Resume() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     className="glass-panel"
-                    style={{ padding: '24px', borderRadius: '20px', border: '1px solid rgba(59, 130, 246, 0.1)' }}
+                    style={{ padding: '24px', borderRadius: '20px', border: '1px solid rgba(139, 92, 246, 0.1)' }}
                   >
                     <h4 style={{ fontSize: '0.75rem', fontWeight: 950, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
                        <div style={{ width: '12px', height: '2px', background: 'var(--accent-blue)' }}></div>
@@ -271,7 +271,7 @@ export default function Resume() {
                       {group.skills.map(skill => (
                         <div key={skill} style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.03)', padding: '10px 16px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.06)' }}>
                           <CheckCircle2 size={14} style={{ color: 'var(--accent-blue)' }} />
-                          <span style={{ fontSize: '0.9rem', fontWeight: 600, color: 'rgba(255,255,255,0.9)' }}>{skill}</span>
+                          <span style={{ fontSize: '0.9rem', fontWeight: 600, color: "#8b5cf6" }}>{skill}</span>
                         </div>
                       ))}
                     </div>
@@ -283,8 +283,8 @@ export default function Resume() {
             {/* 🏆 Honors & Distinctions */}
             <section>
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '32px' }}>
-                 <div style={{ color: '#fbbf24' }}><Star size={28} /></div>
-                 <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#fff' }}>Professional Honors</h2>
+                 <div style={{ color: "#8b5cf6" }}><Star size={28} /></div>
+                 <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: "#8b5cf6" }}>Professional Honors</h2>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 {achievements.map((item, idx) => (
@@ -293,11 +293,11 @@ export default function Resume() {
                     className="glass-panel"
                     style={{ padding: '24px', borderRadius: '20px', display: 'flex', gap: '20px', alignItems: 'flex-start' }}
                   >
-                    <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(251, 191, 36, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fbbf24', flexShrink: 0 }}>
+                    <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(251, 191, 36, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: "#8b5cf6", flexShrink: 0 }}>
                        <Award size={22} />
                     </div>
                     <div>
-                      <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#fff', marginBottom: '6px' }}>{item.title}</h4>
+                      <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: "#8b5cf6", marginBottom: '6px' }}>{item.title}</h4>
                       <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>{item.detail}</p>
                     </div>
                   </motion.div>
@@ -308,8 +308,8 @@ export default function Resume() {
             {/* 🚀 Projects Spotlight */}
             <section>
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '32px' }}>
-                 <div style={{ color: '#f43f5e' }}><Terminal size={28} /></div>
-                 <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#fff' }}>Selected Projects</h2>
+                 <div style={{ color: "#8b5cf6" }}><Terminal size={28} /></div>
+                 <h2 style={{ fontSize: '1.75rem', fontWeight: 800, color: "#8b5cf6" }}>Selected Projects</h2>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 {PROJECTS.slice(0, 3).map((p, idx) => (
@@ -324,7 +324,7 @@ export default function Resume() {
                     </div>
                     <div style={{ flex: 1 }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                        <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: '#fff' }}>{p.title}</h4>
+                        <h4 style={{ fontSize: '1.1rem', fontWeight: 800, color: "#8b5cf6" }}>{p.title}</h4>
                         <LinkIcon size={14} style={{ opacity: 0.5 }} />
                       </div>
                       <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', lineHeight: 1.5 }}>{p.desc}</p>
@@ -354,7 +354,7 @@ export default function Resume() {
                     width="100%"
                     height="100%"
                  >
-                    <div style={{ padding: '40px', textAlign: 'center', color: '#000' }}>
+                    <div style={{ padding: '40px', textAlign: 'center', color: "#8b5cf6" }}>
                       <p style={{ marginBottom: '20px', fontWeight: 600 }}>PDF preview is not supported by your browser.</p>
                       <a href={RESUME_CONFIG.pdfPath} className="btn-premium btn-primary" download>Download PDF Instead</a>
                     </div>

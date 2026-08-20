@@ -63,9 +63,9 @@ const Hero = () => {
               style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}
             >
               <span className="badge" style={{ margin: 0 }}>Software Development Engineer</span>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(255, 51, 102, 0.1)', padding: '6px 14px', borderRadius: '100px', border: '1px solid rgba(255, 51, 102, 0.2)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(139, 92, 246, 0.1)', padding: '6px 14px', borderRadius: '100px', border: '1px solid rgba(139, 92, 246, 0.2)' }}>
                 <div className="pulse-dot"></div>
-                <span style={{ fontSize: '0.65rem', fontWeight: 800, color: '#ff3366', letterSpacing: '0.05em' }}>AVAILABLE FOR HIRE</span>
+                <span style={{ fontSize: '0.65rem', fontWeight: 800, color: "#8b5cf6", letterSpacing: '0.05em' }}>AVAILABLE FOR HIRE</span>
               </div>
             </motion.div>
 
@@ -83,9 +83,9 @@ const Hero = () => {
                 fontFamily: 'var(--font-heading)'
               }}
             >
-              <span style={{ color: '#fff' }}>Building the </span>
+              <span style={{ color: "#8b5cf6" }}>Building the </span>
               <span style={{ 
-                background: 'linear-gradient(90deg, #22d3ee, #3b82f6, #8b5cf6)',
+                background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 display: 'inline-block'
@@ -116,7 +116,7 @@ const Hero = () => {
               <h2 style={{ 
                 fontSize: 'clamp(1.8rem, 4vw, 2.4rem)', 
                 fontWeight: 900, 
-                color: '#fff', 
+                color: "#8b5cf6", 
                 lineHeight: 1.2,
                 marginBottom: '16px',
                 letterSpacing: '-0.04em'
@@ -131,7 +131,7 @@ const Hero = () => {
                 letterSpacing: '0.01em',
                 lineHeight: 1.4
               }}>
-                I build <span style={{ color: '#fff', fontWeight: 700 }}>scalable web applications</span> and <span style={{ color: '#fff', fontWeight: 700 }}>secure digital solutions</span>
+                I build <span style={{ color: "#8b5cf6", fontWeight: 700 }}>scalable web applications</span> and <span style={{ color: "#8b5cf6", fontWeight: 700 }}>secure digital solutions</span>
               </p>
             </motion.div>
 
@@ -178,19 +178,19 @@ const Hero = () => {
                   whileHover={{ 
                     scale: 1.02, 
                     y: -3, 
-                    background: module.isDeep ? 'rgba(34, 211, 238, 0.1)' : 'rgba(255, 255, 255, 0.06)',
+                    background: module.isDeep ? 'rgba(139, 92, 246, 0.1)' : 'rgba(255, 255, 255, 0.06)',
                     borderColor: module.isDeep ? 'var(--accent-cyan)' : 'rgba(255, 255, 255, 0.15)',
-                    boxShadow: module.isDeep ? '0 10px 20px -10px rgba(34, 211, 238, 0.3)' : '0 10px 20px -10px rgba(0, 0, 0, 0.2)'
+                    boxShadow: module.isDeep ? '0 10px 20px -10px rgba(139, 92, 246, 0.3)' : '0 10px 20px -10px rgba(0, 0, 0, 0.2)'
                   }}
                   style={{
                     flex: '1 1 0',
                     minWidth: 0,
                     padding: '12px 14px',
-                    background: module.isDeep ? 'rgba(34, 211, 238, 0.03)' : 'rgba(255, 255, 255, 0.01)',
+                    background: module.isDeep ? 'rgba(139, 92, 246, 0.03)' : 'rgba(255, 255, 255, 0.01)',
                     WebkitBackdropFilter: 'blur(12px)',
                     backdropFilter: 'blur(12px)',
                     border: '1px solid rgba(255, 255, 255, 0.05)',
-                    borderBottom: `2px solid ${module.isDeep ? '#00e5ff' : 'var(--accent-cyan)'}`,
+                    borderBottom: `2px solid ${module.isDeep ? '#8b5cf6' : '#8b5cf6'}`,
                     borderRadius: '16px',
                     display: 'flex',
                     flexDirection: 'column',
@@ -205,17 +205,17 @@ const Hero = () => {
                     <div style={{ 
                       position: 'absolute', 
                       top: 0, left: 0, right: 0, height: '100%',
-                      background: 'radial-gradient(circle at 50% -20%, rgba(34, 211, 238, 0.15), transparent)',
+                      background: 'radial-gradient(circle at 50% -20%, rgba(139, 92, 246, 0.15), transparent)',
                       pointerEvents: 'none'
                     }}></div>
                   )}
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', position: 'relative', zIndex: 1 }}>
-                    <span style={{ color: 'var(--accent-cyan)', filter: module.isDeep ? 'drop-shadow(0 0 5px rgba(34, 211, 238, 0.5))' : 'none' }}>
+                    <span style={{ color: 'var(--accent-cyan)', filter: module.isDeep ? 'drop-shadow(0 0 5px rgba(139, 92, 246, 0.5))' : 'none' }}>
                       {module.icon}
                     </span>
-                    <span style={{ fontSize: '0.7rem', fontWeight: 850, color: '#fff', letterSpacing: '0.01em', lineHeight: 1.1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{module.label}</span>
+                    <span style={{ fontSize: '0.7rem', fontWeight: 850, color: "#8b5cf6", letterSpacing: '0.01em', lineHeight: 1.1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{module.label}</span>
                   </div>
-                  <span style={{ fontSize: '0.55rem', color: 'rgba(255, 255, 255, 0.4)', fontWeight: 600, lineHeight: 1.2, position: 'relative', zIndex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  <span style={{ fontSize: '0.55rem', color: "#8b5cf6", fontWeight: 600, lineHeight: 1.2, position: 'relative', zIndex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                     {module.desc}
                   </span>
                 </motion.div>
@@ -252,7 +252,7 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 + (index * 0.1) }}
-                whileHover={{ y: -5, background: 'rgba(255,255,255,0.05)', borderColor: 'rgba(34, 211, 238, 0.3)' }}
+                whileHover={{ y: -5, background: 'rgba(255,255,255,0.05)', borderColor: 'rgba(139, 92, 246, 0.3)' }}
                 style={{
                   padding: '18px 24px',
                   background: 'rgba(255, 255, 255, 0.02)',
@@ -272,7 +272,7 @@ const Hero = () => {
                   <span style={{ fontSize: '1rem' }}>{info.icon}</span>
                   <span style={{ fontSize: '0.6rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.12em' }}>{info.label}</span>
                 </div>
-                <div style={{ color: '#fff', fontSize: '0.8rem', fontWeight: 600, whiteSpace: 'nowrap' }}>
+                <div style={{ color: "#8b5cf6", fontSize: '0.8rem', fontWeight: 600, whiteSpace: 'nowrap' }}>
                   {info.value}
                 </div>
               </motion.div>
@@ -305,11 +305,11 @@ const Hero = () => {
                 {/* 🎀 Electric Neon Architect Ribbon */}
                 <div style={{ 
                   position: 'absolute', top: '30px', left: '-50px', 
-                  width: '180px', background: 'linear-gradient(135deg, #22d3ee, #818cf8)', 
-                  color: '#020617', transform: 'rotate(-45deg)', textAlign: 'center', 
+                  width: '180px', background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)', 
+                  color: "#8b5cf6", transform: 'rotate(-45deg)', textAlign: 'center', 
                   fontSize: '0.48rem', fontWeight: 950, letterSpacing: '0.08em',
                   padding: '6px 0', 
-                  boxShadow: '0 4px 20px rgba(34, 211, 238, 0.4), 0 0 40px rgba(129, 140, 248, 0.2)', 
+                  boxShadow: '0 4px 20px rgba(139, 92, 246, 0.4), 0 0 40px rgba(139, 92, 246, 0.2)', 
                   zIndex: 30, textTransform: 'uppercase',
                   border: '1px solid rgba(255, 255, 255, 0.2)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center'
@@ -321,20 +321,20 @@ const Hero = () => {
                   onClick={(e) => { e.stopPropagation(); setIsFlipped(!isFlipped); }}
                   style={{ position: 'relative', borderRadius: '22px', overflow: 'hidden', aspectRatio: '3/4', background: '#050816', border: '1px solid rgba(255,255,255,0.05)', cursor: 'pointer' }}
                 >
-                  <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '20px 20px', zIndex: 1 }}></div>
+                  <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%) 1px, transparent 1px), linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%) 1px, transparent 1px)', backgroundSize: '20px 20px', zIndex: 1 }}></div>
                   <img 
                     src={photo} 
                     alt="Lokanath" 
                     style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%', position: 'relative', zIndex: 0 }} 
                   />
-                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '60%', background: 'linear-gradient(to top, rgba(2, 6, 23, 1) 0%, rgba(2, 6, 23, 0.4) 50%, transparent 100%)', zIndex: 2 }}></div>
+                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '60%', background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%) 0%, rgba(2, 6, 23, 0.4) 50%, transparent 100%)', zIndex: 2 }}></div>
                   
                   {/* ✨ Flip Hint Badge */}
                   <div style={{ 
                     position: 'absolute', bottom: '24px', left: '50%', transform: 'translateX(-50%)',
                     zIndex: 10, background: 'rgba(2, 6, 23, 0.7)', backdropFilter: 'blur(12px)',
-                    padding: '6px 14px', borderRadius: '100px', border: '1px solid rgba(34, 211, 238, 0.4)',
-                    display: 'flex', alignItems: 'center', gap: '8px', color: '#fff',
+                    padding: '6px 14px', borderRadius: '100px', border: '1px solid rgba(139, 92, 246, 0.4)',
+                    display: 'flex', alignItems: 'center', gap: '8px', color: "#8b5cf6",
                     fontSize: '0.55rem', fontWeight: 800, letterSpacing: '0.2em',
                     boxShadow: '0 8px 32px rgba(0, 0, 0, 0.8)'
                   }}>
@@ -351,19 +351,19 @@ const Hero = () => {
                   zIndex: 100 
                 }}>
                   <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-                    <motion.a whileHover={{ y: -4, color: '#fff' }} whileTap={{ scale: 0.9 }} href="https://github.com/lokanathmeher19" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.45)', transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
+                    <motion.a whileHover={{ y: -4, color: "#8b5cf6" }} whileTap={{ scale: 0.9 }} href="https://github.com/lokanathmeher19" target="_blank" rel="noopener noreferrer" style={{ color: "#8b5cf6", transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
                       <Github size={20} />
                     </motion.a>
-                    <motion.a whileHover={{ y: -4, color: '#0077b5' }} whileTap={{ scale: 0.9 }} href="https://www.linkedin.com/in/lokanathmeher/" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.45)', transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
+                    <motion.a whileHover={{ y: -4, color: "#8b5cf6" }} whileTap={{ scale: 0.9 }} href="https://www.linkedin.com/in/lokanathmeher/" target="_blank" rel="noopener noreferrer" style={{ color: "#8b5cf6", transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
                       <Linkedin size={20} />
                     </motion.a>
-                    <motion.a whileHover={{ y: -4, color: '#E4405F' }} whileTap={{ scale: 0.9 }} href="https://www.instagram.com/syntxerror_01/" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.45)', transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
+                    <motion.a whileHover={{ y: -4, color: "#8b5cf6" }} whileTap={{ scale: 0.9 }} href="https://www.instagram.com/syntxerror_01/" target="_blank" rel="noopener noreferrer" style={{ color: "#8b5cf6", transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
                       <Instagram size={20} />
                     </motion.a>
-                    <motion.a whileHover={{ y: -4, color: '#25D366' }} whileTap={{ scale: 0.9 }} href="https://wa.me/919937164359?text=Hello%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.45)', transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
+                    <motion.a whileHover={{ y: -4, color: "#8b5cf6" }} whileTap={{ scale: 0.9 }} href="https://wa.me/919937164359?text=Hello%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect" target="_blank" rel="noopener noreferrer" style={{ color: "#8b5cf6", transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
                       <WhatsAppIcon size={20} />
                     </motion.a>
-                    <motion.a whileHover={{ y: -4, color: '#fff' }} whileTap={{ scale: 0.9 }} href="https://x.com/Lokanath_meher_" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.45)', transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
+                    <motion.a whileHover={{ y: -4, color: "#8b5cf6" }} whileTap={{ scale: 0.9 }} href="https://x.com/Lokanath_meher_" target="_blank" rel="noopener noreferrer" style={{ color: "#8b5cf6", transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
                       <XIcon size={18} />
                     </motion.a>
                   </div>
@@ -390,27 +390,27 @@ const Hero = () => {
                   height: '100%', padding: '24px', borderRadius: '32px', 
                   display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
                   border: '2px solid var(--accent-cyan)', background: 'rgba(2, 6, 23, 0.98)',
-                  boxShadow: '0 0 60px rgba(34, 211, 238, 0.15)',
+                  boxShadow: '0 0 60px rgba(139, 92, 246, 0.15)',
                   cursor: 'pointer'
                 }}
               >
                 <div style={{ 
                   marginBottom: '28px',
                   background: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(34, 211, 238, 0.4)',
+                  border: '1px solid rgba(139, 92, 246, 0.4)',
                   padding: '6px 14px',
                   borderRadius: '100px',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '10px',
-                  boxShadow: '0 0 20px rgba(34, 211, 238, 0.1)'
+                  boxShadow: '0 0 20px rgba(139, 92, 246, 0.1)'
                 }}>
                   <Linkedin size={14} color="var(--accent-cyan)" />
                   <span style={{ 
                     fontSize: '0.65rem', 
                     fontWeight: 800, 
                     letterSpacing: '0.15em', 
-                    color: '#fff',
+                    color: "#8b5cf6",
                     textTransform: 'uppercase'
                   }}>
                     Connect in <span style={{ color: 'var(--accent-cyan)' }}>Linkedin</span>
@@ -419,7 +419,7 @@ const Hero = () => {
                 
                 <div style={{ 
                   background: '#fff', padding: '12px', borderRadius: '16px', 
-                  boxShadow: '0 0 40px rgba(34, 211, 238, 0.2)', marginBottom: '24px'
+                  boxShadow: '0 0 40px rgba(139, 92, 246, 0.2)', marginBottom: '24px'
                 }}>
                   <img 
                     src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.linkedin.com/in/lokanathmeher/`} 
@@ -432,7 +432,7 @@ const Hero = () => {
                   <p style={{ 
                     fontFamily: "'Herr Von Muellerhoff', cursive", 
                     fontSize: '2.8rem', 
-                    color: '#fff',
+                    color: "#8b5cf6",
                     marginBottom: '-10px',
                     opacity: 0.9,
                     fontWeight: 400
@@ -440,7 +440,7 @@ const Hero = () => {
                     Lokanath Meher
                   </p>
                   <div style={{ 
-                    color: 'rgba(255,255,255,0.4)', 
+                    color: "#8b5cf6", 
                     fontSize: '0.6rem', 
                     fontWeight: 400, 
                     letterSpacing: '0.5em',

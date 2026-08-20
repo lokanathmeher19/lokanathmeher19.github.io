@@ -15,10 +15,10 @@ const getCertColor = (org) => {
   const matchingCert = CERTIFICATES.find(c => c.org === org || c.issuer === org);
   if (matchingCert && matchingCert.color) return matchingCert.color;
   const o = org.toLowerCase();
-  if (o.includes('nxtwave')) return '#22d3ee';
-  if (o.includes('coursera') || o.includes('google') || o.includes('ibm') || o.includes('cisco')) return '#4285F4';
-  if (o.includes('giet') || o.includes('nielit') || o.includes('suravi')) return '#f97316';
-  if (o.includes('deloitte')) return '#86BC25';
+  if (o.includes('nxtwave')) return '#8b5cf6';
+  if (o.includes('coursera') || o.includes('google') || o.includes('ibm') || o.includes('cisco')) return '#8b5cf6';
+  if (o.includes('giet') || o.includes('nielit') || o.includes('suravi')) return '#8b5cf6';
+  if (o.includes('deloitte')) return '#8b5cf6';
   return '#8b5cf6';
 };
 
@@ -105,7 +105,7 @@ const PreviewCard = ({ cert }) => {
             alt={cert.title} 
             style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
           />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 80%)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%) 0%, transparent 80%)' }} />
           
           <div style={{ position: 'absolute', bottom: '12px', left: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ fontSize: '0.65rem', fontWeight: 900, color: certColor, letterSpacing: '0.15em', textTransform: 'uppercase' }}>{cert.org}</span>
@@ -113,8 +113,8 @@ const PreviewCard = ({ cert }) => {
         </div>
 
         <div style={{ width: '100%', marginTop: '20px', transform: 'translateZ(30px)', textAlign: 'center', padding: '0 8px' }}>
-          <h4 style={{ color: '#fff', fontSize: '1.05rem', fontWeight: 800, margin: '0 0 8px 0', lineHeight: '1.4' }}>{cert.title}</h4>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.65rem', fontWeight: 900, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em' }}>
+          <h4 style={{ color: "#8b5cf6", fontSize: '1.05rem', fontWeight: 800, margin: '0 0 8px 0', lineHeight: '1.4' }}>{cert.title}</h4>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.65rem', fontWeight: 900, color: "#8b5cf6", letterSpacing: '0.1em' }}>
             <Award size={10} style={{ color: certColor }} />
             CREDENTIAL • {cert.date}
           </div>
@@ -327,7 +327,7 @@ export default function Certificates() {
                     }}>
                       {cert.title}
                     </h4>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.75rem', color: 'rgba(255,255,255,0.35)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.75rem', color: "#8b5cf6" }}>
                       <span style={{ color: certColor, fontWeight: 700 }}>{cert.org}</span>
                       <span>•</span>
                       <span>{cert.date}</span>
@@ -374,7 +374,7 @@ export default function Certificates() {
                     marginTop: '28px',
                     background: 'rgba(255, 255, 255, 0.02)',
                     border: '1px solid rgba(255, 255, 255, 0.08)',
-                    color: '#fff',
+                    color: "#8b5cf6",
                     borderRadius: '12px',
                     padding: '12px 28px',
                     fontSize: '0.8rem',
@@ -391,7 +391,7 @@ export default function Certificates() {
                 </motion.button>
               </motion.div>
             ) : (
-              <div style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.9rem' }}>Select a certificate to view details</div>
+              <div style={{ color: "#8b5cf6", fontSize: '0.9rem' }}>Select a certificate to view details</div>
             )}
           </AnimatePresence>
         </div>
@@ -435,7 +435,7 @@ export default function Certificates() {
               >
                 <div style={{ aspectRatio: '16/10', position: 'relative' }}>
                   <img src={cert.img} alt={cert.title} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
-                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #000 0%, transparent 80%)' }} />
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)' }} />
                   
                   <div style={{ position: 'absolute', bottom: '12px', left: '16px' }}>
                     <span style={{ fontSize: '0.55rem', fontWeight: 900, color: certColor, letterSpacing: '0.15em', textTransform: 'uppercase' }}>{cert.org}</span>
@@ -443,9 +443,9 @@ export default function Certificates() {
                 </div>
                 
                 <div style={{ padding: '16px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                  <h4 style={{ color: '#fff', fontSize: '0.9rem', fontWeight: 800, margin: '0 0 12px 0', lineHeight: 1.4 }}>{cert.title}</h4>
+                  <h4 style={{ color: "#8b5cf6", fontSize: '0.9rem', fontWeight: 800, margin: '0 0 12px 0', lineHeight: 1.4 }}>{cert.title}</h4>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <span style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.35)', fontWeight: 800 }}>{cert.date}</span>
+                    <span style={{ fontSize: '0.55rem', color: "#8b5cf6", fontWeight: 800 }}>{cert.date}</span>
                     <div style={{ color: certColor, display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.75rem', fontWeight: 700 }}>
                       VIEW <Maximize2 size={10} />
                     </div>
@@ -458,7 +458,7 @@ export default function Certificates() {
         
         <div style={{ 
           textAlign: 'center', 
-          color: 'rgba(255,255,255,0.25)', 
+          color: "#8b5cf6", 
           fontSize: '0.72rem', 
           fontWeight: 600,
           letterSpacing: '0.05em',
@@ -501,7 +501,7 @@ export default function Certificates() {
                 border: '1px solid rgba(255, 255, 255, 0.15)',
                 borderRadius: '50%',
                 width: '44px', height: '44px',
-                color: '#fff', cursor: 'pointer',
+                color: "#8b5cf6", cursor: 'pointer',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 zIndex: 10001
               }}
@@ -538,7 +538,7 @@ export default function Certificates() {
                 }}
               />
               <div style={{ marginTop: '32px', textAlign: 'center', paddingBottom: '40px' }}>
-                 <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#fff', marginBottom: '10px', letterSpacing: '-0.02em' }}>{selectedCert.title}</h2>
+                 <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: "#8b5cf6", marginBottom: '10px', letterSpacing: '-0.02em' }}>{selectedCert.title}</h2>
                  <p style={{ color: getCertColor(selectedCert.org) || 'var(--text-secondary)', letterSpacing: '0.1em', fontWeight: 700, fontSize: '0.8rem' }}>
                     {selectedCert.org.toUpperCase()} • OFFICIAL CREDENTIAL
                  </p>

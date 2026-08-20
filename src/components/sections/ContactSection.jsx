@@ -88,7 +88,7 @@ const Contact = () => {
                   onChange={handleChange} 
                   placeholder="Name" 
                   required 
-                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--glass-border)', padding: '16px', borderRadius: '12px', color: '#fff' }} 
+                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--glass-border)', padding: '16px', borderRadius: '12px', color: "#8b5cf6" }} 
                 />
                 <input 
                   type="email" 
@@ -97,7 +97,7 @@ const Contact = () => {
                   onChange={handleChange} 
                   placeholder="Email" 
                   required 
-                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--glass-border)', padding: '16px', borderRadius: '12px', color: '#fff' }} 
+                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--glass-border)', padding: '16px', borderRadius: '12px', color: "#8b5cf6" }} 
                 />
              </div>
              <textarea 
@@ -107,7 +107,7 @@ const Contact = () => {
                placeholder="Message" 
                rows="5" 
                required 
-               style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--glass-border)', padding: '16px', borderRadius: '12px', color: '#fff', resize: 'none' }}
+               style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--glass-border)', padding: '16px', borderRadius: '12px', color: "#8b5cf6", resize: 'none' }}
              ></textarea>
              <button type="submit" className="btn-premium btn-primary" style={{ width: 'fit-content' }}>Send Message <Send size={18} /></button>
           </form>

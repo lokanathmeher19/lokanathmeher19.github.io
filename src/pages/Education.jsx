@@ -89,13 +89,13 @@ const TimelineNode = ({ edu, index }) => {
           <div style={{ fontSize: '0.7rem', fontWeight: 900, color: edu.color, letterSpacing: '0.25em', marginBottom: '8px' }}>
             {edu.label}
           </div>
-          <h3 style={{ fontSize: '1.5rem', fontWeight: 900, color: '#fff', marginBottom: '8px', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+          <h3 style={{ fontSize: '1.5rem', fontWeight: 900, color: "#8b5cf6", marginBottom: '8px', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
             {edu.degree}
           </h3>
-          <div style={{ fontSize: '0.95rem', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 600, marginBottom: '6px', lineHeight: 1.4 }}>
+          <div style={{ fontSize: '0.95rem', color: "#8b5cf6", fontWeight: 600, marginBottom: '6px', lineHeight: 1.4 }}>
             {edu.institutionShort || edu.institution}
           </div>
-          <div style={{ fontSize: '0.75rem', fontWeight: 800, color: 'rgba(255, 255, 255, 0.7)', letterSpacing: '0.1em', marginBottom: '24px' }}>
+          <div style={{ fontSize: '0.75rem', fontWeight: 800, color: "#8b5cf6", letterSpacing: '0.1em', marginBottom: '24px' }}>
             {edu.university ? `UNIVERSITY: ${edu.university.toUpperCase()}` : edu.board ? `BOARD: ${edu.board.toUpperCase()}` : ''}
           </div>
 
@@ -105,7 +105,7 @@ const TimelineNode = ({ edu, index }) => {
             border: '1px solid rgba(255, 255, 255, 0.03)', marginBottom: '20px'
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '0.65rem', color: 'rgba(255, 255, 255, 0.6)', fontWeight: 800, letterSpacing: '0.1em' }}>
+              <span style={{ fontSize: '0.65rem', color: "#8b5cf6", fontWeight: 800, letterSpacing: '0.1em' }}>
                 ACADEMIC YIELD
               </span>
               <span style={{ fontSize: '0.9rem', fontWeight: 900, color: edu.color }}>
@@ -154,13 +154,13 @@ export default function Education() {
       <div style={{
         position: 'absolute', top: '10%', left: '50%', transform: 'translateX(-50%)',
         width: '800px', height: '800px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(34, 211, 238, 0.03) 0%, transparent 60%)',
+        background: 'radial-gradient(circle, rgba(139, 92, 246, 0.03) 0%, transparent 60%)',
         pointerEvents: 'none', zIndex: 0
       }}></div>
 
       <SectionHeader
         badge="EDUCATION"
-        color="#22d3ee"
+        color="#8b5cf6"
         title={<><span className="text-gradient">Academic</span> Milestones</>}
         desc="A chronological log of educational excellence mapped across a digital timeline."
       />

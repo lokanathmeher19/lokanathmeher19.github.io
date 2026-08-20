@@ -119,7 +119,7 @@ const PreviewCard = ({ cert }) => {
             alt={cert.title} 
             style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
           />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 80%)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%) 0%, transparent 80%)' }} />
           
           <div style={{ position: 'absolute', bottom: '12px', left: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ fontSize: '0.65rem', fontWeight: 900, color: cert.color || 'var(--accent-purple)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>{cert.issuer}</span>
@@ -127,8 +127,8 @@ const PreviewCard = ({ cert }) => {
         </div>
 
         <div style={{ width: '100%', marginTop: '20px', transform: 'translateZ(30px)', textAlign: 'center', padding: '0 8px' }}>
-          <h4 style={{ color: '#fff', fontSize: '1.05rem', fontWeight: 800, margin: '0 0 8px 0', lineHeight: '1.4' }}>{cert.title}</h4>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.65rem', fontWeight: 900, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em' }}>
+          <h4 style={{ color: "#8b5cf6", fontSize: '1.05rem', fontWeight: 800, margin: '0 0 8px 0', lineHeight: '1.4' }}>{cert.title}</h4>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.65rem', fontWeight: 900, color: "#8b5cf6", letterSpacing: '0.1em' }}>
             <Award size={10} style={{ color: cert.color }} />
             {cert.category} CREDENTIAL
           </div>
@@ -152,28 +152,28 @@ const Certificates = () => {
   ];
 
   const certifications = [
-    { title: "Intro to Generative AI", issuer: "Google Cloud", img: cert_google, color: "#4285F4", category: 'COMPANY' },
-    { title: "Cybersecurity Essentials", issuer: "IBM", img: cert_ibm, color: "#052FAD", category: 'COMPANY' },
-    { title: "Data Analytics Simulation", issuer: "Deloitte", img: cert_deloitte, color: "#86BC25", category: 'COMPANY' },
-    { title: "Responsive Web Dev Mastery", issuer: "NxtWave", img: cert_nxtwave, color: "#22d3ee", category: 'NXTWAVE' },
-    { title: "ICCOSET 2024 Conference", issuer: "GIET", img: cert_giet_conf, color: "#f97316", category: 'GIET' },
-    { title: "Python Development Exp.", issuer: "CodTech", img: cert_codtech, color: "#3776ab", category: 'COMPANY' },
-    { title: "Full Stack Development", issuer: "Simplilearn", img: cert_simplilearn, color: "#ff9900", category: 'COMPANY' },
+    { title: "Intro to Generative AI", issuer: "Google Cloud", img: cert_google, color: "#8b5cf6", category: 'COMPANY' },
+    { title: "Cybersecurity Essentials", issuer: "IBM", img: cert_ibm, color: "#8b5cf6", category: 'COMPANY' },
+    { title: "Data Analytics Simulation", issuer: "Deloitte", img: cert_deloitte, color: "#8b5cf6", category: 'COMPANY' },
+    { title: "Responsive Web Dev Mastery", issuer: "NxtWave", img: cert_nxtwave, color: "#8b5cf6", category: 'NXTWAVE' },
+    { title: "ICCOSET 2024 Conference", issuer: "GIET", img: cert_giet_conf, color: "#8b5cf6", category: 'GIET' },
+    { title: "Python Development Exp.", issuer: "CodTech", img: cert_codtech, color: "#8b5cf6", category: 'COMPANY' },
+    { title: "Full Stack Development", issuer: "Simplilearn", img: cert_simplilearn, color: "#8b5cf6", category: 'COMPANY' },
     { title: "Python Achievement Cert", issuer: "Codec", img: cert_codec, color: "#8b5cf6", category: 'COMPANY' },
-    { title: "Autonomous Vehicle Sys", issuer: "NxtWave", img: cert_autonomous, color: "#06b6d4", category: 'NXTWAVE' },
-    { title: "Model Fiesta 2025", issuer: "SURAVI", img: cert_suravi, color: "#ec4899", category: 'COMPANY' },
-    { title: "CAD Design Foundations", issuer: "NIELIT", img: cert_cad, color: "#10b981", category: 'COMPANY' },
-    { title: "Drone Aerodynamics", issuer: "NIELIT", img: cert_drone, color: "#e11d48", category: 'COMPANY' },
-    { title: "Google Gemini AI Acad.", issuer: "Google", img: cert_gemini, color: "#4285F4", category: 'COMPANY' },
-    { title: "WordPress Dev Pro", issuer: "Coursera", img: cert_wordpress, color: "#21759b", category: 'COURSERA' },
-    { title: "Static Website Design", issuer: "NxtWave", img: cert_static, color: "#22d3ee", category: 'NXTWAVE' },
+    { title: "Autonomous Vehicle Sys", issuer: "NxtWave", img: cert_autonomous, color: "#8b5cf6", category: 'NXTWAVE' },
+    { title: "Model Fiesta 2025", issuer: "SURAVI", img: cert_suravi, color: "#8b5cf6", category: 'COMPANY' },
+    { title: "CAD Design Foundations", issuer: "NIELIT", img: cert_cad, color: "#8b5cf6", category: 'COMPANY' },
+    { title: "Drone Aerodynamics", issuer: "NIELIT", img: cert_drone, color: "#8b5cf6", category: 'COMPANY' },
+    { title: "Google Gemini AI Acad.", issuer: "Google", img: cert_gemini, color: "#8b5cf6", category: 'COMPANY' },
+    { title: "WordPress Dev Pro", issuer: "Coursera", img: cert_wordpress, color: "#8b5cf6", category: 'COURSERA' },
+    { title: "Static Website Design", issuer: "NxtWave", img: cert_static, color: "#8b5cf6", category: 'NXTWAVE' },
     { title: "Python Tech Internship", issuer: "Codec", img: cert_codec_intern, color: "#8b5cf6", category: 'COMPANY' },
-    { title: "Research Paper (GIET)", issuer: "NCCENGT", img: cert_nccengt, color: "#f97316", category: 'GIET' },
+    { title: "Research Paper (GIET)", issuer: "NCCENGT", img: cert_nccengt, color: "#8b5cf6", category: 'GIET' },
     { title: "Industrial Workshop", issuer: "Skill dev", img: cert_workshop, color: "#8b5cf6", category: 'COMPANY' },
-    { title: "Deloitte Consulting Sim.", issuer: "Deloitte", img: cert_deloatte_2, color: "#86BC25", category: 'COMPANY' },
-    { title: "Cybersecurity Awareness", issuer: "Cisco", img: cert_cyber_awareness, color: "#00bceb", category: 'COMPANY' },
-    { title: "NxtWave Professional", issuer: "Mastery", img: cert_nxtwave_alt, color: "#22d3ee", category: 'NXTWAVE' },
-    { title: "HackerRank Skills Gold", issuer: "HackerRank", img: cert_hackerrank, color: "#2ec866", category: 'COMPANY' }
+    { title: "Deloitte Consulting Sim.", issuer: "Deloitte", img: cert_deloatte_2, color: "#8b5cf6", category: 'COMPANY' },
+    { title: "Cybersecurity Awareness", issuer: "Cisco", img: cert_cyber_awareness, color: "#8b5cf6", category: 'COMPANY' },
+    { title: "NxtWave Professional", issuer: "Mastery", img: cert_nxtwave_alt, color: "#8b5cf6", category: 'NXTWAVE' },
+    { title: "HackerRank Skills Gold", issuer: "HackerRank", img: cert_hackerrank, color: "#8b5cf6", category: 'COMPANY' }
   ];
 
   const filteredCerts = activeFilter === 'ALL' 
@@ -352,7 +352,7 @@ const Certificates = () => {
                     }}>
                       {cert.title}
                     </h4>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.75rem', color: 'rgba(255,255,255,0.35)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.75rem', color: "#8b5cf6" }}>
                       <span style={{ color: cert.color, fontWeight: 700 }}>{cert.issuer}</span>
                       <span>•</span>
                       <span>{cert.category}</span>
@@ -399,7 +399,7 @@ const Certificates = () => {
                     marginTop: '28px',
                     background: 'rgba(255, 255, 255, 0.02)',
                     border: '1px solid rgba(255, 255, 255, 0.08)',
-                    color: '#fff',
+                    color: "#8b5cf6",
                     borderRadius: '12px',
                     padding: '12px 28px',
                     fontSize: '0.8rem',
@@ -416,7 +416,7 @@ const Certificates = () => {
                 </motion.button>
               </motion.div>
             ) : (
-              <div style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.9rem' }}>Select a certificate to view details</div>
+              <div style={{ color: "#8b5cf6", fontSize: '0.9rem' }}>Select a certificate to view details</div>
             )}
           </AnimatePresence>
         </div>
@@ -458,7 +458,7 @@ const Certificates = () => {
             >
               <div style={{ aspectRatio: '16/10', position: 'relative' }}>
                 <img src={cert.img} alt={cert.title} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #000 0%, transparent 80%)' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)' }} />
                 
                 <div style={{ position: 'absolute', bottom: '12px', left: '16px' }}>
                   <span style={{ fontSize: '0.55rem', fontWeight: 900, color: cert.color || 'var(--accent-purple)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>{cert.issuer}</span>
@@ -466,9 +466,9 @@ const Certificates = () => {
               </div>
               
               <div style={{ padding: '16px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <h4 style={{ color: '#fff', fontSize: '0.9rem', fontWeight: 800, margin: '0 0 12px 0', lineHeight: 1.4 }}>{cert.title}</h4>
+                <h4 style={{ color: "#8b5cf6", fontSize: '0.9rem', fontWeight: 800, margin: '0 0 12px 0', lineHeight: 1.4 }}>{cert.title}</h4>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <span style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.35)', fontWeight: 800 }}>{cert.category}</span>
+                  <span style={{ fontSize: '0.55rem', color: "#8b5cf6", fontWeight: 800 }}>{cert.category}</span>
                   <div style={{ color: cert.color, display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.75rem', fontWeight: 700 }}>
                     VIEW <Maximize2 size={10} />
                   </div>
@@ -480,7 +480,7 @@ const Certificates = () => {
         
         <div style={{ 
           textAlign: 'center', 
-          color: 'rgba(255,255,255,0.25)', 
+          color: "#8b5cf6", 
           fontSize: '0.72rem', 
           fontWeight: 600,
           letterSpacing: '0.05em',
@@ -523,7 +523,7 @@ const Certificates = () => {
                 border: '1px solid rgba(255,255,255,0.15)',
                 borderRadius: '50%',
                 width: '44px', height: '44px',
-                color: '#fff', cursor: 'pointer',
+                color: "#8b5cf6", cursor: 'pointer',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 zIndex: 10001
               }}
@@ -560,7 +560,7 @@ const Certificates = () => {
                 }}
               />
               <div style={{ marginTop: '32px', textAlign: 'center', paddingBottom: '40px' }}>
-                 <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#fff', marginBottom: '10px', letterSpacing: '-0.02em' }}>{selectedCert.title}</h2>
+                 <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: "#8b5cf6", marginBottom: '10px', letterSpacing: '-0.02em' }}>{selectedCert.title}</h2>
                  <p style={{ color: selectedCert.color || 'var(--text-secondary)', letterSpacing: '0.1em', fontWeight: 700, fontSize: '0.8rem' }}>
                     {selectedCert.issuer.toUpperCase()} • OFFICIAL CREDENTIAL
                  </p>

@@ -12,7 +12,7 @@ export default function NotFound() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <h1 className="title-gradient" style={{ fontSize: 'clamp(5rem, 15vw, 10rem)', marginBottom: '16px' }}>404</h1>
-          <h2 style={{ fontSize: '1.5rem', color: '#fff', marginBottom: '24px', letterSpacing: '4px', textTransform: 'uppercase' }}>System Error: Node Not Found</h2>
+          <h2 style={{ fontSize: '1.5rem', color: "#8b5cf6", marginBottom: '24px', letterSpacing: '4px', textTransform: 'uppercase' }}>System Error: Node Not Found</h2>
           <p style={{ color: 'var(--text-secondary)', maxWidth: '500px', margin: '0 auto 48px', lineHeight: 1.7 }}>
             The digital coordinates you provided do not exist within the current architecture.
           </p>

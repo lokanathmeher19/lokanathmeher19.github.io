@@ -37,7 +37,7 @@ const About = () => (
         style={{ position: 'relative', flex: '1 1 320px', maxWidth: '360px', display: 'flex', justifyContent: 'center' }}
       >
         <div style={{
-          position: 'absolute', inset: '-20px', background: 'linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(139, 92, 246, 0.2))',
+          position: 'absolute', inset: '-20px', background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%), rgba(139, 92, 246, 0.2))',
           filter: 'blur(20px)', borderRadius: '30px', zIndex: -1
         }} />
         <div style={{ 
@@ -72,10 +72,10 @@ const About = () => (
         {/* Feature Checkpoints */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '24px', marginBottom: '30px' }}>
           {[
-            { title: "Engineering", desc: "Data Structures, algorithms, optimization routines.", icon: "💻", color: "#3b82f6" },
-            { title: "Security", desc: "Threat parsing, zero-trust system implementations.", icon: "🛡️", color: "#ef4444" },
-            { title: "Architecture", desc: "MERN stack ecosystems, state caching procedures.", icon: "🌐", color: "#10b981" },
-            { title: "Vision", desc: "Adapting neural AI tooling securely into legacy code.", icon: "🚀", color: "#f59e0b" }
+            { title: "Engineering", desc: "Data Structures, algorithms, optimization routines.", icon: "💻", color: "#8b5cf6" },
+            { title: "Security", desc: "Threat parsing, zero-trust system implementations.", icon: "🛡️", color: "#8b5cf6" },
+            { title: "Architecture", desc: "MERN stack ecosystems, state caching procedures.", icon: "🌐", color: "#8b5cf6" },
+            { title: "Vision", desc: "Adapting neural AI tooling securely into legacy code.", icon: "🚀", color: "#8b5cf6" }
           ].map((pillar, pIdx) => (
             <motion.div
               key={pIdx}
@@ -90,7 +90,7 @@ const About = () => (
               }}
             >
               <div style={{ fontSize: '2rem', marginBottom: '12px' }}>{pillar.icon}</div>
-              <h4 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 800, marginBottom: '8px' }}>{pillar.title}</h4>
+              <h4 style={{ color: "#8b5cf6", fontSize: '1.1rem', fontWeight: 800, marginBottom: '8px' }}>{pillar.title}</h4>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.6 }}>{pillar.desc}</p>
             </motion.div>
           ))}

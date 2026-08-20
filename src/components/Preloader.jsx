@@ -66,7 +66,7 @@ export default function Preloader() {
                         {/* Shutter Blade Highlight Glow */}
                         <div style={{ 
                             position: 'absolute', inset: 0, 
-                            borderTop: '1px solid rgba(34, 211, 238, 0.03)',
+                            borderTop: '1px solid rgba(139, 92, 246, 0.03)',
                             opacity: 0.6 
                         }} />
                     </motion.div>
@@ -101,7 +101,7 @@ export default function Preloader() {
                         transition={{ duration: 4, repeat: Infinity }}
                         style={{ 
                             position: 'absolute', width: '130px', height: '130px', 
-                            background: 'radial-gradient(circle, rgba(34, 211, 238, 0.15) 0%, transparent 70%)', 
+                            background: 'radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%)', 
                             filter: 'blur(30px)', zIndex: -1 
                         }} 
                     />
@@ -161,7 +161,7 @@ export default function Preloader() {
                     >
                         <motion.h1 
                             style={{ 
-                                fontSize: '2.5rem', fontWeight: 900, color: '#fff', margin: 0,
+                                fontSize: '2.5rem', fontWeight: 900, color: "#8b5cf6", margin: 0,
                                 fontFamily: 'var(--font-heading)',
                                 letterSpacing: '0.05em'
                             }}
@@ -176,7 +176,7 @@ export default function Preloader() {
                         />
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                             <h2 style={{ 
-                                fontSize: '0.85rem', fontWeight: 300, color: '#fff', margin: 0,
+                                fontSize: '0.85rem', fontWeight: 300, color: "#8b5cf6", margin: 0,
                                 fontFamily: 'var(--font-heading)', textTransform: 'uppercase', letterSpacing: '0.8em', opacity: 0.6
                             }}>
                                 Portfolio
@@ -184,7 +184,7 @@ export default function Preloader() {
                             <motion.div 
                                 animate={{ opacity: [0.2, 1, 0.2] }}
                                 transition={{ duration: 2, repeat: Infinity }}
-                                style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#ff3366', boxShadow: '0 0 10px #ff3366' }}
+                                style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#8b5cf6', boxShadow: '0 0 10px #8b5cf6' }}
                             />
                         </div>
                     </motion.div>
@@ -203,7 +203,7 @@ export default function Preloader() {
                             opacity: { delay: 1.6, duration: 1 }
                         }}
                         style={{ 
-                            fontSize: '0.75rem', color: '#fff', 
+                            fontSize: '0.75rem', color: "#8b5cf6", 
                             letterSpacing: '0.6em', textTransform: 'uppercase',
                             fontWeight: 400, textShadow: '0 0 15px rgba(255,255,255,0.3)',
                             fontFamily: 'var(--font-heading)'

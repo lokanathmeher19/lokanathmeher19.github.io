@@ -132,9 +132,9 @@ const Hero = () => {
               style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}
             >
               <span className="badge" style={{ margin: 0 }}>{HERO_CONFIG.roleBadge}</span>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(255, 51, 102, 0.1)', padding: '6px 14px', borderRadius: '100px', border: '1px solid rgba(255, 51, 102, 0.2)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(139, 92, 246, 0.1)', padding: '6px 14px', borderRadius: '100px', border: '1px solid rgba(139, 92, 246, 0.2)' }}>
                 <div className="pulse-dot"></div>
-                <span style={{ fontSize: '0.65rem', fontWeight: 800, color: '#ff3366', letterSpacing: '0.05em' }}>{HERO_CONFIG.hireStatusText}</span>
+                <span style={{ fontSize: '0.65rem', fontWeight: 800, color: "#8b5cf6", letterSpacing: '0.05em' }}>{HERO_CONFIG.hireStatusText}</span>
               </div>
             </motion.div>
 
@@ -152,9 +152,9 @@ const Hero = () => {
                 fontFamily: 'var(--font-heading)'
               }}
             >
-              <span style={{ color: '#fff' }}>{HERO_CONFIG.mainTitlePrefix}</span>
+              <span style={{ color: "#8b5cf6" }}>{HERO_CONFIG.mainTitlePrefix}</span>
               <span style={{ 
-                background: 'linear-gradient(90deg, #22d3ee, #3b82f6, #8b5cf6)',
+                background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 display: 'inline-block'
@@ -185,7 +185,7 @@ const Hero = () => {
               <h2 style={{ 
                 fontSize: 'clamp(1.8rem, 4vw, 2.4rem)', 
                 fontWeight: 900, 
-                color: '#fff', 
+                color: "#8b5cf6", 
                 lineHeight: 1.2,
                 marginBottom: '16px',
                 letterSpacing: '-0.04em'
@@ -243,19 +243,19 @@ const Hero = () => {
                   whileHover={{ 
                     scale: 1.02, 
                     y: -3, 
-                    background: module.isDeep ? 'rgba(34, 211, 238, 0.1)' : 'rgba(255, 255, 255, 0.06)',
+                    background: module.isDeep ? 'rgba(139, 92, 246, 0.1)' : 'rgba(255, 255, 255, 0.06)',
                     borderColor: module.isDeep ? 'var(--accent-cyan)' : 'rgba(255, 255, 255, 0.15)',
-                    boxShadow: module.isDeep ? '0 10px 20px -10px rgba(34, 211, 238, 0.3)' : '0 10px 20px -10px rgba(0, 0, 0, 0.2)'
+                    boxShadow: module.isDeep ? '0 10px 20px -10px rgba(139, 92, 246, 0.3)' : '0 10px 20px -10px rgba(0, 0, 0, 0.2)'
                   }}
                   style={{
                     flex: '1 1 0',
                     minWidth: 0,
                     padding: '12px 14px',
-                    background: module.isDeep ? 'rgba(34, 211, 238, 0.03)' : 'rgba(255, 255, 255, 0.01)',
+                    background: module.isDeep ? 'rgba(139, 92, 246, 0.03)' : 'rgba(255, 255, 255, 0.01)',
                     WebkitBackdropFilter: 'blur(12px)',
                     backdropFilter: 'blur(12px)',
                     border: '1px solid rgba(255, 255, 255, 0.05)',
-                    borderBottom: `2px solid ${module.isDeep ? '#00e5ff' : 'var(--accent-cyan)'}`,
+                    borderBottom: `2px solid ${module.isDeep ? '#8b5cf6' : '#8b5cf6'}`,
                     borderRadius: '16px',
                     display: 'flex',
                     flexDirection: 'column',
@@ -270,17 +270,17 @@ const Hero = () => {
                     <div style={{ 
                       position: 'absolute', 
                       top: 0, left: 0, right: 0, height: '100%',
-                      background: 'radial-gradient(circle at 50% -20%, rgba(34, 211, 238, 0.15), transparent)',
+                      background: 'radial-gradient(circle at 50% -20%, rgba(139, 92, 246, 0.15), transparent)',
                       pointerEvents: 'none'
                     }}></div>
                   )}
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', position: 'relative', zIndex: 1 }}>
-                    <span style={{ color: 'var(--accent-cyan)', filter: module.isDeep ? 'drop-shadow(0 0 5px rgba(34, 211, 238, 0.5))' : 'none' }}>
+                    <span style={{ color: 'var(--accent-cyan)', filter: module.isDeep ? 'drop-shadow(0 0 5px rgba(139, 92, 246, 0.5))' : 'none' }}>
                       {module.icon}
                     </span>
-                    <span style={{ fontSize: '0.7rem', fontWeight: 850, color: '#fff', letterSpacing: '0.01em', lineHeight: 1.1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{module.label}</span>
+                    <span style={{ fontSize: '0.7rem', fontWeight: 850, color: "#8b5cf6", letterSpacing: '0.01em', lineHeight: 1.1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{module.label}</span>
                   </div>
-                  <span style={{ fontSize: '0.55rem', color: 'rgba(255, 255, 255, 0.4)', fontWeight: 600, lineHeight: 1.2, position: 'relative', zIndex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  <span style={{ fontSize: '0.55rem', color: "#8b5cf6", fontWeight: 600, lineHeight: 1.2, position: 'relative', zIndex: 1, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                     {module.desc}
                   </span>
                 </motion.div>
@@ -317,7 +317,7 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 + (index * 0.1) }}
-                whileHover={{ y: -5, background: 'rgba(255,255,255,0.05)', borderColor: 'rgba(34, 211, 238, 0.3)' }}
+                whileHover={{ y: -5, background: 'rgba(255,255,255,0.05)', borderColor: 'rgba(139, 92, 246, 0.3)' }}
                 style={{
                   padding: '18px 24px',
                   background: 'rgba(255, 255, 255, 0.02)',
@@ -337,7 +337,7 @@ const Hero = () => {
                   <span style={{ fontSize: '1rem' }}>{info.icon}</span>
                   <span style={{ fontSize: '0.6rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.12em' }}>{info.label}</span>
                 </div>
-                <div style={{ color: '#fff', fontSize: '0.8rem', fontWeight: 600, whiteSpace: 'nowrap' }}>
+                <div style={{ color: "#8b5cf6", fontSize: '0.8rem', fontWeight: 600, whiteSpace: 'nowrap' }}>
                   {info.value}
                 </div>
               </motion.div>
@@ -370,11 +370,11 @@ const Hero = () => {
                 {/* 🎀 Electric Neon Architect Ribbon */}
                 <div style={{ 
                   position: 'absolute', top: '30px', left: '-50px', 
-                  width: '180px', background: 'linear-gradient(135deg, #22d3ee, #818cf8)', 
-                  color: '#020617', transform: 'rotate(-45deg)', textAlign: 'center', 
+                  width: '180px', background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)', 
+                  color: "#8b5cf6", transform: 'rotate(-45deg)', textAlign: 'center', 
                   fontSize: '0.48rem', fontWeight: 950, letterSpacing: '0.08em',
                   padding: '6px 0', 
-                  boxShadow: '0 4px 20px rgba(34, 211, 238, 0.4), 0 0 40px rgba(129, 140, 248, 0.2)', 
+                  boxShadow: '0 4px 20px rgba(139, 92, 246, 0.4), 0 0 40px rgba(139, 92, 246, 0.2)', 
                   zIndex: 30, textTransform: 'uppercase',
                   border: '1px solid rgba(255, 255, 255, 0.2)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center'
@@ -386,20 +386,20 @@ const Hero = () => {
                   onClick={(e) => { e.stopPropagation(); setIsFlipped(!isFlipped); }}
                   style={{ position: 'relative', borderRadius: '22px', overflow: 'hidden', aspectRatio: '3/4', background: '#050816', border: '1px solid rgba(255,255,255,0.05)', cursor: 'pointer' }}
                 >
-                  <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '20px 20px', zIndex: 1 }}></div>
+                  <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%) 1px, transparent 1px), linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%) 1px, transparent 1px)', backgroundSize: '20px 20px', zIndex: 1 }}></div>
                   <img 
                     src={HERO_CONFIG.photo} 
                     alt="Lokanath" 
                     style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 15%', position: 'relative', zIndex: 0 }} 
                   />
-                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '60%', background: 'linear-gradient(to top, rgba(2, 6, 23, 1) 0%, rgba(2, 6, 23, 0.4) 50%, transparent 100%)', zIndex: 2 }}></div>
+                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '60%', background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%) 0%, rgba(2, 6, 23, 0.4) 50%, transparent 100%)', zIndex: 2 }}></div>
                   
                   {/* ✨ Flip Hint Badge */}
                   <div style={{ 
                     position: 'absolute', bottom: '24px', left: '50%', transform: 'translateX(-50%)',
                     zIndex: 10, background: 'rgba(2, 6, 23, 0.7)', backdropFilter: 'blur(12px)',
-                    padding: '6px 14px', borderRadius: '100px', border: '1px solid rgba(34, 211, 238, 0.4)',
-                    display: 'flex', alignItems: 'center', gap: '8px', color: '#fff',
+                    padding: '6px 14px', borderRadius: '100px', border: '1px solid rgba(139, 92, 246, 0.4)',
+                    display: 'flex', alignItems: 'center', gap: '8px', color: "#8b5cf6",
                     fontSize: '0.55rem', fontWeight: 800, letterSpacing: '0.2em',
                     boxShadow: '0 8px 32px rgba(0, 0, 0, 0.8)'
                   }}>
@@ -416,19 +416,19 @@ const Hero = () => {
                   zIndex: 100 
                 }}>
                   <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-                    <motion.a whileHover={{ y: -4, color: '#fff' }} whileTap={{ scale: 0.9 }} href={CONTACT_CONFIG.github} target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.45)', transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
+                    <motion.a whileHover={{ y: -4, color: "#8b5cf6" }} whileTap={{ scale: 0.9 }} href={CONTACT_CONFIG.github} target="_blank" rel="noopener noreferrer" style={{ color: "#8b5cf6", transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
                       <Github size={20} />
                     </motion.a>
-                    <motion.a whileHover={{ y: -4, color: '#0077b5' }} whileTap={{ scale: 0.9 }} href={CONTACT_CONFIG.linkedin} target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.45)', transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
+                    <motion.a whileHover={{ y: -4, color: "#8b5cf6" }} whileTap={{ scale: 0.9 }} href={CONTACT_CONFIG.linkedin} target="_blank" rel="noopener noreferrer" style={{ color: "#8b5cf6", transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
                       <Linkedin size={20} />
                     </motion.a>
-                    <motion.a whileHover={{ y: -4, color: '#E4405F' }} whileTap={{ scale: 0.9 }} href={CONTACT_CONFIG.instagram} target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.45)', transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
+                    <motion.a whileHover={{ y: -4, color: "#8b5cf6" }} whileTap={{ scale: 0.9 }} href={CONTACT_CONFIG.instagram} target="_blank" rel="noopener noreferrer" style={{ color: "#8b5cf6", transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
                       <Instagram size={20} />
                     </motion.a>
-                    <motion.a whileHover={{ y: -4, color: '#25D366' }} whileTap={{ scale: 0.9 }} href={CONTACT_CONFIG.whatsapp} target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.45)', transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
+                    <motion.a whileHover={{ y: -4, color: "#8b5cf6" }} whileTap={{ scale: 0.9 }} href={CONTACT_CONFIG.whatsapp} target="_blank" rel="noopener noreferrer" style={{ color: "#8b5cf6", transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
                       <WhatsAppIcon size={20} />
                     </motion.a>
-                    <motion.a whileHover={{ y: -4, color: '#fff' }} whileTap={{ scale: 0.9 }} href={CONTACT_CONFIG.twitter} target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.45)', transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
+                    <motion.a whileHover={{ y: -4, color: "#8b5cf6" }} whileTap={{ scale: 0.9 }} href={CONTACT_CONFIG.twitter} target="_blank" rel="noopener noreferrer" style={{ color: "#8b5cf6", transition: 'all 0.3s', display: 'flex', padding: '5px' }}>
                       <XIcon size={18} />
                     </motion.a>
                   </div>
@@ -455,27 +455,27 @@ const Hero = () => {
                   height: '100%', padding: '24px', borderRadius: '32px', 
                   display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
                   border: '2px solid var(--accent-cyan)', background: 'rgba(2, 6, 23, 0.98)',
-                  boxShadow: '0 0 60px rgba(34, 211, 238, 0.15)',
+                  boxShadow: '0 0 60px rgba(139, 92, 246, 0.15)',
                   cursor: 'pointer'
                 }}
               >
                 <div style={{ 
                   marginBottom: '28px',
                   background: 'rgba(255, 255, 255, 0.03)',
-                  border: '1px solid rgba(34, 211, 238, 0.4)',
+                  border: '1px solid rgba(139, 92, 246, 0.4)',
                   padding: '6px 14px',
                   borderRadius: '100px',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '10px',
-                  boxShadow: '0 0 20px rgba(34, 211, 238, 0.1)'
+                  boxShadow: '0 0 20px rgba(139, 92, 246, 0.1)'
                 }}>
                   <Linkedin size={14} color="var(--accent-cyan)" />
                   <span style={{ 
                     fontSize: '0.65rem', 
                     fontWeight: 800, 
                     letterSpacing: '0.15em', 
-                    color: '#fff',
+                    color: "#8b5cf6",
                     textTransform: 'uppercase'
                   }}>
                     Connect in <span style={{ color: 'var(--accent-cyan)' }}>Linkedin</span>
@@ -484,7 +484,7 @@ const Hero = () => {
                 
                 <div style={{ 
                   background: '#fff', padding: '12px', borderRadius: '16px', 
-                  boxShadow: '0 0 40px rgba(34, 211, 238, 0.2)', marginBottom: '24px'
+                  boxShadow: '0 0 40px rgba(139, 92, 246, 0.2)', marginBottom: '24px'
                 }}>
                   <img 
                     src={CONTACT_CONFIG.linkedinQrApiUrl} 
@@ -497,7 +497,7 @@ const Hero = () => {
                   <p style={{ 
                     fontFamily: "'Herr Von Muellerhoff', cursive", 
                     fontSize: '2.8rem', 
-                    color: '#fff',
+                    color: "#8b5cf6",
                     marginBottom: '-10px',
                     opacity: 0.9,
                     fontWeight: 400
@@ -505,7 +505,7 @@ const Hero = () => {
                     {HERO_CONFIG.signatureText}
                   </p>
                   <div style={{ 
-                    color: 'rgba(255,255,255,0.4)', 
+                    color: "#8b5cf6", 
                     fontSize: '0.6rem', 
                     fontWeight: 400, 
                     letterSpacing: '0.5em',
@@ -552,7 +552,7 @@ const SectionHeader = ({ badge, title, desc, count, compact, color = "var(--acce
           position: 'absolute', top: '-10px', right: '-40px',
           WebkitBackdropFilter: 'blur(16px)',
           backdropFilter: 'blur(16px)',
-          background: 'var(--accent-purple)', color: '#fff', fontSize: '0.7rem',
+          background: 'var(--accent-purple)', color: "#8b5cf6", fontSize: '0.7rem',
           padding: '4px 10px', borderRadius: '100px', fontWeight: 900
         }}>
           {count}
@@ -599,7 +599,7 @@ const FloatingLogos = () => {
         top: '10%', 
         width: '550px', 
         height: '550px', 
-        background: 'radial-gradient(circle, rgba(34, 211, 238, 0.15) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%)',
         filter: 'blur(90px)',
         borderRadius: '50%'
       }} />
@@ -693,7 +693,7 @@ const DevOpsBackground = () => {
       <div style={{ 
         position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
         width: '500px', height: '500px', 
-        background: 'radial-gradient(circle, rgba(236, 72, 153, 0.08) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%)',
         filter: 'blur(70px)', borderRadius: '50%', zIndex: 0
       }} />
       {icons.map((icon, i) => (
@@ -735,7 +735,7 @@ const MernBackground = () => {
       <div style={{ 
         position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
         width: '600px', height: '600px', 
-        background: 'radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 70%)',
+        background: 'radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%)',
         filter: 'blur(80px)', borderRadius: '50%', zIndex: 0
       }} />
 
@@ -834,7 +834,7 @@ const Skills = () => {
             
             <div style={{ position: 'relative', zIndex: 10, transform: 'translateZ(30px)' }}>
               <div className="studio-indicator" style={{ color: cat.color }}></div>
-              <h3 style={{ fontSize: '2.4rem', fontWeight: 900, color: '#fff', marginBottom: '16px', letterSpacing: '-0.03em' }}>
+              <h3 style={{ fontSize: '2.4rem', fontWeight: 900, color: "#8b5cf6", marginBottom: '16px', letterSpacing: '-0.03em' }}>
                 {cat.title === "MERN Full-stack" ? (
                   <motion.span
                     whileHover={{ 
@@ -850,7 +850,7 @@ const Skills = () => {
                   ))
                 )}
               </h3>
-              <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '1.1rem', marginBottom: '48px', maxWidth: '400px', lineHeight: 1.6 }}>
+              <p style={{ color: "#8b5cf6", fontSize: '1.1rem', marginBottom: '48px', maxWidth: '400px', lineHeight: 1.6 }}>
                 {cat.desc}
               </p>
 
@@ -892,7 +892,7 @@ const Skills = () => {
                           left: 0, 
                           width: '100%', 
                           height: '2px', 
-                          background: `linear-gradient(90deg, ${cat.color}CC, transparent)`,
+                          background: `linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)`,
                           transform: `scaleX(${skill.level / 100})`,
                           transformOrigin: 'left',
                           boxShadow: `0 0 8px ${cat.color}88`
@@ -996,7 +996,7 @@ const PreviewCard = ({ cert }) => {
             alt={cert.title} 
             style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
           />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 80%)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%) 0%, transparent 80%)' }} />
           
           <div style={{ position: 'absolute', bottom: '12px', left: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ fontSize: '0.65rem', fontWeight: 900, color: cert.color || 'var(--accent-purple)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>{cert.issuer}</span>
@@ -1004,8 +1004,8 @@ const PreviewCard = ({ cert }) => {
         </div>
 
         <div style={{ width: '100%', marginTop: '20px', transform: 'translateZ(30px)', textAlign: 'center', padding: '0 8px' }}>
-          <h4 style={{ color: '#fff', fontSize: '1.05rem', fontWeight: 800, margin: '0 0 8px 0', lineHeight: '1.4' }}>{cert.title}</h4>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.65rem', fontWeight: 900, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em' }}>
+          <h4 style={{ color: "#8b5cf6", fontSize: '1.05rem', fontWeight: 800, margin: '0 0 8px 0', lineHeight: '1.4' }}>{cert.title}</h4>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.65rem', fontWeight: 900, color: "#8b5cf6", letterSpacing: '0.1em' }}>
             <Award size={10} style={{ color: cert.color }} />
             {cert.category} CREDENTIAL
           </div>
@@ -1199,7 +1199,7 @@ const Certificates = () => {
                     }}>
                       {cert.title}
                     </h4>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.75rem', color: 'rgba(255,255,255,0.35)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.75rem', color: "#8b5cf6" }}>
                       <span style={{ color: cert.color, fontWeight: 700 }}>{cert.issuer}</span>
                       <span>•</span>
                       <span>{cert.category}</span>
@@ -1246,7 +1246,7 @@ const Certificates = () => {
                     marginTop: '28px',
                     background: 'rgba(255, 255, 255, 0.02)',
                     border: '1px solid rgba(255, 255, 255, 0.08)',
-                    color: '#fff',
+                    color: "#8b5cf6",
                     borderRadius: '12px',
                     padding: '12px 28px',
                     fontSize: '0.8rem',
@@ -1263,7 +1263,7 @@ const Certificates = () => {
                 </motion.button>
               </motion.div>
             ) : (
-              <div style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.9rem' }}>Select a certificate to view details</div>
+              <div style={{ color: "#8b5cf6", fontSize: '0.9rem' }}>Select a certificate to view details</div>
             )}
           </AnimatePresence>
         </div>
@@ -1305,7 +1305,7 @@ const Certificates = () => {
             >
               <div style={{ aspectRatio: '16/10', position: 'relative' }}>
                 <img src={cert.img} alt={cert.title} style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #000 0%, transparent 80%)' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)' }} />
                 
                 <div style={{ position: 'absolute', bottom: '12px', left: '16px' }}>
                   <span style={{ fontSize: '0.55rem', fontWeight: 900, color: cert.color || 'var(--accent-purple)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>{cert.issuer}</span>
@@ -1313,9 +1313,9 @@ const Certificates = () => {
               </div>
               
               <div style={{ padding: '16px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <h4 style={{ color: '#fff', fontSize: '0.9rem', fontWeight: 800, margin: '0 0 12px 0', lineHeight: 1.4 }}>{cert.title}</h4>
+                <h4 style={{ color: "#8b5cf6", fontSize: '0.9rem', fontWeight: 800, margin: '0 0 12px 0', lineHeight: 1.4 }}>{cert.title}</h4>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <span style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.35)', fontWeight: 800 }}>{cert.category}</span>
+                  <span style={{ fontSize: '0.55rem', color: "#8b5cf6", fontWeight: 800 }}>{cert.category}</span>
                   <div style={{ color: cert.color, display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.75rem', fontWeight: 700 }}>
                     VIEW <Maximize2 size={10} />
                   </div>
@@ -1327,7 +1327,7 @@ const Certificates = () => {
         
         <div style={{ 
           textAlign: 'center', 
-          color: 'rgba(255,255,255,0.25)', 
+          color: "#8b5cf6", 
           fontSize: '0.72rem', 
           fontWeight: 600,
           letterSpacing: '0.05em',
@@ -1370,7 +1370,7 @@ const Certificates = () => {
                 border: '1px solid rgba(255,255,255,0.15)',
                 borderRadius: '50%',
                 width: '44px', height: '44px',
-                color: '#fff', cursor: 'pointer',
+                color: "#8b5cf6", cursor: 'pointer',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 zIndex: 10001
               }}
@@ -1407,7 +1407,7 @@ const Certificates = () => {
                 }}
               />
               <div style={{ marginTop: '32px', textAlign: 'center', paddingBottom: '40px' }}>
-                 <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: '#fff', marginBottom: '10px', letterSpacing: '-0.02em' }}>{selectedCert.title}</h2>
+                 <h2 style={{ fontSize: '1.6rem', fontWeight: 900, color: "#8b5cf6", marginBottom: '10px', letterSpacing: '-0.02em' }}>{selectedCert.title}</h2>
                  <p style={{ color: selectedCert.color || 'var(--text-secondary)', letterSpacing: '0.1em', fontWeight: 700, fontSize: '0.8rem' }}>
                     {selectedCert.issuer.toUpperCase()} • OFFICIAL CREDENTIAL
                  </p>
@@ -1458,9 +1458,9 @@ const CoreAchievements = () => {
               transition: 'all 0.3s ease'
             }}
           >
-            <div style={{ fontSize: '2.5rem', fontWeight: 800, color: '#fff', marginBottom: '4px', letterSpacing: '-0.02em' }}>{stat.value}</div>
+            <div style={{ fontSize: '2.5rem', fontWeight: 800, color: "#8b5cf6", marginBottom: '4px', letterSpacing: '-0.02em' }}>{stat.value}</div>
             <div style={{ fontSize: '0.8rem', fontWeight: 700, color: stat.color, textTransform: 'uppercase', marginBottom: '6px' }}>{stat.label}</div>
-            <div style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', fontWeight: 500 }}>{stat.sub}</div>
+            <div style={{ fontSize: '0.85rem', color: "#8b5cf6", fontWeight: 500 }}>{stat.sub}</div>
           </motion.div>
         ))}
       </div>
@@ -1496,7 +1496,7 @@ const About = () => (
         style={{ position: 'relative', flex: '0 1 280px', maxWidth: '280px', display: 'flex', justifyContent: 'center' }}
       >
         <div style={{
-          position: 'absolute', inset: '-10px', background: 'linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(139, 92, 246, 0.2))',
+          position: 'absolute', inset: '-10px', background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%), rgba(139, 92, 246, 0.2))',
           filter: 'blur(30px)', borderRadius: '30px', zIndex: -1
         }} />
         <div style={{ 
@@ -1523,7 +1523,7 @@ const About = () => (
           {ABOUT_CONFIG.academicBadge && (
             <span className="badge" style={{ marginBottom: '16px', display: 'inline-block' }}>{ABOUT_CONFIG.academicBadge}</span>
           )}
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.5rem)', fontWeight: 850, lineHeight: 1.2, margin: '0 0 16px 0', color: '#fff' }}>
+          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.5rem)', fontWeight: 850, lineHeight: 1.2, margin: '0 0 16px 0', color: "#8b5cf6" }}>
             {ABOUT_CONFIG.academicSubtitlePrefix} <br /><span className="text-gradient">{ABOUT_CONFIG.academicSubtitleGradient}</span>
           </h2>
           
@@ -1553,7 +1553,7 @@ const About = () => (
                 <div style={{ flexShrink: 0, width: '28px', height: '28px', borderRadius: '6px', background: `${pillar.color}15`, color: pillar.color, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   {ICON_MAP[pillar.iconName] || pillar.icon}
                 </div>
-                <h4 style={{ color: '#fff', fontSize: '0.95rem', fontWeight: 700, margin: 0, letterSpacing: '0.01em' }}>{pillar.title}</h4>
+                <h4 style={{ color: "#8b5cf6", fontSize: '0.95rem', fontWeight: 700, margin: 0, letterSpacing: '0.01em' }}>{pillar.title}</h4>
               </div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', lineHeight: 1.5, margin: 0 }}>{pillar.desc}</p>
             </motion.div>
@@ -1648,7 +1648,7 @@ const Contact = () => {
                   onChange={handleChange} 
                   placeholder="Name" 
                   required 
-                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--glass-border)', padding: '16px', borderRadius: '12px', color: '#fff' }} 
+                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--glass-border)', padding: '16px', borderRadius: '12px', color: "#8b5cf6" }} 
                 />
                 <input 
                   type="email" 
@@ -1657,7 +1657,7 @@ const Contact = () => {
                   onChange={handleChange} 
                   placeholder="Email" 
                   required 
-                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--glass-border)', padding: '16px', borderRadius: '12px', color: '#fff' }} 
+                  style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--glass-border)', padding: '16px', borderRadius: '12px', color: "#8b5cf6" }} 
                 />
              </div>
              <textarea 
@@ -1667,7 +1667,7 @@ const Contact = () => {
                placeholder="Message" 
                rows="5" 
                required 
-               style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--glass-border)', padding: '16px', borderRadius: '12px', color: '#fff', resize: 'none' }}
+               style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--glass-border)', padding: '16px', borderRadius: '12px', color: "#8b5cf6", resize: 'none' }}
              ></textarea>
              <button type="submit" className="btn-premium btn-primary" style={{ width: 'fit-content' }}>Send Message <Send size={18} /></button>
           </form>
@@ -1724,12 +1724,12 @@ const ResumeSection = () => {
             <div style={{ flex: 1 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '8px', marginBottom: '8px' }}>
                 <div>
-                  <h3 style={{ color: '#fff', fontSize: '1.3rem', fontWeight: 800, margin: '0 0 4px 0' }}>{exp.role}</h3>
+                  <h3 style={{ color: "#8b5cf6", fontSize: '1.3rem', fontWeight: 800, margin: '0 0 4px 0' }}>{exp.role}</h3>
                   <p style={{ color: exp.color, fontWeight: 700, fontSize: '0.9rem', margin: 0 }}>{exp.company}</p>
                 </div>
                 <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.5)', fontWeight: 600, marginBottom: '4px' }}>{exp.periodShort || exp.period}</div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.8rem', color: 'rgba(255,255,255,0.4)', justifyContent: 'flex-end' }}>
+                  <div style={{ fontSize: '0.85rem', color: "#8b5cf6", fontWeight: 600, marginBottom: '4px' }}>{exp.periodShort || exp.period}</div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.8rem', color: "#8b5cf6", justifyContent: 'flex-end' }}>
                     <MapPin size={14} /> {exp.locationShort || exp.location}
                   </div>
                 </div>
@@ -1775,7 +1775,7 @@ export default function Home() {
 
       <footer style={{ 
         padding: '120px 24px 60px', 
-        background: 'linear-gradient(to bottom, transparent, rgba(139, 92, 246, 0.03))',
+        background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%))',
         textAlign: 'center',
         position: 'relative',
         overflow: 'hidden'
@@ -1794,7 +1794,7 @@ export default function Home() {
               target="_blank"
               rel="noreferrer"
               whileHover={{ y: -8, color: 'var(--accent-cyan)' }}
-              style={{ color: 'rgba(255,255,255,0.3)', transition: 'all 0.4s cubic-bezier(0.19, 1, 0.22, 1)' }}
+              style={{ color: "#8b5cf6", transition: 'all 0.4s cubic-bezier(0.19, 1, 0.22, 1)' }}
             >
               {soc.icon}
             </motion.a>
@@ -1809,15 +1809,15 @@ export default function Home() {
           alignItems: 'center', justifyContent: 'space-between', paddingLeft: '32px', paddingRight: '32px'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 10px #10b981' }}></div>
-            <span style={{ fontSize: '0.65rem', fontWeight: 800, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>{SYSTEM_CONFIG.archiveStatusText}</span>
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#8b5cf6', boxShadow: '0 0 10px #8b5cf6' }}></div>
+            <span style={{ fontSize: '0.65rem', fontWeight: 800, color: "#8b5cf6", letterSpacing: '0.1em' }}>{SYSTEM_CONFIG.archiveStatusText}</span>
           </div>
           <div style={{ height: '2px', width: '40px', background: 'rgba(255,255,255,0.05)' }}></div>
-          <span style={{ fontSize: '0.65rem', fontWeight: 800, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>{SYSTEM_CONFIG.deploymentVersion}</span>
+          <span style={{ fontSize: '0.65rem', fontWeight: 800, color: "#8b5cf6", letterSpacing: '0.1em' }}>{SYSTEM_CONFIG.deploymentVersion}</span>
         </div>
 
          <p style={{ 
-           color: 'rgba(255,255,255,0.3)', 
+           color: "#8b5cf6", 
            fontSize: '0.75rem', 
            letterSpacing: '0.4em',
            fontWeight: 900,

@@ -78,7 +78,7 @@ const formatHighlightText = (text) => {
   const parts = text.split(/\*\*([^*]+)\*\*/g);
   return parts.map((part, i) => {
     if (i % 2 === 1) {
-      return <span key={i} style={{ color: '#fff', fontWeight: 700 }}>{part}</span>;
+      return <span key={i} style={{ color: "#8b5cf6", fontWeight: 700 }}>{part}</span>;
     }
     return part;
   });
@@ -158,7 +158,7 @@ export const PROJECTS = [
       desc: "A premium full-stack e-commerce platform with secure authentication, cart management, and integrated payment gateway.",
       category: 'Web',
       tag: 'E-COMMERCE',
-      color: '#ff4b6e',
+      color: "#8b5cf6",
       img: novels_img,
       tech: ['React', 'Node.js', 'Express', 'MongoDB'],
       live: '#',
@@ -170,7 +170,7 @@ export const PROJECTS = [
       desc: 'Advanced multi-modal forensic system detecting deepfakes across images, videos, and audio using synthetic pattern analysis.',
       category: 'AI',
       tag: 'ARTIFICIAL INTELLIGENCE',
-      color: '#8b5cf6',
+      color: "#8b5cf6",
       img: solar_img,
       tech: ['Python', 'OpenCV', 'React', 'Metadata Analysis'],
       live: '#',
@@ -182,7 +182,7 @@ export const PROJECTS = [
       desc: 'Cultural e-commerce platform dedicated to Odisha heritage, connecting local artisans with global handloom enthusiasts.',
       category: 'Web',
       tag: 'CULTURAL TECH',
-      color: '#10b981',
+      color: "#8b5cf6",
       img: novels_img,
       tech: ['React 18', 'Vite', 'TypeScript', 'Tailwind'],
       live: '#',
@@ -194,7 +194,7 @@ export const PROJECTS = [
       desc: 'Independent, production-ready internet speed testing platform designed for high-performance network diagnostics.',
       category: 'Web',
       tag: 'UTILITY',
-      color: '#0ea5e9',
+      color: "#8b5cf6",
       img: solar_img,
       tech: ['React', 'Node.js', 'Docker', 'Tailwind'],
       live: '#',
@@ -206,7 +206,7 @@ export const PROJECTS = [
       desc: 'Professional security analysis suite featuring a Network Port Checker and Password Strength Analyzer.',
       category: 'Security',
       tag: 'CYBERSECURITY',
-      color: '#22d3ee',
+      color: "#8b5cf6",
       img: novels_img,
       tech: ['Python', 'Networking', 'Security Logic'],
       live: '#',
@@ -218,7 +218,7 @@ export const PROJECTS = [
       desc: 'Modern event management platform for promoting and organizing golf charity events with a seamless user experience.',
       category: 'Web',
       tag: 'EVENT TECH',
-      color: '#f59e0b',
+      color: "#8b5cf6",
       img: solar_img,
       tech: ['Next.js', 'React', 'Tailwind CSS'],
       live: '#',
@@ -281,8 +281,8 @@ export const ABOUT_CONFIG = {
     academicSubtitleGradient: "Intelligent Systems",
     aboutText: formatAboutHighlightText("I am a dedicated **Computer Science Engineering student** at GIET Bhubaneswar. My engineering philosophy revolves around writing clean, well-architected code that prioritizes execution speed and strict defensive integrations."),
     pillars: [
-      { title: "Security Protocols", desc: "Zero-trust architecture & defensive coding.", iconName: "ShieldCheck", color: "#ef4444" },
-      { title: "Cloud Architecture", desc: "Scalable serverless backends & MERN systems.", iconName: "Cloud", color: "#0ea5e9" },
+      { title: "Security Protocols", desc: "Zero-trust architecture & defensive coding.", iconName: "ShieldCheck", color: "#8b5cf6" },
+      { title: "Cloud Architecture", desc: "Scalable serverless backends & MERN systems.", iconName: "Cloud", color: "#8b5cf6" },
       { title: "Data Intelligence", desc: "Parsing, modeling, and analytical engines.", iconName: "Database", color: "#8b5cf6" }
     ]
 };
@@ -326,7 +326,7 @@ export const EDUCATION = [
       unit: "CGPA",
       features: ["OOPS", "Data Structures", "Security", "System Design", "Algorithms", "DBMS", "Computer Networking"],
       highlights: ["Data Structures & Algorithms", "Full Stack Development", "Operating Systems", "DBMS Architecture", "Software Engineering"],
-      color: "#22d3ee",
+      color: "#8b5cf6",
       iconName: "Code2",
       logoType: "logo_giet"
     },
@@ -344,7 +344,7 @@ export const EDUCATION = [
       unit: "%",
       features: ["Physics", "Chemistry", "Mathematics", "IT"],
       highlights: ["Mathematics", "Physics", "Chemistry", "Information Technology", "Analytical Thinking"],
-      color: "#3b82f6",
+      color: "#8b5cf6",
       iconName: "Layers",
       logoType: "dadhibaman",
       logoScale: 1.2
@@ -382,7 +382,7 @@ export const SKILLS_CATEGORIES = [
       title: "Engineering Core",
       desc: "Foundational software principles, algorithmic integrity, and systems-level logic.",
       iconName: "Terminal",
-      color: "#06b6d4",
+      color: "#8b5cf6",
       classes: "col-span-12 lg:col-span-12",
       specialEffect: "floating-logos",
       skills: [
@@ -406,7 +406,7 @@ export const SKILLS_CATEGORIES = [
       title: "MERN Full-stack",
       desc: "Full-cycle application development with modern reactive frameworks and scalable backends.",
       iconName: "Globe",
-      color: "#a855f7",
+      color: "#8b5cf6",
       classes: "col-span-12 lg:col-span-8",
       specialEffect: "mern-bg",
       skills: [
@@ -428,7 +428,7 @@ export const SKILLS_CATEGORIES = [
       title: "Security",
       desc: "Resilient protocols & offensive research.",
       iconName: "ShieldCheck",
-      color: "#f97316",
+      color: "#8b5cf6",
       classes: "col-span-12 lg:col-span-4",
       specialEffect: "security-bg",
       skills: [
@@ -442,7 +442,7 @@ export const SKILLS_CATEGORIES = [
       title: "DevOps",
       desc: "Automation & deployment pipelines.",
       iconName: "Box",
-      color: "#ec4899",
+      color: "#8b5cf6",
       classes: "col-span-12 lg:col-span-6",
       specialEffect: "devops-bg",
       skills: [
@@ -456,7 +456,7 @@ export const SKILLS_CATEGORIES = [
       title: "Cloud",
       desc: "Serverless & scalable infrastructure.",
       iconName: "Cloud",
-      color: "#06b6d4",
+      color: "#8b5cf6",
       classes: "col-span-12 lg:col-span-6",
       specialEffect: "mern-bg",
       skills: [
@@ -470,28 +470,28 @@ export const SKILLS_CATEGORIES = [
 
 // --- Certificates Configuration ---
 export const CERTIFICATES = [
-    { title: "Intro to Generative AI", issuer: "Google Cloud", org: "Google Cloud", date: "2025", img: cert_google, color: "#4285F4", category: 'COMPANY', tab: 'coursera' },
-    { title: "Cybersecurity Essentials", issuer: "IBM", org: "IBM", date: "2025", img: cert_ibm, color: "#052FAD", category: 'COMPANY', tab: 'coursera' },
-    { title: "Data Analytics Simulation", issuer: "Deloitte", org: "Deloitte", date: "2025", img: cert_deloitte, color: "#86BC25", category: 'COMPANY', tab: 'other' },
-    { title: "Responsive Web Dev Mastery", issuer: "NxtWave", org: "NxtWave", date: "2025", img: cert_nxtwave, color: "#22d3ee", category: 'NXTWAVE', tab: 'nxtwave' },
-    { title: "ICCOSET 2024 Conference", issuer: "GIET", org: "GIET", date: "2024", img: cert_giet_conf, color: "#f97316", category: 'GIET', tab: 'giet' },
-    { title: "Python Development Exp.", issuer: "CodTech", org: "CodTech", date: "2025", img: cert_codtech, color: "#3776ab", category: 'COMPANY', tab: 'other' },
-    { title: "Full Stack Development", issuer: "Simplilearn", org: "Simplilearn", date: "2025", img: cert_simplilearn, color: "#ff9900", category: 'COMPANY', tab: 'other' },
+    { title: "Intro to Generative AI", issuer: "Google Cloud", org: "Google Cloud", date: "2025", img: cert_google, color: "#8b5cf6", category: 'COMPANY', tab: 'coursera' },
+    { title: "Cybersecurity Essentials", issuer: "IBM", org: "IBM", date: "2025", img: cert_ibm, color: "#8b5cf6", category: 'COMPANY', tab: 'coursera' },
+    { title: "Data Analytics Simulation", issuer: "Deloitte", org: "Deloitte", date: "2025", img: cert_deloitte, color: "#8b5cf6", category: 'COMPANY', tab: 'other' },
+    { title: "Responsive Web Dev Mastery", issuer: "NxtWave", org: "NxtWave", date: "2025", img: cert_nxtwave, color: "#8b5cf6", category: 'NXTWAVE', tab: 'nxtwave' },
+    { title: "ICCOSET 2024 Conference", issuer: "GIET", org: "GIET", date: "2024", img: cert_giet_conf, color: "#8b5cf6", category: 'GIET', tab: 'giet' },
+    { title: "Python Development Exp.", issuer: "CodTech", org: "CodTech", date: "2025", img: cert_codtech, color: "#8b5cf6", category: 'COMPANY', tab: 'other' },
+    { title: "Full Stack Development", issuer: "Simplilearn", org: "Simplilearn", date: "2025", img: cert_simplilearn, color: "#8b5cf6", category: 'COMPANY', tab: 'other' },
     { title: "Python Achievement Cert", issuer: "Codec", org: "Codec Tech", date: "2025", img: cert_codec, color: "#8b5cf6", category: 'COMPANY', tab: 'other' },
-    { title: "Autonomous Vehicle Sys", issuer: "NxtWave", org: "NxtWave", date: "2025", img: cert_autonomous, color: "#06b6d4", category: 'NXTWAVE', tab: 'nxtwave' },
-    { title: "Model Fiesta 2025", issuer: "SURAVI", org: "GIET", date: "2025", img: cert_suravi, color: "#ec4899", category: 'COMPANY', tab: 'giet' },
-    { title: "CAD Design Foundations", issuer: "NIELIT", org: "NIELIT & GIET", date: "2025", img: cert_cad, color: "#10b981", category: 'COMPANY', tab: 'giet' },
-    { title: "Drone Aerodynamics", issuer: "NIELIT", org: "NIELIT", date: "2025", img: cert_drone, color: "#e11d48", category: 'COMPANY', tab: 'giet' },
-    { title: "Google Gemini AI Acad.", issuer: "Google", org: "Google Cloud", date: "2025", img: cert_gemini, color: "#4285F4", category: 'COMPANY', tab: 'coursera' },
-    { title: "WordPress Dev Pro", issuer: "Coursera", org: "Coursera", date: "2025", img: cert_wordpress, color: "#21759b", category: 'COURSERA', tab: 'coursera' },
-    { title: "Static Website Design", issuer: "NxtWave", org: "NxtWave", date: "2025", img: cert_static, color: "#22d3ee", category: 'NXTWAVE', tab: 'nxtwave' },
+    { title: "Autonomous Vehicle Sys", issuer: "NxtWave", org: "NxtWave", date: "2025", img: cert_autonomous, color: "#8b5cf6", category: 'NXTWAVE', tab: 'nxtwave' },
+    { title: "Model Fiesta 2025", issuer: "SURAVI", org: "GIET", date: "2025", img: cert_suravi, color: "#8b5cf6", category: 'COMPANY', tab: 'giet' },
+    { title: "CAD Design Foundations", issuer: "NIELIT", org: "NIELIT & GIET", date: "2025", img: cert_cad, color: "#8b5cf6", category: 'COMPANY', tab: 'giet' },
+    { title: "Drone Aerodynamics", issuer: "NIELIT", org: "NIELIT", date: "2025", img: cert_drone, color: "#8b5cf6", category: 'COMPANY', tab: 'giet' },
+    { title: "Google Gemini AI Acad.", issuer: "Google", org: "Google Cloud", date: "2025", img: cert_gemini, color: "#8b5cf6", category: 'COMPANY', tab: 'coursera' },
+    { title: "WordPress Dev Pro", issuer: "Coursera", org: "Coursera", date: "2025", img: cert_wordpress, color: "#8b5cf6", category: 'COURSERA', tab: 'coursera' },
+    { title: "Static Website Design", issuer: "NxtWave", org: "NxtWave", date: "2025", img: cert_static, color: "#8b5cf6", category: 'NXTWAVE', tab: 'nxtwave' },
     { title: "Python Tech Internship", issuer: "Codec", org: "Codec Tech", date: "2025", img: cert_codec_intern, color: "#8b5cf6", category: 'COMPANY', tab: 'other' },
-    { title: "Research Paper (GIET)", issuer: "NCCENGT", org: "GIET", date: "2025", img: cert_nccengt, color: "#f97316", category: 'GIET', tab: 'giet' },
+    { title: "Research Paper (GIET)", issuer: "NCCENGT", org: "GIET", date: "2025", img: cert_nccengt, color: "#8b5cf6", category: 'GIET', tab: 'giet' },
     { title: "Industrial Workshop", issuer: "Skill dev", org: "Skill dev", date: "2025", img: cert_workshop, color: "#8b5cf6", category: 'COMPANY', tab: 'other' },
-    { title: "Deloitte Consulting Sim.", issuer: "Deloitte", org: "Deloitte", date: "2025", img: cert_deloatte_2, color: "#86BC25", category: 'COMPANY', tab: 'other' },
-    { title: "Cybersecurity Awareness", issuer: "Cisco", org: "Cisco", date: "2025", img: cert_cyber_awareness, color: "#00bceb", category: 'COMPANY', tab: 'coursera' },
-    { title: "NxtWave Professional", issuer: "Mastery", org: "NxtWave", date: "2025", img: cert_nxtwave_alt, color: "#22d3ee", category: 'NXTWAVE', tab: 'nxtwave' },
-    { title: "HackerRank Skills Gold", issuer: "HackerRank", org: "HackerRank", date: "2025", img: cert_hackerrank, color: "#2ec866", category: 'COMPANY', tab: 'other' }
+    { title: "Deloitte Consulting Sim.", issuer: "Deloitte", org: "Deloitte", date: "2025", img: cert_deloatte_2, color: "#8b5cf6", category: 'COMPANY', tab: 'other' },
+    { title: "Cybersecurity Awareness", issuer: "Cisco", org: "Cisco", date: "2025", img: cert_cyber_awareness, color: "#8b5cf6", category: 'COMPANY', tab: 'coursera' },
+    { title: "NxtWave Professional", issuer: "Mastery", org: "NxtWave", date: "2025", img: cert_nxtwave_alt, color: "#8b5cf6", category: 'NXTWAVE', tab: 'nxtwave' },
+    { title: "HackerRank Skills Gold", issuer: "HackerRank", org: "HackerRank", date: "2025", img: cert_hackerrank, color: "#8b5cf6", category: 'COMPANY', tab: 'other' }
 ];
 
 export const CERTIFICATES_CATEGORIES = [
@@ -504,10 +504,10 @@ export const CERTIFICATES_CATEGORIES = [
 
 // --- Core Achievements Config ---
 export const ACHIEVEMENTS = [
-    { label: "Projects Deployed", value: "10+", sub: "Full-stack & AI", color: "#22d3ee" },
-    { label: "Certificates Validated", value: "20+", sub: "Industry Credentials", color: "#a855f7" },
-    { label: "Algorithmic Score", value: "1.2k+", sub: "Problem Solving", color: "#3b82f6" },
-    { label: "GitHub Commits", value: "500+", sub: "Yearly Activity", color: "#10b981" }
+    { label: "Projects Deployed", value: "10+", sub: "Full-stack & AI", color: "#8b5cf6" },
+    { label: "Certificates Validated", value: "20+", sub: "Industry Credentials", color: "#8b5cf6" },
+    { label: "Algorithmic Score", value: "1.2k+", sub: "Problem Solving", color: "#8b5cf6" },
+    { label: "GitHub Commits", value: "500+", sub: "Yearly Activity", color: "#8b5cf6" }
 ];
 
 // --- Resume Specific Config ---

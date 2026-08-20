@@ -5,7 +5,7 @@
   --bg-2: #050816;
   --bg-3: #0f172a;
   
-  --accent-cyan: #22d3ee;
+  --accent-cyan: #8b5cf6;
   --accent-purple: #8b5cf6;
   --accent-blue: #3b82f6;
   
@@ -15,7 +15,7 @@
   
   --glass-bg: rgba(255, 255, 255, 0.04);
   --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-glow: rgba(34, 211, 238, 0.1);
+  --glass-glow: rgba(139, 92, 246, 0.1);
   
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -184,7 +184,7 @@ h1, h2, h3, h4 {
 .btn-primary:hover {
   background: var(--accent-cyan);
   color: #000;
-  box-shadow: 0 0 25px rgba(34, 211, 238, 0.4);
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.4);
   transform: translateY(-2px);
 }
 
@@ -366,8 +366,8 @@ h1, h2, h3, h4 {
 /* 🌐 Holographic Grid Deco */
 .holo-grid {
   background-image: 
-    linear-gradient(rgba(34, 211, 238, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 211, 238, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(139, 92, 246, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
@@ -544,13 +544,13 @@ h1, h2, h3, h4 {
 .timeline-card:hover {
   border-color: rgba(255, 255, 255, 0.15);
   transform: translateY(-4px);
-  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px var(--node-color, rgba(34, 211, 238, 0.15));
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px var(--node-color, rgba(139, 92, 246, 0.15));
 }
 
 .timeline-card-glow {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top right, var(--node-color, rgba(34, 211, 238, 0.1)) 0%, transparent 60%);
+  background: radial-gradient(circle at top right, var(--node-color, rgba(139, 92, 246, 0.1)) 0%, transparent 60%);
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.4s ease;
@@ -615,9 +615,9 @@ h1, h2, h3, h4 {
 
 .timeline-card:hover .glass-tag-hologram {
   background: rgba(255, 255, 255, 0.05);
-  border-color: var(--node-color, rgba(34, 211, 238, 0.3));
+  border-color: var(--node-color, rgba(139, 92, 246, 0.3));
   color: #fff;
-  box-shadow: 0 0 10px var(--node-color, rgba(34, 211, 238, 0.2));
+  box-shadow: 0 0 10px var(--node-color, rgba(139, 92, 246, 0.2));
 }
 
 @media (max-width: 768px) {

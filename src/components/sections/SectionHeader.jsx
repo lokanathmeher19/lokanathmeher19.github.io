@@ -29,7 +29,7 @@ const SectionHeader = ({ badge, title, desc, count, compact, color = "var(--acce
           position: 'absolute', top: '-10px', right: '-40px',
           WebkitBackdropFilter: 'blur(16px)',
           backdropFilter: 'blur(16px)',
-          background: 'var(--accent-purple)', color: '#fff', fontSize: '0.7rem',
+          background: 'var(--accent-purple)', color: "#8b5cf6", fontSize: '0.7rem',
           padding: '4px 10px', borderRadius: '100px', fontWeight: 900
         }}>
           {count}

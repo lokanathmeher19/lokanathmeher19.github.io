@@ -195,7 +195,7 @@ export default function Projects() {
 
                   {/* Right Column: Tech Stack */}
                   <div>
-                    <h4 style={{ fontSize: '1rem', color: '#fff', marginBottom: '16px', letterSpacing: '0.05em' }}>
+                    <h4 style={{ fontSize: '1rem', color: "#8b5cf6", marginBottom: '16px', letterSpacing: '0.05em' }}>
                       TECHNOLOGIES
                     </h4>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>

@@ -121,7 +121,7 @@ const ProjectCard = ({ p }) => {
           />
           <div style={{ 
             position: 'absolute', inset: 0, 
-            background: `linear-gradient(to bottom, transparent 30%, rgba(2, 6, 23, 0.95) 100%)`,
+            background: `linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%) 100%)`,
             zIndex: 1
           }}></div>
           
@@ -150,14 +150,14 @@ const ProjectCard = ({ p }) => {
             <h3 style={{ 
               fontSize: '1.25rem', 
               fontWeight: 900, 
-              color: '#fff', 
+              color: "#8b5cf6", 
               marginBottom: '4px', 
               letterSpacing: '-0.02em',
               transition: 'color 0.3s ease'
             }} className="project-title-heading">{p.title}</h3>
             
             <p style={{ 
-              color: 'rgba(255, 255, 255, 0.5)', 
+              color: "#8b5cf6", 
               fontSize: '0.78rem', 
               lineHeight: 1.5,
               marginBottom: '10px',
@@ -296,7 +296,7 @@ const Projects = () => {
       {/* 🌌 High-End Engineering Aura */}
       <div style={{ 
         position: 'absolute', top: '0', left: '0', width: '100%', height: '100%',
-        background: 'radial-gradient(circle at 50% 0%, rgba(34, 211, 238, 0.05) 0%, transparent 70%)',
+        background: 'radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.05) 0%, transparent 70%)',
         pointerEvents: 'none', zIndex: 0
       }}></div>
 
@@ -313,10 +313,10 @@ const Projects = () => {
         {categories.map((cat) => {
           const isActive = filter === cat;
           const logoColor = cat === 'All' ? 'var(--accent-purple)' 
-                          : cat === 'Web' ? '#22d3ee' 
-                          : cat === 'Python' ? '#3b82f6' 
+                          : cat === 'Web' ? '#8b5cf6' 
+                          : cat === 'Python' ? '#8b5cf6' 
                           : cat === 'AI' ? '#8b5cf6' 
-                          : '#f97316'; // Security
+                          : '#8b5cf6'; // Security
 
           const getFilterIcon = () => {
             switch(cat) {
@@ -433,7 +433,7 @@ const Projects = () => {
                     }}>
                       {p.title}
                     </h4>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.75rem', color: 'rgba(255,255,255,0.35)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.75rem', color: "#8b5cf6" }}>
                       <span className="pro-badge-pill" style={{ '--accent-color': p.color, padding: '2px 8px', fontSize: '0.58rem' }}>
                         <span className="pro-badge-dot" style={{ '--accent-color': p.color }} />
                         {p.category}
@@ -478,7 +478,7 @@ const Projects = () => {
                 </div>
               </motion.div>
             ) : (
-              <div style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.9rem' }}>Select a project to view details</div>
+              <div style={{ color: "#8b5cf6", fontSize: '0.9rem' }}>Select a project to view details</div>
             )}
           </AnimatePresence>
         </div>
@@ -517,7 +517,7 @@ const Projects = () => {
         
         <div style={{ 
           textAlign: 'center', 
-          color: 'rgba(255,255,255,0.25)', 
+          color: "#8b5cf6", 
           fontSize: '0.72rem', 
           fontWeight: 600,
           letterSpacing: '0.05em',
