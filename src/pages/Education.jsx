@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, useTransform, useSpring, useScroll } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Code2, Layers, Terminal, GraduationCap } from 'lucide-react';
-
 import { EDUCATION, EDUCATION_LOGOMAP } from '../data/portfolioData';
 
 const logoMap = EDUCATION_LOGOMAP;
@@ -13,15 +12,13 @@ const iconMap = {
   GraduationCap: <GraduationCap size={22} />
 };
 
-
-// Internal SectionHeader to make component fully self-contained
 const SectionHeader = ({ badge, title, desc, color = "var(--accent-cyan)" }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     className="content-center"
-    style={{ marginBottom: '64px' }}
+    style={{ marginBottom: '80px' }}
   >
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '16px' }}>
       <div style={{ height: '1px', width: '32px', background: color, opacity: 0.5 }}></div>
@@ -41,92 +38,30 @@ const SectionHeader = ({ badge, title, desc, color = "var(--accent-cyan)" }) => 
   </motion.div>
 );
 
-const EducationCard = ({ edu, cardPosition, total, onClick }) => {
-  let scale = 1;
-  let y = 0;
-  let z = 0;
-  let rotateX = 0;
-  let opacity = 1;
-  let blurAmount = 0;
-  let pointerEvents = 'auto';
-
-  if (cardPosition === 0) {
-    scale = 1;
-    y = 0;
-    z = 0;
-    rotateX = 0;
-    opacity = 1;
-    blurAmount = 0;
-    pointerEvents = 'auto';
-  } else {
-    // For cards behind the front one
-    scale = 1 - (cardPosition * 0.04);
-    y = cardPosition * 24;
-    z = -cardPosition * 35;
-    rotateX = 8;
-    opacity = 1 - (cardPosition * 0.25);
-    blurAmount = cardPosition * 8;
-    pointerEvents = 'none'; // Only the front card should be clickable
-  }
-
-  // SVG circular gauge variables
-  const radius = 30;
-  const circumference = 2 * Math.PI * radius;
-  const percentage = edu.unit === 'CGPA' ? edu.score * 10 : edu.score;
-  const strokeDashoffset = circumference - (percentage / 100) * circumference;
-
+const TimelineNode = ({ edu, index }) => {
   const resolvedLogo = logoMap[edu.logoType];
   const resolvedIcon = iconMap[edu.iconName];
+  const isEven = index % 2 !== 0;
+
+  const percentage = edu.unit === 'CGPA' ? edu.score * 10 : edu.score;
 
   return (
-    <motion.div
-      onClick={cardPosition === 0 ? onClick : undefined}
-      animate={{
-        scale,
-        y,
-        z,
-        rotateX,
-        opacity,
-      }}
-      transition={{
-        type: "spring",
-        stiffness: 300, 
-        damping: 25,
-        mass: 1
-      }}
-      style={{
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        zIndex: total - cardPosition,
-        pointerEvents,
-        cursor: cardPosition === 0 ? 'pointer' : 'default',
-        transformOrigin: 'top center'
-      }}
+    <motion.div 
+      className="timeline-node"
+      style={{ '--node-color': edu.color }}
+      initial={{ opacity: 0, x: isEven ? 50 : -50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <div
-        className="education-glass-card"
-        style={{
-          '--glow-color': `${edu.color}44`,
-          '--watermark-color': edu.color,
-        }}
-      >
-        {/* Glowing Corner Accent */}
-        <div className="education-corner-glow" style={{ '--glow-color': edu.color }}></div>
-
-        {/* Grid Overlay */}
-        <div className="education-grid-overlay"></div>
-
-        {/* Watermark graduation cap */}
-        <div className="education-card-watermark" style={{ '--watermark-color': edu.color }}>
-          <GraduationCap size={160} strokeWidth={1} />
-        </div>
-
-        {/* Upper Content */}
-        <div style={{ position: 'relative', zIndex: 1 }}>
-          {/* Header Row */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '28px' }}>
-            <div className="education-logo-container" style={{ '--glow-color': edu.color }}>
+      <div className="timeline-dot"></div>
+      
+      <div className="timeline-card">
+        <div className="timeline-card-glow"></div>
+        <div className="timeline-card-content">
+          
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
+            <div className="timeline-logo-wrap">
               {resolvedLogo ? (
                 <img
                   src={resolvedLogo}
@@ -142,221 +77,61 @@ const EducationCard = ({ edu, cardPosition, total, onClick }) => {
                 <span style={{ color: edu.color }}>{resolvedIcon}</span>
               )}
             </div>
-
-            <span style={{
-              fontSize: '0.8rem', fontWeight: 800, color: edu.color,
-              background: `${edu.color}12`, border: `1px solid ${edu.color}22`,
-              padding: '8px 18px', borderRadius: '100px', letterSpacing: '0.05em',
-              boxShadow: `inset 0 0 10px ${edu.color}05`
-            }}>
-              {edu.period}
-            </span>
-          </div>
-
-          {/* Sub-label & Title */}
-          <div style={{ fontSize: '0.7rem', fontWeight: 900, color: edu.color, letterSpacing: '0.25em', marginBottom: '10px' }}>
-            {edu.label}
-          </div>
-          <h3 style={{ fontSize: '1.75rem', fontWeight: 900, color: '#fff', marginBottom: '10px', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
-            {edu.degree}
-          </h3>
-          <div style={{ fontSize: '1rem', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 600, marginBottom: '6px', lineHeight: 1.4 }}>
-            {edu.institutionShort || edu.institution}
-          </div>
-          <div style={{ fontSize: '0.75rem', fontWeight: 800, color: 'rgba(255, 255, 255, 0.7)', letterSpacing: '0.1em' }}>
-            {edu.university ? `UNIVERSITY: ${edu.university.toUpperCase()}` : edu.board ? `BOARD: ${edu.board.toUpperCase()}` : ''}
-          </div>
-        </div>
-
-        {/* Lower Content */}
-        <div style={{ position: 'relative', zIndex: 1, opacity: cardPosition === 0 ? 1 : 0, transition: 'opacity 0.3s' }}>
-          {/* Container holding Score and Tags */}
-          <div style={{
-            display: 'flex', flexDirection: 'column', gap: '24px',
-            padding: '24px', background: 'rgba(255, 255, 255, 0.01)',
-            border: '1px solid rgba(255, 255, 255, 0.03)', borderRadius: '24px',
-          }}>
-            {/* Score Section with SVG Gauge */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-              <div style={{ position: 'relative', width: '72px', height: '72px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <svg width="72" height="72" viewBox="0 0 80 80">
-                  <circle cx="40" cy="40" r="30" stroke="rgba(255, 255, 255, 0.03)" strokeWidth="5" fill="transparent" />
-                  <motion.circle
-                    cx="40" cy="40" r="30"
-                    stroke={edu.color} strokeWidth="5" fill="transparent"
-                    strokeDasharray={circumference}
-                    initial={{ strokeDashoffset: circumference }}
-                    whileInView={{ strokeDashoffset: strokeDashoffset }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.5, ease: "easeOut" }}
-                    strokeLinecap="round"
-                    transform="rotate(-90 40 40)"
-                    style={{ filter: `drop-shadow(0 0 6px ${edu.color}66)` }}
-                  />
-                </svg>
-                <div style={{ position: 'absolute', fontSize: '1.1rem', fontWeight: 950, color: '#fff' }}>
-                  {edu.score}
-                </div>
-              </div>
-              <div>
-                <div style={{ fontSize: '0.65rem', color: 'rgba(255, 255, 255, 0.7)', fontWeight: 800, letterSpacing: '0.1em', marginBottom: '4px' }}>ACADEMIC YIELD</div>
-                <div style={{ fontSize: '1rem', fontWeight: 900, color: edu.color }}>
-                  {edu.unit === 'CGPA' ? `${edu.score} / 10.0 CGPA` : `${edu.score}% Overall`}
-                </div>
-              </div>
-            </div>
-
-            {/* Subject tags */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-              {edu.features.map(feat => (
-                <span key={feat} className="glass-tag" style={{
-                  fontSize: '0.65rem', fontWeight: 800, color: 'rgba(255, 255, 255, 0.9)',
-                  borderColor: 'rgba(255, 255, 255, 0.15)',
-                  padding: '6px 14px', letterSpacing: '0.02em'
-                }}>
-                  {feat.toUpperCase()}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
-const MobileEducationCard = ({ edu }) => {
-  // SVG circular gauge variables
-  const radius = 30;
-  const circumference = 2 * Math.PI * radius;
-  const percentage = edu.unit === 'CGPA' ? edu.score * 10 : edu.score;
-  const strokeDashoffset = circumference - (percentage / 100) * circumference;
-
-  const resolvedLogo = logoMap[edu.logoType];
-  const resolvedIcon = iconMap[edu.iconName];
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
-      style={{ width: '100%', maxWidth: '500px', margin: '0 auto' }}
-    >
-      <div
-        className="education-glass-card"
-        style={{
-          '--glow-color': `${edu.color}44`,
-          '--watermark-color': edu.color,
-          minHeight: '400px'
-        }}
-      >
-        {/* Glowing Corner Accent */}
-        <div className="education-corner-glow" style={{ '--glow-color': edu.color }}></div>
-
-        {/* Grid Overlay */}
-        <div className="education-grid-overlay"></div>
-
-        {/* Watermark graduation cap */}
-        <div className="education-card-watermark" style={{ '--watermark-color': edu.color }}>
-          <GraduationCap size={140} strokeWidth={1} />
-        </div>
-
-        {/* Upper Content */}
-        <div style={{ position: 'relative', zIndex: 1 }}>
-          {/* Header Row */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-            <div className="education-logo-container" style={{ '--glow-color': edu.color }}>
-              {resolvedLogo ? (
-                <img
-                  src={resolvedLogo}
-                  alt="Logo"
-                  style={{
-                    width: '100%', height: '100%', objectFit: 'contain',
-                    transform: `scale(${edu.logoScale || 1})`,
-                    filter: (typeof resolvedLogo === 'string' && resolvedLogo.includes('.jpg')) ? 'invert(1) brightness(1.2)' : 'none',
-                    mixBlendMode: (typeof resolvedLogo === 'string' && resolvedLogo.includes('.jpg')) ? 'screen' : 'normal'
-                  }}
-                />
-              ) : (
-                <span style={{ color: edu.color }}>{resolvedIcon}</span>
-              )}
-            </div>
-
             <span style={{
               fontSize: '0.75rem', fontWeight: 800, color: edu.color,
-              background: `${edu.color}12`, border: `1px solid ${edu.color}22`,
+              background: `${edu.color}15`, border: `1px solid ${edu.color}33`,
               padding: '6px 14px', borderRadius: '100px', letterSpacing: '0.05em'
             }}>
               {edu.period}
             </span>
           </div>
 
-          {/* Sub-label & Title */}
-          <div style={{ fontSize: '0.65rem', fontWeight: 900, color: edu.color, letterSpacing: '0.25em', marginBottom: '8px' }}>
+          <div style={{ fontSize: '0.7rem', fontWeight: 900, color: edu.color, letterSpacing: '0.25em', marginBottom: '8px' }}>
             {edu.label}
           </div>
-          <h3 style={{ fontSize: '1.4rem', fontWeight: 900, color: '#fff', marginBottom: '8px', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+          <h3 style={{ fontSize: '1.5rem', fontWeight: 900, color: '#fff', marginBottom: '8px', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
             {edu.degree}
           </h3>
-          <div style={{ fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 600, marginBottom: '6px', lineHeight: 1.4 }}>
+          <div style={{ fontSize: '0.95rem', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 600, marginBottom: '6px', lineHeight: 1.4 }}>
             {edu.institutionShort || edu.institution}
           </div>
-          <div style={{ fontSize: '0.7rem', fontWeight: 800, color: 'rgba(255, 255, 255, 0.7)', letterSpacing: '0.1em' }}>
+          <div style={{ fontSize: '0.75rem', fontWeight: 800, color: 'rgba(255, 255, 255, 0.7)', letterSpacing: '0.1em', marginBottom: '24px' }}>
             {edu.university ? `UNIVERSITY: ${edu.university.toUpperCase()}` : edu.board ? `BOARD: ${edu.board.toUpperCase()}` : ''}
           </div>
-        </div>
 
-        {/* Lower Content */}
-        <div style={{ position: 'relative', zIndex: 1, marginTop: '24px' }}>
-          {/* Container holding Score and Tags */}
-          <div style={{
-            display: 'flex', flexDirection: 'column', gap: '20px',
-            padding: '20px', background: 'rgba(255, 255, 255, 0.01)',
-            border: '1px solid rgba(255, 255, 255, 0.03)', borderRadius: '20px',
+          {/* Academic Yield HUD */}
+          <div style={{ 
+            background: 'rgba(0, 0, 0, 0.2)', padding: '16px', borderRadius: '16px', 
+            border: '1px solid rgba(255, 255, 255, 0.03)', marginBottom: '20px'
           }}>
-            {/* Score Section with SVG Gauge */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-              <div style={{ position: 'relative', width: '64px', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <svg width="64" height="64" viewBox="0 0 80 80">
-                  <circle cx="40" cy="40" r="30" stroke="rgba(255, 255, 255, 0.03)" strokeWidth="5" fill="transparent" />
-                  <motion.circle
-                    cx="40" cy="40" r="30"
-                    stroke={edu.color} strokeWidth="5" fill="transparent"
-                    strokeDasharray={circumference}
-                    initial={{ strokeDashoffset: circumference }}
-                    whileInView={{ strokeDashoffset: strokeDashoffset }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.5, ease: "easeOut" }}
-                    strokeLinecap="round"
-                    transform="rotate(-90 40 40)"
-                  />
-                </svg>
-                <div style={{ position: 'absolute', fontSize: '0.95rem', fontWeight: 950, color: '#fff' }}>
-                  {edu.score}
-                </div>
-              </div>
-              <div>
-                <div style={{ fontSize: '0.6rem', color: 'rgba(255, 255, 255, 0.7)', fontWeight: 800, letterSpacing: '0.1em', marginBottom: '2px' }}>ACADEMIC YIELD</div>
-                <div style={{ fontSize: '0.85rem', fontWeight: 900, color: edu.color }}>
-                  {edu.unit === 'CGPA' ? `${edu.score} / 10.0 CGPA` : `${edu.score}% Overall`}
-                </div>
-              </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontSize: '0.65rem', color: 'rgba(255, 255, 255, 0.6)', fontWeight: 800, letterSpacing: '0.1em' }}>
+                ACADEMIC YIELD
+              </span>
+              <span style={{ fontSize: '0.9rem', fontWeight: 900, color: edu.color }}>
+                {edu.unit === 'CGPA' ? `${edu.score} / 10.0 CGPA` : `${edu.score}% Overall`}
+              </span>
             </div>
-
-            {/* Subject tags */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-              {edu.features.map(feat => (
-                <span key={feat} className="glass-tag" style={{
-                  fontSize: '0.6rem', fontWeight: 800, color: 'rgba(255, 255, 255, 0.9)',
-                  borderColor: 'rgba(255, 255, 255, 0.15)',
-                  padding: '5px 12px', letterSpacing: '0.02em'
-                }}>
-                  {feat.toUpperCase()}
-                </span>
-              ))}
+            <div className="neon-meter-bg">
+              <motion.div 
+                className="neon-meter-fill"
+                initial={{ width: 0 }}
+                whileInView={{ width: `${percentage}%` }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
+              />
             </div>
           </div>
+
+          {/* Tech/Subject Tags */}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+            {edu.features.map(feat => (
+              <span key={feat} className="glass-tag-hologram">
+                {feat.toUpperCase()}
+              </span>
+            ))}
+          </div>
+
         </div>
       </div>
     </motion.div>
@@ -364,102 +139,43 @@ const MobileEducationCard = ({ edu }) => {
 };
 
 export default function Education() {
-  const [isMobile, setIsMobile] = useState(false);
-  const [activeDeck, setActiveDeck] = useState(EDUCATION.map((_, i) => i));
+  const containerRef = useRef(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"]
+  });
 
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const handleCardClick = () => {
-    setActiveDeck(prev => {
-      const newDeck = [...prev];
-      const frontCard = newDeck.shift();
-      newDeck.push(frontCard);
-      return newDeck;
-    });
-  };
+  const spineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section
-      id="education"
-      className="section"
-      style={isMobile ? {
-        padding: '80px 24px',
-        position: 'relative',
-        overflow: 'hidden'
-      } : {
-        padding: '120px 24px',
-        position: 'relative',
-        minHeight: '80vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}
-    >
+    <section id="education" className="section" style={{ padding: '100px 24px', position: 'relative' }}>
       {/* 🌌 Atmospheric Glow Backdrops */}
       <div style={{
-        position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)',
-        width: '600px', height: '600px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(34, 211, 238, 0.03) 0%, transparent 70%)',
+        position: 'absolute', top: '10%', left: '50%', transform: 'translateX(-50%)',
+        width: '800px', height: '800px', borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(34, 211, 238, 0.03) 0%, transparent 60%)',
         pointerEvents: 'none', zIndex: 0
       }}></div>
 
-      {isMobile ? (
-        // Mobile Layout (Standard scrolling cascade)
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', position: 'relative', zIndex: 1 }}>
-          <SectionHeader
-            badge="EDUCATION"
-            color="#22d3ee"
-            title={<><span className="text-gradient">Academic</span> Milestones</>}
-            desc="A chronological log of educational excellence and fundamental knowledge development."
-          />
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', marginTop: '48px' }}>
-            {EDUCATION.map((edu) => (
-              <MobileEducationCard key={edu.label} edu={edu} />
-            ))}
-          </div>
-        </div>
-      ) : (
-        // Desktop Layout (Interactive Uno Card Deck)
-        <div style={{
-          position: 'relative',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          width: '100%',
-          maxWidth: '1200px'
-        }}>
-          <div style={{ zIndex: 10, width: '100%', marginBottom: '40px' }}>
-            <SectionHeader
-              badge="EDUCATION"
-              color="#22d3ee"
-              title={<><span className="text-gradient">Academic</span> Milestones</>}
-              desc="Click the top card to flip through the chronological log of educational excellence."
-            />
-          </div>
+      <SectionHeader
+        badge="EDUCATION"
+        color="#22d3ee"
+        title={<><span className="text-gradient">Academic</span> Milestones</>}
+        desc="A chronological log of educational excellence mapped across a digital timeline."
+      />
 
-          <div className="education-perspective" style={{ marginTop: '20px' }}>
-            <div className="education-stack-container" style={{ position: 'relative' }}>
-              {EDUCATION.map((edu, originalIndex) => {
-                const currentPosition = activeDeck.indexOf(originalIndex);
-                return (
-                  <EducationCard
-                    key={edu.label}
-                    edu={edu}
-                    cardPosition={currentPosition}
-                    total={EDUCATION.length}
-                    onClick={handleCardClick}
-                  />
-                );
-              })}
-            </div>
-          </div>
+      <div ref={containerRef} className="timeline-container">
+        {/* The central line */}
+        <div className="timeline-spine">
+          <motion.div className="timeline-spine-glow" style={{ height: spineHeight }} />
         </div>
-      )}
+
+        {/* The Data Nodes */}
+        {EDUCATION.map((edu, index) => (
+          <TimelineNode key={edu.id || edu.label} edu={edu} index={index} />
+        ))}
+      </div>
     </section>
   );
 }
