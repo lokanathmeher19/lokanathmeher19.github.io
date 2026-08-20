@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://lokanathmeher19.netlify.app/sitemap.xml

@@ -2,17 +2,17 @@ import React from 'react';
 import Container from '../ui/Container';
 import SectionHeading from '../ui/SectionHeading';
 
-const SkillsSection = () => {
+const CertificationsSection = () => {
   return (
-    <section id="skills" className="py-24 relative">
+    <section id="certifications" className="py-24 relative">
       <Container>
-        <SectionHeading title="Technical Arsenal" eyebrow="Skills" className="items-center text-center" />
+        <SectionHeading title="Licenses & Certifications" eyebrow="Achievements" className="items-center text-center" />
         <div className="w-full h-64 bg-brand-elevated border border-brand-border rounded-[var(--radius-card)] flex items-center justify-center text-text-muted">
-          [Skills Grid Placeholder]
+          [Certifications Grid Placeholder]
         </div>
       </Container>
     </section>
   );
 };
 
-export default SkillsSection;
+export default CertificationsSection;

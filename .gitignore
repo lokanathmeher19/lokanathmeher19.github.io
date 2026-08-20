@@ -1,43 +1,24 @@
-# Node
-node_modules/
-dist/
-.vite/
-
-# Environment
-.env
-.env.local
-
 # Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# OS files
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
 .DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-
-# Build outputs
-/build/
-
-# Vite cache
-.vite/
-
-# Ignore local-only keys/certs
-*.pem
-*.key
-.git/COMMIT_EDITMSG
-
-# Databases and local data
-*.db
-*.sqlite
-*.sqlite3
-/db/
-/data/
-
-# Misc
-/.DS_Store
-Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

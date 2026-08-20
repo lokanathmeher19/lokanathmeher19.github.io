@@ -1,83 +1,25 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
-import { Toaster } from 'react-hot-toast'
-import { AnimatePresence, motion } from 'framer-motion'
-import Navbar from './components/Navbar'
-import Preloader from './components/Preloader'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Resume from './pages/Resume';
+import Projects from './pages/Projects';
+import Certificates from './pages/Certificates';
+import Blog from './pages/Blog';
 
-// Pages
-const Home = lazy(() => import('./pages/Home'))
-const Resume = lazy(() => import('./pages/Resume'))
-const Certificates = lazy(() => import('./pages/Certificates'))
-const Blog = lazy(() => import('./pages/Blog'))
-const NotFound = lazy(() => import('./pages/NotFound'))
-
-export default function App() {
-  const [loading, setLoading] = useState(true);
-  const location = useLocation();
-
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2200);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    if (!loading && location.hash) {
-      const id = location.hash.substring(1);
-      const element = document.getElementById(id);
-      if (element) {
-        const timer = setTimeout(() => {
-          element.scrollIntoView({ behavior: "smooth" });
-        }, 100);
-        return () => clearTimeout(timer);
-      }
-    }
-  }, [loading, location.hash]);
-
+function App() {
   return (
-    <div className="app-container">
-      <AnimatePresence mode="wait">
-        {loading && <Preloader key="loader" />}
-      </AnimatePresence>
-
-      <Toaster 
-        position="bottom-right" 
-        toastOptions={{
-          style: {
-            background: 'var(--bg-2)',
-            color: "#8b5cf6",
-            backdropFilter: 'blur(10px)',
-            border: '1px solid var(--glass-border)',
-            borderRadius: '16px',
-            fontFamily: 'var(--font-body)'
-          }
-        }} 
-      />
-      
-      {/* Conditionally show Navbar - it handles its own visibility/scrolling */}
-      <Navbar />
-      
-      <main>
-        <Suspense fallback={null}>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={location.pathname}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Routes location={location}>
-                <Route path="/" element={<Home />} />
-                <Route path="/resume" element={<Resume />} />
-                <Route path="/certificates" element={<Certificates />} />
-                <Route path="/blog" element={<Blog />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </motion.div>
-          </AnimatePresence>
-        </Suspense>
-      </main>
-    </div>
-  )
+    <Router>
+      <div className="min-h-screen flex flex-col">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/resume" element={<Resume />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/certificates" element={<Certificates />} />
+          <Route path="/blog" element={<Blog />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
+
+export default App;
